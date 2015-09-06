@@ -1,0 +1,125 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html, body {
+  /*padding-top: 50px;*/
+  background-color: #f5f5f5;
+  height: 100%;
+  width: 100%;
+}
+.fill {
+    top: 45px;
+    left: 190px;
+    right: 5px;
+    bottom: 5px;
+    position: absolute;
+    width: auto;
+    height: auto;
+    background-color: #ffffff
+}
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #fff;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #35B5ED;
+}
+.table-nonfluid {
+   width: auto !important;
+}
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+ /*
+@media screen and (max-width: 768px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -33%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 33%;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 180px;
+    margin-left: 20px;
+    background-color:#fafafa; 
+    height:100%;
+  }
+}
+*/
+
+/* Sidebar navigation */
+.nav-sidebar {
+  background-color: #f5f5f5;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a {
+  color: #fff;
+  background-color: #428bca;
+}
+
+/*
+ * Main content
+ */
+/*
+.main {
+  background-color: #fafafa;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+.main {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+  }
+  */
+#main {
+        height: 100%;
+        width: 100%;
+        padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background-color: #ffffff;
+}
+
+#main img {
+        max-width: none;
+}
+#section {
+    width:180px;
+    float:left;
+    padding:20px; 
+}

@@ -1,0 +1,15 @@
+/*@import url('http://getbootstrap.com/dist/css/bootstrap.css');*/
+
+.fixed { height:300px; overflow:hidden; background:orange; }
+.scrollit { height:300px;border-style:solid; border-width:2px; border-color:black;}
+.result{height:400px; border-style:solid; border-width:2px; border-color:black;}.sfile{
+ overflow-y:scroll;
+ height:200px;
+}
+.ifile{
+  overflow-y:scroll;
+  height:200px; 
+}
+textArea{
+  resize:none;
+}
