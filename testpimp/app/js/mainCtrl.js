@@ -6,7 +6,7 @@
 /**
  * ng-include routing
  */
-angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,shareDataService,$log, $window, $location, $localStorage, $compile, Idle, Keepalive, $modal/*, $http */) {
+angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,shareDataService,requestService, $log, $window, $location, $localStorage, $compile, Idle, Keepalive, $modal/*, $http */) {
 
 
 	  	$scope.loginFail = false;
@@ -48,7 +48,17 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 			shareDataService.setUser($scope.$storage.user);
 			shareDataService.setBlah(getConstants.letterA());
 			$scope.user = shareDataService.getUser();
-			$scope.viewUrl = 'partials/userDashboard.html';
+			requestService.test().then(
+					function(success) {
+						var msg = success.data;
+						console.log("success: " + msg);
+						$scope.viewUrl = 'partials/userDashboard.html';
+					}, 
+				      function(error){
+				        console.log("fail: " + error.msg);
+				    }
+			);
+			
 		}
 
 		// idle logout functions
