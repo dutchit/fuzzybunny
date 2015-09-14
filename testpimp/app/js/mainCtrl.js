@@ -44,6 +44,7 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 
 		// temporary login.
 		$scope.login = function() {
+			
 			$scope.$storage.user = getConstants.mockUserInfo();
 			shareDataService.setUser($scope.$storage.user);
 			shareDataService.setBlah(getConstants.letterA());
@@ -59,6 +60,7 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 				    }
 			);
 			
+			$scope.viewUrl = 'partials/userDashboard.html';
 		}
 
 		// idle logout functions

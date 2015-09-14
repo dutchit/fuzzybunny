@@ -1,4 +1,4 @@
-angular.module('testpimp').factory('requestService',['$http', 'RESTfulAPI', function($http, RESTfulAPI){
+angular.module('testpimp').factory('requestService',['$http', function($http, RESTfulAPI){
   
 	var service = {};
 	var somedata = {'username': 'rhonrado', 'password': 'aaaaaa', 'displayName': 'Ryan Honrado'};
@@ -20,6 +20,21 @@ angular.module('testpimp').factory('requestService',['$http', 'RESTfulAPI', func
 				return response;
 			};
   
+			service.test2 = function() {
+				var response = $http({
+					url : 'http://localhost:8000/appAdmin/',
+					method : 'POST',
+					headers: {
+				        'Content-type': 'application/json'
+				    },
+					data: somedata,
+						}).success(function(data, status, headers, config) {
+							return data;
+						}).error(function(data, status, headers, config) {
+							return "test2";
+						});
+				return response;
+			};
 
   return service;
 
