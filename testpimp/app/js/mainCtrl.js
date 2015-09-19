@@ -22,11 +22,13 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 		if ($scope.someValue.length > 0) {
 			console.log("function: load app partials");
 			$scope.viewUrl = 'partials/userDashboard.html';
+			$scope.header = 'partials/loggedInHeader.html';
 			
 			Idle.watch();
 			console.log("idle watch start");
 		} else {
 			$scope.viewUrl = 'partials/login.html';
+			$scope.header = 'templates/header.html';
 			console.log('login');
 		}
 
@@ -38,13 +40,14 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 				someValue : "", 
 				user: {}
 			});
-
+			$scope.viewUrl = 'partials/login.html';
+			$scope.header = 'templates/header.html';
 			console.log('logout user: ' + shareDataService.getUser().name);
 		}
 
 		// temporary login.
 		$scope.login = function() {
-			
+		/*	
 			$scope.$storage.user = getConstants.mockUserInfo();
 			shareDataService.setUser($scope.$storage.user);
 			shareDataService.setBlah(getConstants.letterA());
@@ -59,8 +62,9 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 				        console.log("fail: " + error.msg);
 				    }
 			);
-			
+		*/	
 			$scope.viewUrl = 'partials/userDashboard.html';
+			$scope.header = 'partials/loggedInHeader.html';
 		}
 
 		// idle logout functions

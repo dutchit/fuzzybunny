@@ -5,6 +5,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	var mytestdata = {"username":"unique", "password": "password", "displayName":"You Nique"};
 
 	service.test = function() {
+	
 		var response = $http({
 			url : 'http://localhost:8000/appAdmin/',
 			method : 'POST',
@@ -34,6 +35,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 							return "test2";
 						});
 				return response;
+	
 			};
 
   return service;

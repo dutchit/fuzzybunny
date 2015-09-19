@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Test Pimp Stub</title>
+<title>LifeLifter</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -42,10 +42,10 @@
 
 </head>
 
-<body ng-app="testpimp">
+<body ng-app="testpimp" ng-controller="mainCtrl">
 	<div ng-include='"partials/idleLogout.html"'></div>
-	<div ng-include='"templates/header.html"'></div>
-	<div  id="index" ng-controller="mainCtrl">
+	<div ng-include src="header"></div>
+	<div  id="index" >
 		<div ng-include='"partials/idleLogout.html"'></div>
 		<div ng-include src="viewUrl"></div>
 <!-- 	<div class="container fill" style="padding:10px" ng-include src="viewUrl"></div>   -->	

@@ -1,46 +1,54 @@
-<div>
+
   <div class="container">
+
     <div class="col-sm-8 col-sm-offset-2">
       <div class="page-header"><h3>Login Page</h3></div>
+      <form name="loginForm" novalidate ng-submit="login()">
+      <fieldset>
         <p>
           <label> Username </label>
         <br>
-          <input type="text" style="height:30px; width:450px" ng-model="username" required>
+          <input type="text" style="height:30px; width:450px" ng-model="username" required/>
         </p>
         <p>
           <label>Password</label>
         <br>
-          <input type="password" style="height:30px; width:450px" ng-model="password">
+          <input type="password" style="height:30px; width:450px" ng-model="password" required/>
         </p>
-      <button type="submit" id="loggingIn" class="btn btn-primary" ng-click="login()">Submit</button>
+      <button type="submit" class="btn btn-primary" >Submit</button>
+      </fieldset>
+   </form>
        <div ng-show="loginFail" style="color: red">{{loginFailMsg}}</div>
     
     </div>
    <button ng-model="newUser" ng-click="newUser = !newUser">New User Registration</button>
+
    <div class="container" ng-show="newUser">
     <div class="col-sm-8 col-sm-offset-2">	
       <div ><h3>New User Registration</h3></div>
+      <form name="registrationForm" method="post">
         <p>
           <label> Username </label>
         <br>
-          <input type="text" style="height:30px; width:450px" ng-model="newUsername" required>
+          <input type="text" style="height:30px; width:450px" ng-model="newUsername" required/>
         </p>
         <p>
           <label>Password</label>
         <br>
-          <input type="password" style="height:30px; width:450px" ng-model="newPassword" required>
+          <input type="password" style="height:30px; width:450px" ng-model="newPassword" required/>
         </p>
         <p>
           <label>Repeat Password</label>
         <br>
-          <input type="password" style="height:30px; width:450px" ng-model="repeatPassword" required>
+          <input type="password" style="height:30px; width:450px" ng-model="repeatPassword" required/>
         </p>
         <p>
           <label>Contact Email</label>
         <br>
-          <input type="email" style="height:30px; width:450px" ng-model="contactEmail" required>
+          <input type="email" style="height:30px; width:450px" ng-model="contactEmail" required/>
         </p>
       <button type="submit" id="loggingIn" class="btn btn-primary" ng-click="login()">Submit</button>
+      </form>
        <div ng-show="registrationFail" style="color: red">{{loginFailMsg}}</div>
     
     </div>
