@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Test Pimp Stub</title>
+<title>LifeLifter</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -30,23 +30,25 @@
 <!-- Our Website Javascripts -->
 <script src="js/app.js"></script>
 <script src="js/mainCtrl.js"></script>
+<script src="js/userDashboardCtrl.js"></script>
 
 
 <script src="services/dataSharingService.js"></script>
 <script src="services/getConstants.js"></script>
 <script src="services/requestService.js"></script>
-<script src="services/RESTfulAPI.js"></script>
+
 
 <!--<script src="services/tokenService.js"></script>   -->
 
 </head>
 
-<body ng-app="testpimp">
+<body ng-app="testpimp" ng-controller="mainCtrl">
 	<div ng-include='"partials/idleLogout.html"'></div>
-	<div ng-include='"templates/header.html"'></div>
-	<div  id="index" ng-controller="mainCtrl">
+	<div ng-include src="header"></div>
+	<div >
 		<div ng-include='"partials/idleLogout.html"'></div>
-		<div class="container fill" style="padding:10px" ng-include src="viewUrl"></div>
+		<div ng-include src="viewUrl"></div>
+<!-- 	<div class="container fill" style="padding:10px" ng-include src="viewUrl"></div>   -->	
 	</div>
 	<!-- <div ng-include='"templates/footer.html"'></div>   -->
 

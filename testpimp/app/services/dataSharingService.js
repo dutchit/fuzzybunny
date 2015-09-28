@@ -9,20 +9,20 @@
 	  return user;
 	 };
 
-	 var blah;	 
-	 var setBlah = function (data) {
-		 blah = data;
+	 var token;	 
+	 var setToken = function (data) {
+		 token = data;
 	 };
 	 
-	 var getBlah = function () {
-	  return blah;
+	 var getToken = function () {
+	  return token;
 	 };
 	 
 	 return {
 		 setUser: setUser,
 		 getUser: getUser,
-		 setBlah: setBlah,
-		 getBlah: getBlah,
+		 setToken: setToken,
+		 getToken: getToken,
 	 }
 	 
 });

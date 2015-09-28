@@ -1,27 +1,33 @@
-angular.module('testpimp').factory('requestService',['$http', 'RESTfulAPI', function($http, RESTfulAPI){
+angular.module('testpimp').factory('requestService',['$http', function($http, RESTfulAPI){
   
 	var service = {};
-	var somedata = {"username": "testuser2", "password": "aaaaaa", "displayName": "A Test Display", "contactEmail": "test@test.com"};
-	var mytestdata = {"username":"unique", "password": "password", "displayName":"You Nique"};
+	
+	var restServer = 'http://localhost:8000/';
+	
+//	var somedata = {'username': 'rhonrado', 'password': 'aaaaaa', 'displayName': 'Ryan Honrado'};
+//	var mytestdata = {"username":"unique", "password": "password", "displayName":"You Nique"};
 
-	service.test = function() {
-		console.log("service.test()");
+	service.register = function(postPayload) {
+		console.log("postPayload: " + JSON.stringify(postPayload));
 		var response = $http({
-			url : 'http://127.0.0.1:8000/api/userprofiles/',
+			url : restServer + 'api/userprofiles/',
 			method : 'POST',
 			headers: {
 		        'Content-type': 'application/json'
 		    },
-			data: somedata,
+			data: postPayload,
 				}).success(function(data, status, headers, config) {
 					return data;
 				}).error(function(data, status, headers, config) {
-					console.log("error: " + data);
+					console.log("reg api post failed.")
 					return data;
 				});
 				return response;
-			};
+		};
   
+	service.login = function (credential) {
+		return 'sure';
+	}
 
   return service;
 
