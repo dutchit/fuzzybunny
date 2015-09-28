@@ -46,8 +46,7 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 	
 	$scope.myProfiles = function() {
 		$scope.contentUrl = 'partials/myProfiles.html';
-<<<<<<< HEAD
-=======
+
 	/*	requestService.getMyProviderProfiles().then(
 				function(success) {
 					var myProviderProfiles = success.data;
@@ -59,7 +58,6 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 			    }
 		);
 */
->>>>>>> feature-elisa
 	}
 	
 	$scope.accountSettings = function() {

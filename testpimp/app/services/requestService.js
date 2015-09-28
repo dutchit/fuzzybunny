@@ -25,11 +25,10 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				return response;
 		};
   
-<<<<<<< HEAD
 	service.login = function (credential) {
 		return 'sure';
 	}
-=======
+
 	service.getMyProviderProfiles = function() {
 //		console.log("postPayload: " + JSON.stringify(postPayload));
 		var response = $http({
@@ -46,7 +45,6 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 				return response;
 	};
->>>>>>> feature-elisa
 
   return service;
 
