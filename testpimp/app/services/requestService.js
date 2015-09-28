@@ -25,9 +25,28 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				return response;
 		};
   
+<<<<<<< HEAD
 	service.login = function (credential) {
 		return 'sure';
 	}
+=======
+	service.getMyProviderProfiles = function() {
+//		console.log("postPayload: " + JSON.stringify(postPayload));
+		var response = $http({
+			url : restServer + 'api/providerprofiles/',
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+//			data: postPayload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+	};
+>>>>>>> feature-elisa
 
   return service;
 

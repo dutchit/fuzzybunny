@@ -62,6 +62,7 @@ angular.module('testpimp').factory('getConstants',[function($http){
 		                    "description":"James Bonds rip off"}]	
 	}};
 	
+<<<<<<< HEAD
 	var updateProviderProfileResponse = {"user":{"name":"Bobbob",
 		"contactEmail":"bob@blahblah.com",
 		"userProfile":{"profileTitle":"Builder",
@@ -80,6 +81,21 @@ angular.module('testpimp').factory('getConstants',[function($http){
                     "profileTitle":"Not a Spy",
                     "location":"nowhere",
                     "description":"James Bonds rip off"}]}};
+=======
+	var updateProviderProfileResponse = [{"username":"007", 
+											"profileTitle":"Spy",
+											"location":"unknown",
+											"description":"I'm english"},
+											{"username":"808",
+											"profileTitle":"James Bonds Lesser Known Cousin",
+											"location":"known",
+											"description":"I'm english as well."},
+											{
+												"username":"770",
+												"profileTitle":"Not a Spy",
+												"location":"nowhere",
+												"description":"James Bonds rip off"}];
+>>>>>>> feature-elisa
 	
 	constants.someValue = function(){
 		return "some value";

@@ -1,4 +1,29 @@
+<<<<<<< HEAD
 <div>
 all my profiles Page
 </div>
 
+=======
+<div ng-controller="myProfilesCtrl">
+all my profiles Page
+
+<h4>My Provider profiles</h4>
+
+<table>
+<tr>
+<th> Profile Title </th>
+<th> Location </th>
+<th> Description </th>
+<th> stuff we can do to the profile </th>
+</tr>
+
+<tr ng-repeat="providerProfile in myProviderProfiles">
+	<td>{{providerProfile.profileTitle}}</td>
+	<td>{{providerProfile.location}}</td>
+	<td>{{providerProfile.description}}</td>
+	<td><button ng-click="displayUserInfo(providerProfile)">displayUserInfo()</button>
+</tr>
+</table>
+
+</div>
+>>>>>>> feature-elisa
