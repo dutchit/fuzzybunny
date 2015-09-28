@@ -1,18 +1,21 @@
 
 <div id="section" role="navigation">
 	<h3>Welcome</h3>
-	<h4>{{user.name}}</h4>
+	<h4>{{user.displayName}}</h4>
 	
 	<br><br>
+	<button ng-click="dashboard()">Dashboard</button>
+	<br>
+	<br>
 	<ul class="nav nav-sidebar">
 	<li>
-			<button id="searchDListBtn" style="width: 160px" class="btn btn-primary btn-sm">
+			<button id="searchDListBtn" style="width: 160px" class="btn btn-primary btn-sm" ng-click="postNewJob()">
 				<font size="2">Post New Job</font>
 			</button>
 		</li>
 		<br>
 		<li>
-			<button id="myDListBtn" style="width: 160px" class="btn btn-primary btn-sm" >
+			<button id="myDListBtn" style="width: 160px" class="btn btn-primary btn-sm"  ng-click="searchForJob()">
 				<font size="2">Search for Job</font>
 			</button>
 		</li> 
@@ -22,13 +25,13 @@
 	<br>
 	<ul class="nav nav-sidebar">
 		<li>
-			<button id="myDListBtn" style="width: 160px" class="btn btn-primary btn-sm" >
+			<button id="myDListBtn" style="width: 160px" class="btn btn-primary btn-sm" ng-click="myProfiles()" >
 				<font size="2">My Profiles</font>
 			</button>
 		</li>   
 		<br>  
 		<li>
-			<button id="myDListBtn" style="width: 160px" class="btn btn-primary btn-sm" >
+			<button id="myDListBtn" style="width: 160px" class="btn btn-primary btn-sm" ng-click="accountSettings()" >
 				<font size="2">Account Settings</font>
 			</button>
 		</li> 

@@ -9,20 +9,32 @@
 	  return user;
 	 };
 
-	 var blah;	 
-	 var setBlah = function (data) {
-		 blah = data;
+	 var token;	 
+	 var setToken = function (data) {
+		 token = data;
 	 };
 	 
-	 var getBlah = function () {
-	  return blah;
+	 var getToken = function () {
+	  return token;
+	 };
+	 
+	 var providerProfiles;
+	 
+	 var setProviderProfiles = function (data) {
+		 providerProfiles = data;
+	 };
+	 
+	 var getProviderProfiles = function () {
+	  return providerProfiles;
 	 };
 	 
 	 return {
 		 setUser: setUser,
 		 getUser: getUser,
-		 setBlah: setBlah,
-		 getBlah: getBlah,
+		 setToken: setToken,
+		 getToken: getToken,
+		 setProviderProfiles: setProviderProfiles,
+		 getProviderProfiles: getProviderProfiles,
 	 }
 	 
 });
