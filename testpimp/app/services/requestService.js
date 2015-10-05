@@ -56,7 +56,7 @@ service.getMyProviderProfiles = function(userId) {
 
 	//TODO
 
-	service.requestForJobs = function(table) {
+	service.requestForJobs = function() {
 		var response = $http({
 			url : restServer + 'api',
 			method : 'GET',

@@ -74,7 +74,18 @@ angular.module('testpimp').factory('getConstants',[function($http){
 												"username":"770",
 												"profileTitle":"Not a Spy",
 												"location":"nowhere",
-												"description":"James Bonds rip off"}];
+												"description":"James Bonds rip off"
+											}                                            ];
+	var provideJobs = {
+		[{
+			"provider":"007",
+			"title":"Martini Buddy",
+			"description":"Remember, shaken, not stirred"
+			"location":"SJ",
+			"price":"$1"
+		}]
+	}
+
 	
 	constants.someValue = function(){
 		return "some value";
