@@ -7,6 +7,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 //	var somedata = {'username': 'rhonrado', 'password': 'aaaaaa', 'displayName': 'Ryan Honrado'};
 //	var mytestdata = {"username":"unique", "password": "password", "displayName":"You Nique"};
 
+<<<<<<< HEAD
 service.register = function(postPayload) {
 	var response = $http({
 		url : restServer + 'api/userprofiles/',
@@ -57,6 +58,32 @@ service.getMyProviderProfiles = function(userId) {
 	//TODO
 
 	service.requestForJobs = function() {
+=======
+	service.register = function(postPayload) {
+		console.log("postPayload: " + JSON.stringify(postPayload));
+		var response = $http({
+			url : restServer + 'api/userprofiles/',
+			method : 'POST',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+			data: postPayload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					console.log("reg api post failed.")
+					return data;
+				});
+				return response;
+		};
+  
+	service.login = function (credential) {
+		return 'sure';
+	}
+
+	service.getMyProviderProfiles = function() {
+//		console.log("postPayload: " + JSON.stringify(postPayload));
+>>>>>>> master
 		var response = $http({
 			url : restServer + 'api',
 			method : 'GET',
