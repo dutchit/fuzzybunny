@@ -7,7 +7,6 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 //	var somedata = {'username': 'rhonrado', 'password': 'aaaaaa', 'displayName': 'Ryan Honrado'};
 //	var mytestdata = {"username":"unique", "password": "password", "displayName":"You Nique"};
 
-<<<<<<< HEAD
 service.register = function(postPayload) {
 	var response = $http({
 		url : restServer + 'api/userprofiles/',
@@ -58,7 +57,6 @@ service.getMyProviderProfiles = function(userId) {
 	//TODO
 
 	service.requestForJobs = function() {
-		=======
 		service.register = function(postPayload) {
 			console.log("postPayload: " + JSON.stringify(postPayload));
 			var response = $http({
@@ -132,6 +130,6 @@ service.getMyProviderProfiles = function(userId) {
         }
 
         myTableDiv.appendChild(table)}
-};
-]
+	}
+	]
 );

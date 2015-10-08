@@ -95,14 +95,15 @@ angular.module('testpimp').factory('getConstants',[function($http){
 												"location":"nowhere",
 												"description":"James Bonds rip off"
 											}                                            ];
+
 	var provideJobs = {
-		[{
+		
 			"provider":"007",
 			"title":"Martini Buddy",
-			"description":"Remember, shaken, not stirred"
+			"description":"Remember, shaken, not stirred",
 			"location":"SJ",
 			"price":"$1"
-		}]
+		
 	}
 
 	
