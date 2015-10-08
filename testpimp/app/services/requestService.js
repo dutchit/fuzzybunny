@@ -57,7 +57,7 @@ service.getMyProviderProfiles = function(userId) {
 	//TODO
 
 	service.requestForJobs = function() {
-<<<<<<< HEAD
+// <<<<<<< HEAD
 		service.register = function(postPayload) {
 			console.log("postPayload: " + JSON.stringify(postPayload));
 			var response = $http({
@@ -74,8 +74,8 @@ service.getMyProviderProfiles = function(userId) {
 				return data;
 			});
 			return response;
-=======
-=======
+// =======
+// =======
 	service.register = function(postPayload) {
 		console.log("postPayload: " + JSON.stringify(postPayload));
 		var response = $http({
@@ -92,7 +92,7 @@ service.getMyProviderProfiles = function(userId) {
 					return data;
 				});
 				return response;
->>>>>>> parent of a779ba7... attempted to add getJobList function
+// >>>>>>> parent of a779ba7... attempted to add getJobList function
 		};
   
 	service.login = function (credential) {
@@ -101,7 +101,7 @@ service.getMyProviderProfiles = function(userId) {
 
 	service.getMyProviderProfiles = function() {
 //		console.log("postPayload: " + JSON.stringify(postPayload));
->>>>>>> master
+// >>>>>>> master
 		var response = $http({
 			url : restServer + 'api',
 			method : 'GET',
@@ -117,11 +117,11 @@ service.getMyProviderProfiles = function(userId) {
 
 return service;
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
         myTableDiv.appendChild(table)}
 	}
-	]
-);
-=======
+	
+;
+// =======
 }]);
->>>>>>> parent of a779ba7... attempted to add getJobList function
+// >>>>>>> parent of a779ba7... attempted to add getJobList function
