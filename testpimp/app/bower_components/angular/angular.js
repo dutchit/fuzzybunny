@@ -12312,6 +12312,7 @@ function $LogProvider() {
             args.push(formatError(arg));
           });
           return logFn.apply(console, args);
+          // error here
         };
       }
 

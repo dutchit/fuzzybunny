@@ -54,9 +54,6 @@ service.getMyProviderProfiles = function(userId) {
 	return response;
 };
 
-	//TODO
-
-	service.requestForJobs = function() {
 // <<<<<<< HEAD
 		service.register = function(postPayload) {
 			console.log("postPayload: " + JSON.stringify(postPayload));
@@ -74,6 +71,7 @@ service.getMyProviderProfiles = function(userId) {
 				return data;
 			});
 			return response;
+		};
 // =======
 // =======
 	service.register = function(postPayload) {
@@ -97,7 +95,7 @@ service.getMyProviderProfiles = function(userId) {
   
 	service.login = function (credential) {
 		return 'sure';
-	}
+	};
 
 	service.getMyProviderProfiles = function() {
 //		console.log("postPayload: " + JSON.stringify(postPayload));
@@ -118,10 +116,12 @@ service.getMyProviderProfiles = function(userId) {
 return service;
 
 // <<<<<<< HEAD
-        myTableDiv.appendChild(table)}
-	}
-	
-;
+
+	//TODO
+
+	// service.requestForJobs = function() {
+        // myTableDiv.appendChild(table)}
+	// };
 // =======
 }]);
 // >>>>>>> parent of a779ba7... attempted to add getJobList function
