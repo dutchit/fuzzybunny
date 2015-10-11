@@ -9,6 +9,7 @@
 angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
 	
 	$scope.user = shareDataService.getUser();
+	$scope.paymentOptions = [{"option":"Amount", "value":"set"},{"option":"Range", "value":"Range"}];
 	
 	$scope.sidebarUrl = 'partials/dashboard/sidebar.html';
 	$scope.contentUrl = 'partials/dashboard/updates.html';

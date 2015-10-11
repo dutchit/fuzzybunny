@@ -76,8 +76,9 @@ angular.module('testpimp').factory('getConstants',[function($http){
 												"location":"nowhere",
 												"description":"James Bonds rip off"}];
 	
-	constants.someValue = function(){
-		return "some value";
+	constants.jobCategories = function(){
+		var categories = ["escort","pimp","dominator","dealer"];
+		return categories;
 	};
 
 	constants.letterA = function() {

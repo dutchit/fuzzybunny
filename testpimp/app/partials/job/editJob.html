@@ -1,4 +1,4 @@
-<div ng-controller="postNewJobCtrl">
+<div ng-controller="editJobCtrl">
 <h2>Post new job</h2>
 <div ng-show="showEditNewJob">
 <!-- <form name="postNewJobForm"> -->
@@ -11,10 +11,9 @@
 	<tr>
 		<th>Job Category</th>
 		<td>
-			<select ng-init="newjob.oldCat = jobCategories[0]" ng-model="newjob.oldCat" ng-options="jobCategorie for jobCategorie in jobCategories"></select>
-			<input type = "text" ng-show ="newjob.oldCat == 'Other'" ng-model = "newjob.newCat"/>
+			<select ng-init="newjob.category = jobCategories[0]" ng-model="newjob.category" ng-options="jobCategorie for jobCategorie in jobCategories"></select>
 		</td>
-		<td><div ng-show="newJobCategoryError" style="color: red">{{newJobCategoryErrorMsg}}</div></td>
+		<td></td>
 	</tr>
 	<tr>
 		<th>Job Description</th>
@@ -29,7 +28,7 @@
 	<tr>
 		<th>Time and Duration</th>
 		<td>
-			<label>Date: &nbsp</label><input type="date" ng-model="date" placeholder="yyyy-MM-dd" required/><br>
+			<label>Date: &nbsp</label><input type="date" ng-model="newjob.date" placeholder="yyyy-MM-dd" required/><br>
 			<label>for &nbsp</label><input type="number" ng-init="newjob.duration=0" ng-model="newjob.duration" required/>
 			<select ng-init="newjob.timeUnit = timeUnitOptions[0]" ng-model="newjob.timeUnit" ng-options="timeUnitOption for timeUnitOption in timeUnitOptions"></select>
 		</td>
@@ -66,10 +65,6 @@
 		<td>{{newjob.title}}</td>
 	</tr>
 	<tr>
-		<th>Job Category</th>
-		<td>{{newjob.category}}</td>
-	</tr>
-	<tr>
 		<th>Job Description</th>
 		<td>{{newjob.description}}</td>
 	</tr>
@@ -80,7 +75,8 @@
 	<tr>
 		<th>Time and Duration</th>
 		<td>
-			{{newjob.formattedDate}} for {{newjob.duration}} {{newjob.timeUnit}}
+			Date: {{newjob.date}}<br>
+			for {{newjob.duration}} {{newjob.timeUnit}}
 		</td>
 	</tr>
 	<tr>

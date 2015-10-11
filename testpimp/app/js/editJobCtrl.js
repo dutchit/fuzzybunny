@@ -1,4 +1,4 @@
-angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService, $modal, $confirm, $filter) {
+angular.module('testpimp').controller('editJobCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService, $modal, $confirm, $filter) {
 	
 	console.log("user: " + $scope.user.displayName);
 	$scope.timeUnitOptions = ["minutes","hours","days","weeks","years"];
@@ -8,21 +8,9 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 	$scope.showEditNewJob = true;
 	$scope.showPreviewNewJob = false;
 	var newJobFormValid = false;
-	$scope.date = new Date();
-//	$scope.jobCategories = getConstants.jobCategories();
+	$scope.jobCategories = getConstants.jobCategories();
 //	$scope.newjob.compensation = "$ " + $scope.newjob.setPrice;
-	requestService.getCategories().then(
-			function(success) {
-				var cat = success.data;
-				cat.push("Other");
-				console.log("cat: " + cat);
-				$scope.jobCategories = cat;	
 
-			}, 
-		     function(error){	
-				$scope.jobCategories = ["Other"];
-		    }
-	);
 
 	$scope.changeNewJobTitle = function() {
 		$scope.newJobTitleError = false;
@@ -53,18 +41,15 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 		$scope.newJobPriceErrorMsg = "";
 	}
 	$scope.postNewJobPreview = function() {
-		$scope.validateNewJobForm();
-		if (newJobFormValid) {
-			$scope.showEditNewJob = false;
-			$scope.showPreviewNewJob = true;
-			if ($scope.newjob.price.option == $scope.paymentOptions[0].option) {
-				$scope.newjob.compensation = "$" + $scope.newjob.setPrice;
-			} else if ($scope.newjob.price.option == $scope.paymentOptions[1].option) {
-				$scope.newjob.compensation = "From $" + $scope.newjob.lowerbound + " to $" + $scope.newjob.upperbound;
-			}
-			console.log("showPreviewNewJob: " + $scope.showPreviewNewJob);
-			console.log("showEditNewJob: " + $scope.showEditNewJob);
+		$scope.showEditNewJob = false;
+		$scope.showPreviewNewJob = true;
+		if ($scope.newjob.price.option == $scope.paymentOptions[0].option) {
+			$scope.newjob.compensation = "$" + $scope.newjob.setPrice;
+		} else if ($scope.newjob.price.option == $scope.paymentOptions[1].option) {
+			$scope.newjob.compensation = "From $" + $scope.newjob.lowerbound + " to $" + $scope.newjob.upperbound;
 		}
+		console.log("showPreviewNewJob: " + $scope.showPreviewNewJob);
+		console.log("showEditNewJob: " + $scope.showEditNewJob);
 	}
 	$scope.postNewJobEdit = function() {
 		$scope.showEditNewJob = true;
@@ -79,7 +64,6 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 		var validPrice = false;
 		var validDate = false;
 		var validDuration = false;
-		var validCat = false;
 		if ($scope.newjob.title && $scope.newjob.title.length >0) {
 			validTitle = true;
 		} else {
@@ -113,11 +97,8 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 				$scope.newJobPriceErrorMsg = "Price range is incorrect.";
 			} 
 		}
-		if ($scope.date) {
+		if ($scope.newjob.date) {
 			validDate = true;
-			var datePickerString = $scope.date;
-			var date = new Date(datePickerString);
-			$scope.newjob.formattedDate = $filter('date')(date, 'yyyy-MM-dd');
 		} else {
 			$scope.newJobDateTimeError = true;
 			$scope.newJobDateTimeErrorMsg = "Date is required."
@@ -128,17 +109,7 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 			$scope.newJobDateTimeError = true;
 			$scope.newJobDateTimeErrorMsg = "Estimated duration of the job is required."
 		}
-		if ($scope.newjob.oldCat && $scope.newjob.oldCat != "Other") {
-			validCat = true;
-			$scope.newjob.category = $scope.newjob.oldCat;
-		} else if ($scope.newjob.oldCat == "Other" && $scope.newjob.newCat.length && $scope.newjob.newCat.length > 0){
-			validCat = true;
-			$scope.newjob.category = $scope.newjob.newCat;
-		} else {
-			$scope.newJobCategoryError = true;
-			$scope.newJobCategoryErrorMsg = "Category is required."
-		}
-		newJobFormValid = validTitle && validLocation && validDescription && validPrice && validDate && validDuration && validCat;
+		newJobFormValid = validTitle && validLocation && validDescription && validPrice && validDate && validDuration;
 		console.log("$scope.validateNewJobForm(): " + validTitle+validLocation+validDescription+newJobFormValid);
 	}
 	$scope.resetNewJobForm = function() {
@@ -168,16 +139,15 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 			postNewJobPayload ["userID"] = $scope.user.id;
 			postNewJobPayload ["title"] = $scope.newjob.title;
 			postNewJobPayload ["description"] = $scope.newjob.description;
-			if ($scope.newjob.newCat != "Other") {
-				postNewJobPayload ["categories"] = $scope.newjob.category;
-			} else {
-				postNewJobPayload ["categories"] = $scope.newjob.newCat;
-			} 
-			postNewJobPayload ["category"] = $scope.newjob.category;
-			postNewJobPayload ["date"] = $scope.newjob.formattedDate;
+			postNewJobPayload ["categories"] = $scope.newjob.category;
+			var date = $scope.newjob.date;
+			$scope.newjob.date = new Date($scope.newjob.date);
+			var dateString = $filter('date')($scope.newjob.date, 'yyyy-MM-dd');
+			console.log("dateString: " + dateString);
+			postNewJobPayload ["date"] = dateString;
 			postNewJobPayload ["duration"] = $scope.newjob.duration;
 			postNewJobPayload ["timeUnit"] = $scope.newjob.timeUnit;
-			postNewJobPayload ["location"] = $scope.newjob.location;
+			postNewJobPayload ["location"] = $scope.user.location;
 			if ($scope.newjob.price == $scope.paymentOptions[0]) {
 				postNewJobPayload ["lowerBound"] = $scope.newjob.setPrice;
 				postNewJobPayload ["upperBound"] = $scope.newjob.setPrice;
