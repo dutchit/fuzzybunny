@@ -10,8 +10,8 @@
 <table>
     <tr ng-repeat="posting in myPostings">
 
-        <td><a href="#" ng-click="showPostingDetails = ! showPostingDetails">{{posting.title}}</a>
-            <div ng-show="showPostingDetails">
+        <td><a href="#" ng-click="showPostingDetails = ! showPostingDetails">{{posting.title}}  {{posting.date}}</a>
+            <div class="col-sm-offset-1" ng-show="showPostingDetails">
 		  		<table>
                     <tr>
                         <th>Job Description</th>
@@ -28,14 +28,14 @@
                     <tr>
                         <th>Time and Duration</th>
                         <td>
-                            Date: {{posting.date}}<br>
-                            for {{posting.duration}} {{posting.timeUnit}}
+                            Date: {{posting.date}} for {{posting.duration}} {{posting.timeUnit}}
                         </td>
                     </tr>
                     <tr>
                         <th>Compensation</th>
                         <td>
-                            {{posting.compensation}}
+                            <div ng-show="posting.price=='set'"> ${{posting.lowerBound}}</div>
+                            <div ng-show="posting.price=='range'">From ${{posting.lowerBound}} to ${{posting.upperBound}}</div>
                         </td>
                     </tr>
 
@@ -44,7 +44,6 @@
 		  		</div>
 		  	</td>
 </table>
-{{myPostings | json}}
 <h3>My Application</h3>
 <p> blah2</p>
 <p> blah2</p>

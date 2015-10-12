@@ -22,6 +22,10 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 	$scope.postNewJob = function () {
 		$scope.contentUrl = 'partials/job/postNewJob.html';
 	}
+	$scope.editPostingDetails = function (posting) {
+		shareDataService.setJobToEdit(posting);
+		$scope.contentUrl = 'partials/job/editJob.html';
+	}
 	
 	$scope.searchForJob = function () {
 		$scope.contentUrl = 'partials/job/searchForJob.html';

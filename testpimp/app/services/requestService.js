@@ -70,10 +70,26 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 				return response;
 	};
+	
+	service.updateJob = function(putPayload) {
+		var response = $http({
+			url : restServer + 'api/jobs/' + putPayload.userID + "/" + putPayload.id + "/",
+			method : 'PUT',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+			data: putPayload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+	};
 
 	service.getMyPostings = function(userId) {
 		var response = $http({
-			url : restServer + 'api/jobs/' + userId,
+			url : restServer + 'api/jobs/' + userId + "/",
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'

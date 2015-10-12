@@ -2,15 +2,14 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 	
 	console.log("user: " + $scope.user.displayName);
 	$scope.timeUnitOptions = ["minutes","hours","days","weeks","years"];
-	$scope.paymentOptions = [{"option":"Amount", "value":"set"},{"option":"Range", "value":"Range"}];
+	$scope.paymentOptions = [{"option":"Amount", "value":"set"},{"option":"Range", "value":"range"}];
 	$scope.showRange = false;
 	$scope.showSet = true;
 	$scope.showEditNewJob = true;
 	$scope.showPreviewNewJob = false;
 	var newJobFormValid = false;
 	$scope.date = new Date();
-//	$scope.jobCategories = getConstants.jobCategories();
-//	$scope.newjob.compensation = "$ " + $scope.newjob.setPrice;
+
 	requestService.getCategories().then(
 			function(success) {
 				var cat = success.data;

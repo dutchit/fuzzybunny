@@ -86,7 +86,8 @@
 	<tr>
 		<th>Compensation</th>
 		<td>
-			{{newjob.compensation}}
+			<div ng-show="newjob.price.value=='set'"> ${{newjob.setPrice}}</div>
+            <div ng-show="newjob.price.value=='range'">From ${{newjob.lowerbound}} to ${{newjob.upperbound}}</div>
 		</td>
 	</tr>
 
