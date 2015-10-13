@@ -1,0 +1,11 @@
+<div>
+Search for Job Page
+</div>
+
+<div ng-controller="searchForJobCtrl">
+
+<h4>Search For Job</h4>
+
+<select ng-model="searchCategory" ng-options="nuggetJobs for nuggetJobs in mySearchForJobCats" ng-change="changeNuggetJobs()"></select>
+
+</div>
