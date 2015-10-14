@@ -33,7 +33,6 @@
 		 getUser: getUser,
 		 setToken: setToken,
 		 getToken: getToken,
-
 		 setProviderProfiles: setProviderProfiles,
 		 getProviderProfiles: getProviderProfiles,
 	 }
