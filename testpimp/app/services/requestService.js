@@ -1,4 +1,4 @@
-angular.module('testpimp').factory('requestService',['$http', function($http, RESTfulAPI){
+angular.module('testpimp').factory('requestService',['$http', function($http, RESTfulAPI, searchForJobCtrl){
 
 	var service = {};
 	
@@ -54,20 +54,23 @@ service.getMyProviderProfiles = function(userId) {
 	return response;
 };
 
-	//TODO
+// TODO add category into param
 
-	service.requestForJobs = function() {
-		var response = $http({
-			url : restServer + 'api',
-			method : 'GET',
-			headers: {
+service.requestForJobs = function() {
 
-			},
-		}).success(function(table){
-			return 
-		}).error(function () {
-			return response
-		})
+	console.log("I'm in requestForJobs");
+
+	var response = $http({
+		url : restServer + 'api/jobs/',
+		method : 'GET',
+		headers: {
+			'Content-type': 'application/json'
+		},
+	}).success(function(data){
+		return data;
+	}).error(function(data){
+		return data
+	})
 };
 
 return service;

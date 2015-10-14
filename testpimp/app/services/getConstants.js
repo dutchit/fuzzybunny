@@ -77,13 +77,11 @@ angular.module('testpimp').factory('getConstants',[function($http){
 												"description":"James Bonds rip off"
 											}                                            ];
 	var provideJobs = {
-		
 			"provider":"007",
 			"title":"Martini Buddy",
 			"description":"Remember, shaken, not stirred",
 			"location":"SJ",
 			"price":"$1"
-		
 	}
 
 	
