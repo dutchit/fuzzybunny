@@ -85,8 +85,9 @@ angular.module('testpimp').factory('getConstants',[function($http){
 	}
 
 	
-	constants.someValue = function(){
-		return "some value";
+	constants.jobCategories = function(){
+		var categories = ["escort","pimp","dominator","dealer"];
+		return categories;
 	};
 
 	constants.letterA = function() {
