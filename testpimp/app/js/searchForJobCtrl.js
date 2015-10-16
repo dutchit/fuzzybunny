@@ -22,24 +22,24 @@ angular.module('testpimp').controller('searchForJobCtrl', function ($rootScope, 
 
 		//TODO add category into param
 
-		requestService.requestForJobs().then(
-			function(success) {
-				$scope.job.title = success.title;
-				$scope.job.description = success.description;
-				$scope.job.location = success.location;
-				$scope.job.date = success.date;
-				$scope.job.duration = success.duration;
-				$scope.job.timeunit = success.timeunit;
-				$scope.job.lowerBound = success.lowerBound;
-				$scope.job.upperBound = success.upperBound;
-			}, 
-			function(error){
-				console.log(error);
-			}
-		);
-		return requestService.requestForJobs;
-	} 
-});
+// 		requestService.requestForJobs().then(
+// 			function(success) {
+// 				$scope.job.title = success.title;
+// 				$scope.job.description = success.description;
+// 				$scope.job.location = success.location;
+// 				$scope.job.date = success.date;
+// 				$scope.job.duration = success.duration;
+// 				$scope.job.timeunit = success.timeunit;
+// 				$scope.job.lowerBound = success.lowerBound;
+// 				$scope.job.upperBound = success.upperBound;
+// 			}, 
+// 			function(error){
+// 				console.log(error);
+// 			}
+// 		);
+// 		return requestService.requestForJobs;
+// 	} 
+// });
 
 
 				// var results = document.getElementById("results")

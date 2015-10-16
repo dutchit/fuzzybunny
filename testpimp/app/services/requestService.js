@@ -119,22 +119,22 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 
 // TODO add category into param
 
-service.requestForJobs = function() {
+// service.requestForJobs = function() {
 
-	console.log("I'm in requestForJobs");
+// 	console.log("I'm in requestForJobs");
 
-	var response = $http({
-		url : restServer + 'api/jobs/',
-		method : 'GET',
-		headers: {
-			'Content-type': 'application/json'
-		},
-	}).success(function(data){
-		return data;
-	}).error(function(data){
-		return data
-	})
-};
+// 	var response = $http({
+// 		url : restServer + 'api/jobs/',
+// 		method : 'GET',
+// 		headers: {
+// 			'Content-type': 'application/json'
+// 		},
+// 	}).success(function(data){
+// 		return data;
+// 	}).error(function(data){
+// 		return data
+// 	})
+// };
 	
   return service;
 
