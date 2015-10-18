@@ -10,7 +10,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 
 	service.register = function(postPayload) {
 		var response = $http({
-			url : restServer + 'api/userprofiles/',
+			url : restServer + 'api/userprofiles',
 			method : 'POST',
 			headers: {
 		        'Content-type': 'application/json',
@@ -26,7 +26,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	
 	service.login = function(credential) {
 		var response = $http({
-			url : restServer + 'api/userprofiles/',
+			url : restServer + 'api/userprofiles',
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'
@@ -42,7 +42,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		
 	service.getMyProviderProfiles = function(userId) {
 		var response = $http({
-			url : restServer + 'api/providerprofiles/' + userId,
+			url : restServer + 'api/providerprofiles' + userId,
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'
@@ -57,7 +57,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 
 	service.postNewJob = function(postPayload) {
 		var response = $http({
-			url : restServer + 'api/jobs/',
+			url : restServer + 'api/jobs',
 			method : 'POST',
 			headers: {
 		        'Content-type': 'application/json'
@@ -73,7 +73,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	
 	service.updateJob = function(putPayload) {
 		var response = $http({
-			url : restServer + 'api/jobs/' + putPayload.userID + "/" + putPayload.id + "/",
+			url : restServer + 'api/jobs/' + putPayload.userID + "/" + putPayload.id ,
 			method : 'PUT',
 			headers: {
 		        'Content-type': 'application/json'
@@ -89,7 +89,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 
 	service.getMyPostings = function(userId) {
 		var response = $http({
-			url : restServer + 'api/jobs/' + userId + "/",
+			url : restServer + 'api/jobs/' + userId ,
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'
@@ -102,9 +102,9 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				return response;
 	};
 	
-	service.getCategories = function() {
+	service.getJobs = function() {
 		var response = $http({
-			url : restServer + 'api/jobs/categories/',
+			url : restServer + 'api/jobs',
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'

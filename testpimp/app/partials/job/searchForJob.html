@@ -3,17 +3,20 @@
 	<br>
 	<br>
 	Categories: 
-	<select ng-model="SELECTION_CATEGORY" ng-options="categoryOption for categoryOption in SELECTION_CATEGORY"></select>
-	<button ng-click="showCategories(categoryOption)">Show Categories</button>
+	<!-- <select ng-model="SELECTION_CATEGORY" ng-options="categoryOption for categoryOption in SELECTION_CATEGORY"></select> -->
+	<button ng-click="showJobs()">Show Jobs</button>
 	<!-- <button ng-click="test()"> test</button> -->
 
 	<br><br>
-	<div id="results"></div>
+	<!-- <div id="results"></div> -->
 
+	<script>
+	// console.log("From html: " + $scope.jobList);
+	</script>
 
 	<table>
-		<div class="col-sm-offset-1" ng-show="showRequestedCat">
-			<table>
+		<div>
+			<thead>
 				<tr>
 					<th>Title</th>
 					<th>Description</th>
@@ -22,21 +25,23 @@
 					<th>Price</th>
 					<th></th>
 				</tr>
-				<tr ng-repeat= "jobs in listedJobs">
-					<td>{{job.title}}</td>
-					<td>{{job.description}}</td>
-					<td>{{job.location}}</td>
-					<td>
-						Date: {{job.date}} for {{job.duration}} {{job.timeUnit}}
+			</thead>
+			<tbody>
+				<tr ng-repeat="job in jobFullList track by $index">
+					<td>{{job[$index]}}</td>
+					<!-- <td>{{job[$index].description}}</td>
+					<td>{{job[$index].location}}</td>
+					<td> -->
+						<!-- show only if it is duration rather than date -->
+						<!-- Date: {{job[$index].date}} for {{job[$index].duration}} {{job[$index].timeUnit}}
 					</td>
 					<td>
-						<div ng-show="posting.price=='set'"> ${{job.lowerBound}}</div>
-						<div ng-show="posting.price=='range'">From ${{job.lowerBound}} to ${{job.upperBound}}</div>
-					</td>
-					<button ng-click="acceptJob()">Accept</button>
+						<div ng-show="posting.price=='set'"> ${{job[$index].lowerBound}}</div>
+						<div ng-show="posting.price=='range'">From ${{job[$index].lowerBound}} to ${{job[$index].upperBound}}</div>
+					</td> -->
+					<!-- <button ng-click="acceptJob()">Accept</button> -->
 				</tr>
-
-			</table>
+			</tbody>
 		</div>
 	</table>
 </div>
