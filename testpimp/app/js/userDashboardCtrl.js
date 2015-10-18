@@ -32,12 +32,7 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 	}
 	
 	$scope.myProfiles = function() {
-<<<<<<< HEAD
 		$scope.contentUrl = 'partials/userinfo/myProfiles.html';
-=======
-		$scope.contentUrl = 'partials/myProfiles.html';
-
->>>>>>> origin/master
 	/*	requestService.getMyProviderProfiles().then(
 				function(success) {
 					var myProviderProfiles = success.data;
