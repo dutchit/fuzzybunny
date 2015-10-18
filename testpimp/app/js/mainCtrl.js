@@ -22,6 +22,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 		var token = $scope.$storage.token;
 		if (token.length > 0) {
 			console.log("function: load app partials");
+			$scope.showHeader = true;
+			$scope.showFooter = true;
 			$scope.viewUrl = 'partials/dashboard/userDashboard.html';
 			$scope.header = 'partials/dashboard/loggedInHeader.html';
 			
@@ -30,6 +32,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 		} else {
 			$scope.viewUrl = 'partials/login.html';
 			$scope.header = 'templates/header.html';
+			$scope.showHeader = false;
+			$scope.showFooter = false;
 			console.log('login');
 		}
 
@@ -42,6 +46,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 			});
 			$scope.viewUrl = 'partials/login.html';
 			$scope.header = 'templates/header.html';
+			$scope.showHeader = false;
+			$scope.showFooter = false;
 			console.log('logout user: ' + shareDataService.getUser().name);
 		}
 
@@ -84,6 +90,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 							shareDataService.setToken($scope.$storage.token);							
 							$scope.viewUrl = 'partials/dashboard/userDashboard.html';
 							$scope.header = 'partials/dashboard/loggedInHeader.html';
+							$scope.showHeader = true;
+							$scope.showFooter = true;
 						}, 
 					      function(error){
 					        console.log("Django: " + error.data);

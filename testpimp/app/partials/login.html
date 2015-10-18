@@ -1,9 +1,24 @@
 
-  <div class="container">
+<head>
+    <meta charset="UTF-8" /> <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="css/custom.css" rel="stylesheet"> <!--customizes the Let's Be Buddies title
+   http://www.formget.com/how-to-create-pop-up-contact-form-using-javascript/-->
+    <link href="css/animate.css" rel="stylesheet">
+</head>
 
+<div id ="wholepage">   
+<!--beginning of demo-->
+
+<!--container starts here with the form-->
+<div id ="contain">
+      <!-- First button for login-->
+    <button id ="loginPush" class="btn btn-primary" ng-model="loginUser" ng-click="loginUser =! loginUser" >Login</button>
+    <!-- pop up form div starts here-->    
+    <div id="container" ng-show="loginUser" onclick ="div_show()">
     <div class="col-sm-8 col-sm-offset-2">
-      <div class="page-header"><h3>Login Page</h3></div>
-      <form name="loginForm" novalidate >
+      <div id="page-header"><h3>Login Page</h3></div>
+        <form name="loginForm" novalidate >
+    <!-- form fields -->
       <fieldset>
         <p>
           <label> Username </label>
@@ -15,21 +30,19 @@
         <br>
           <input id="loginpassword" type="password" style="height:30px; width:450px" ng-change="changeInput()" ng-model="password" required/>
         </p>
-      <button id="loginClick" type="submit" class="btn btn-primary" ng-click="login(username, password)">Login</button>
+      <button id="loginClick" type="submit" class="btn btn-success" ng-click="login(username, password)">Login</button>
       </fieldset>
    </form>
        <div ng-show="loginFail" style="color: red">{{loginFailMsg}}</div>
+        </div>
+        </div><!-- end of login div-->
     
-
-    
-    
-    
-    </div>
-   <button ng-model="newUser" ng-click="newUser = !newUser">New User Registration</button>
-
+<!-- Register button start-->
+   <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser">Register</button>
    <div class="container" ng-show="newUser">
     <div class="col-sm-8 col-sm-offset-2">	
       <div ><h3>New User Registration</h3></div>
+     <!-- form fields -->
       <form name="registrationForm" novalidate>
         <p>
           <label> Username </label>
@@ -59,8 +72,16 @@
       <button type="submit" id="loggingIn" class="btn btn-primary" ng-click="registerNewUser(newUsername, newPassword, repeatPassword, displayName, contactEmail)">Register</button>
       </form>
        <div ng-show="registrationFail" style="color: red">{{regitrationFailMsg}}</div>
+    </div><!--end div for col of register-->
+    </div> <!-- end div for register container--> 
+    </div><!--end div of container--> 
     
-    </div>
-    </div>
-</div>
+<figure class="homepageeffect">
+    <img src="images/4.jpg" alt="img3" height="100%" width="100%"/>
+    <figcaption>  
+	   <h2 id="letsbebudhometitle" class="animated fadeInDown">Life <span>Lifter</span></h2>
+       <p>We will lift you above clouds.</p>
+    </figcaption>			
+</figure>
+</div> <!-- div for whole page-->
 
