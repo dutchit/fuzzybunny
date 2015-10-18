@@ -26,6 +26,7 @@
 	 
 	 var getProviderProfiles = function () {
 	  return providerProfiles;
+<<<<<<< HEAD
 	 };
 	 
 	 var posting;
@@ -35,6 +36,8 @@
 	 
 	 var getJobToEdit = function () {
 	  return posting;
+=======
+>>>>>>> origin/master
 	 };
 	 
 	 return {
@@ -42,10 +45,16 @@
 		 getUser: getUser,
 		 setToken: setToken,
 		 getToken: getToken,
+<<<<<<< HEAD
 		 setProviderProfiles: setProviderProfiles,
 		 getProviderProfiles: getProviderProfiles,
 		 setJobToEdit: setJobToEdit,
 		 getJobToEdit: getJobToEdit,
+=======
+
+		 setProviderProfiles: setProviderProfiles,
+		 getProviderProfiles: getProviderProfiles,
+>>>>>>> origin/master
 	 }
 	 
 });
