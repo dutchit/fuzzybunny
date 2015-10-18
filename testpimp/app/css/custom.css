@@ -1,0 +1,158 @@
+#contain{
+    z-index: 1000;
+    
+}
+
+figure {
+    z-index: 1;
+	position: relative;
+	float: left;
+	overflow: hidden;
+	background: #3085a3;
+	text-align: center;
+	cursor: pointer;
+}
+
+figure img {
+	position: relative;
+	display: block;
+	max-height: 100%;
+	max-width: 100%;
+	opacity: 0.8;    
+}
+
+figure figcaption {
+	padding: 2em;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.25em;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+figure figcaption::before,
+figure figcaption::after {
+	pointer-events: none;
+}
+
+figure figcaption,
+figure figcaption > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+figure figcaption > a {
+	text-indent: 200%;
+	white-space: nowrap;
+	font-size: 0;
+	opacity: 50%;
+    z-index: 5;
+}
+
+figure h2 {
+	word-spacing: -0.15em;
+	font-weight: 300;
+}
+
+figure h2 span {
+	font-weight: 800;
+}
+
+figure h2,
+figure p {
+	margin: 0;
+    	text-align: center;
+}
+
+figure p {
+	letter-spacing: 1px;
+	font-size: 68.5%;
+}
+
+
+
+/********************
+Effect for the title
+*********************/
+figure.homepageeffect img {
+	max-width: none;
+	width: -webkit-calc(100% + 50px);
+	width: calc(100% + 50px);
+	opacity: 0.7;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: translate3d(-40px,0, 0);
+	transform: translate3d(-40px,0,0);
+}
+
+figure.homepageeffect figcaption {
+	text-align: left;
+}
+
+figure.homepageeffect figcaption > div {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 2em;
+	width: 100%;
+	height: 50%;
+}
+
+figure.homepageeffect h2,
+figure.homepageeffect p {
+	-webkit-transform: translate3d(0,40px,0);
+	transform: translate3d(0,40px,0);
+}
+
+figure.homepageeffect h2 {
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+}
+
+figure.homepageeffect p {
+	color: rgba(255,255,255,0.8);
+	opacity: 0;
+	-webkit-transition: opacity 0.2s, -webkit-transform 0.35s;
+	transition: opacity 0.2s, transform 0.35s;
+}
+
+figure.homepageeffect:hover img,
+figure.homepageeffect:hover p {
+	opacity: 1;
+}
+
+figure.homepageeffect:hover img,
+figure.homepageeffect:hover h2,
+figure.homepageeffect:hover p {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+figure.homepageeffect:hover p {
+	-webkit-transition-delay: 0.05s;
+	transition-delay: 0.05s;
+	-webkit-transition-duration: 0.35s;
+	transition-duration: 0.35s;
+}
+
+@font-face {
+    font-family: 'Aaargh';
+    src: url('css\Aaargh.ttf');
+}
+
+#letsbebudhometitle{
+    padding-top: 75px;
+    font-family: url('css\Aaargh.ttf');
+    font-size: 60px;
+    letter-spacing: 5px;
+}
+
+
+
+<!--For login.html
+will override Bootstrap-->
