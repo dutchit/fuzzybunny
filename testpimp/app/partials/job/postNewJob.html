@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
 Post New Job Page
 
@@ -12,3 +13,103 @@ Post New Job Page
 
 </div>
 
+=======
+<div ng-controller="postNewJobCtrl">
+<h2>Post new job</h2>
+<div ng-show="showEditNewJob">
+<!-- <form name="postNewJobForm"> -->
+<table>
+	<tr>
+		<th>Job Title</th>
+		<td><input type="text" ng-model="newjob.title" ng-change="changeNewJobTitle()" required/></td>
+		<td><div ng-show="newJobTitleError" style="color: red">{{newJobTitleErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Job Category</th>
+		<td>
+			<select ng-init="newjob.oldCat = jobCategories[0]" ng-model="newjob.oldCat" ng-options="jobCategorie for jobCategorie in jobCategories"></select>
+			<input type = "text" ng-show ="newjob.oldCat == 'Other'" ng-model = "newjob.newCat"/>
+		</td>
+		<td><div ng-show="newJobCategoryError" style="color: red">{{newJobCategoryErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Job Description</th>
+		<td><input type="text" ng-model="newjob.description" ng-change="changeNewJobDescription()" required/></td>
+		<td><div ng-show="newJobDescriptionError" style="color: red">{{newJobDescriptionErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Job Location</th>
+		<td><input type="text" ng-model="newjob.location" ng-change="changeNewJobLocation()" required/></td>
+		<td><div ng-show="newJobLocationError" style="color: red">{{newJobLocationErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Time and Duration</th>
+		<td>
+			<label>Date: &nbsp</label><input type="date" ng-model="date" placeholder="yyyy-MM-dd" required/><br>
+			<label>for &nbsp</label><input type="number" ng-init="newjob.duration=0" ng-model="newjob.duration" required/>
+			<select ng-init="newjob.timeUnit = timeUnitOptions[0]" ng-model="newjob.timeUnit" ng-options="timeUnitOption for timeUnitOption in timeUnitOptions"></select>
+		</td>
+		<td><div ng-show="newJobDateTimeError" style="color: red">{{newJobDateTimeErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Price Information</th>
+		<td>
+			<label>Price mode:&nbsp</label><select ng-init="newjob.price = paymentOptions[0]" ng-model="newjob.price" ng-options="paymentOption.option for paymentOption in paymentOptions" ng-change="changePriceMode()"></select>
+			<div ng-show="showRange">
+				<label>Between: $</label>
+				<input type="number" min="0" ng-init="newjob.lowerbound=0" ng-model="newjob.lowerbound" ng-change="changePriceInput()" />
+				<label>&nbsp and $</label>
+				<input type="number" min="0" ng-init="newjob.upperbound =0" ng-model="newjob.upperbound" ng-change="changePriceInput()"/>
+			</div>
+			<div ng-show="showSet">
+				<label>$</label><input type="number" ng-init="newjob.setPrice =0" ng-model="newjob.setPrice" ng-change="changePriceInput()"/>
+			</div>
+		</td>
+		<td><div ng-show="newJobPriceError" style="color: red">{{newJobPriceErrorMsg}}</div></td>
+	</tr>
+
+</table>
+
+	<button ng-click="postNewJobPreview()">Preview</button><button ng-click="resetNewJobForm()">Reset</button>
+
+<!-- </form> -->
+</div>
+
+<div ng-show="showPreviewNewJob">
+<table>
+	<tr>
+		<th>Job Title</th>
+		<td>{{newjob.title}}</td>
+	</tr>
+	<tr>
+		<th>Job Category</th>
+		<td>{{newjob.category}}</td>
+	</tr>
+	<tr>
+		<th>Job Description</th>
+		<td>{{newjob.description}}</td>
+	</tr>
+	<tr>
+		<th>Job Location</th>
+		<td>{{newjob.location}}</td>
+	</tr>
+	<tr>
+		<th>Time and Duration</th>
+		<td>
+			{{newjob.formattedDate}} for {{newjob.duration}} {{newjob.timeUnit}}
+		</td>
+	</tr>
+	<tr>
+		<th>Compensation</th>
+		<td>
+			<div ng-show="newjob.price.value=='set'"> ${{newjob.setPrice}}</div>
+            <div ng-show="newjob.price.value=='range'">From ${{newjob.lowerbound}} to ${{newjob.upperbound}}</div>
+		</td>
+	</tr>
+
+</table>
+<button ng-click="postNewJobEdit()">Edit</button>
+</div>
+<button ng-click="postNewJob()">Post</button><button ng-click="dashboard()">Cancel</button>
+</div>
+>>>>>>> feature-elisa
