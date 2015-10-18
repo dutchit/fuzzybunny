@@ -9,7 +9,10 @@
 angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
 	
 	$scope.user = shareDataService.getUser();
+<<<<<<< HEAD
 	$scope.paymentOptions = [{"option":"Amount", "value":"set"},{"option":"Range", "value":"Range"}];
+=======
+>>>>>>> SamBranch
 	
 	$scope.sidebarUrl = 'partials/dashboard/sidebar.html';
 	$scope.contentUrl = 'partials/dashboard/updates.html';
@@ -21,16 +24,26 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 	
 	$scope.postNewJob = function () {
 		$scope.contentUrl = 'partials/job/postNewJob.html';
+<<<<<<< HEAD
 	}
 	$scope.editPostingDetails = function (posting) {
 		shareDataService.setJobToEdit(posting);
 		$scope.contentUrl = 'partials/job/editJob.html';
+=======
+>>>>>>> SamBranch
 	}
 	
 	$scope.searchForJob = function () {
 		$scope.contentUrl = 'partials/job/searchForJob.html';
 	}
 	
+<<<<<<< HEAD
+=======
+	$scope.createProviderProfile = function() {
+		$scope.contentUrl = 'partials/userinfo/newProviderProfile.html';
+	}
+
+>>>>>>> SamBranch
 	$scope.myProfiles = function() {
 		$scope.contentUrl = 'partials/userinfo/myProfiles.html';
 	/*	requestService.getMyProviderProfiles().then(
@@ -45,7 +58,7 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 		);
 */
 	}
-	
+
 	$scope.accountSettings = function() {
 		$scope.contentUrl = 'partials/userinfo/accountSettings.html';
 	}

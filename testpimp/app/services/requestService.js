@@ -11,6 +11,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	service.register = function(postPayload) {
 		var response = $http({
 			url : restServer + 'api/userprofiles',
+<<<<<<< HEAD
 			method : 'POST',
 			headers: {
 		        'Content-type': 'application/json',
@@ -58,6 +59,8 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	service.postNewJob = function(postPayload) {
 		var response = $http({
 			url : restServer + 'api/jobs',
+=======
+>>>>>>> SamBranch
 			method : 'POST',
 			headers: {
 		        'Content-type': 'application/json'
@@ -71,6 +74,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				return response;
 	};
 	
+<<<<<<< HEAD
 	service.updateJob = function(putPayload) {
 		var response = $http({
 			url : restServer + 'api/jobs/' + putPayload.userID + "/" + putPayload.id,
@@ -104,6 +108,27 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	service.getMyPostings = function(userId) {
 		var response = $http({
 			url : restServer + 'api/jobs/' + userId,
+=======
+	service.login = function(credential) {
+		var response = $http({
+			url : restServer + 'api/userprofiles',
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+			params: credential,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+	};
+		
+	service.getMyProviderProfiles = function(userId) {
+		var response = $http({
+			url : restServer + 'api/providerprofiles/' + userId,
+>>>>>>> SamBranch
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'
@@ -115,6 +140,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 				return response;
 	};
+<<<<<<< HEAD
 	
 	service.getCategories = function() {
 		var response = $http({
@@ -138,13 +164,79 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 			headers: {
 		        'Content-type': 'application/json'
 		    },
+=======
+
+	//updates provider profile
+	service.updateProviderProfile = function(updateProviderProfilePayload, userID, ID){
+		var response = $http({
+			url : restServer + 'api/providerprofiles/' + userID + '/' + ID,
+			method : 'PUT',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			data: updateProviderProfilePayload,
+		}).success(function(data, status, headers, config){
+			return data;
+		}).error(function(data, status, headers, config){
+			return data;
+		});
+		return response;
+	};
+	//adds newprovider profile
+	service.postNewProvider = function(postProviderPayload){
+		var response = $http({
+			url : restServer + 'api/providerprofiles',
+			method : 'POST',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			data: postProviderPayload,
+		}).success(function(data, status, headers, config){
+			return data;
+		}).error(function(data, status, headers, config){
+			return data;
+		});
+		return response;
+	};
+	//deletes provider profile
+	service.deleteProvider = function(ID, userID){
+		var response = $http({
+			url : restServer + 'api/providerprofiles/' + userID + '/' + ID,
+			method : 'DELETE',
+			headers : {
+				'Content-type' : 'application/json'
+			},
+		}).success(function(data, status, headers, config){
+			return data;
+		}).error(function(data, status, headers, config){
+			console.log(data)
+			return data;
+		});
+		return response;
+	}
+	
+	service.postNewJob = function(postPayload) {
+		var response = $http({
+			url : restServer + 'api/jobs',
+			method : 'POST',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+			data: postPayload,
+>>>>>>> SamBranch
 				}).success(function(data, status, headers, config) {
 					return data;
 				}).error(function(data, status, headers, config) {
 					return data;
 				});
+<<<<<<< HEAD
 		return response;
 	}
+=======
+				return response;
+	};
+	
+>>>>>>> SamBranch
   return service;
 
 }]);
