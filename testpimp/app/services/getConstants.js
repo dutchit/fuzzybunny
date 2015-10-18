@@ -62,27 +62,23 @@ angular.module('testpimp').factory('getConstants',[function($http){
 		                    "description":"James Bonds rip off"}]	
 	}};
 	
-	var updateProviderProfileResponse = {"user":{"name":"Bobbob",
-		"contactEmail":"bob@blahblah.com",
-		"userProfile":{"profileTitle":"Builder",
-			"displayName":"Bob",
-			"location":"Near you",
-			"description": "I build things"},
-		"providerProfiles":[{"id":"007", 
-			"profileTitle":"Spy",
-			"location":"unknown",
-			"description":"I'm english"}, {
-				"id":"808",
-				"profileTitle":"James Bonds Lesser Known Cousin",
-				"location":"known",
-				"description":"I'm english as well."},{
-                    "id":"770",
-                    "profileTitle":"Not a Spy",
-                    "location":"nowhere",
-                    "description":"James Bonds rip off"}]}};
+	var updateProviderProfileResponse = [{"username":"007", 
+											"profileTitle":"Spy",
+											"location":"unknown",
+											"description":"I'm english"},
+											{"username":"808",
+											"profileTitle":"James Bonds Lesser Known Cousin",
+											"location":"known",
+											"description":"I'm english as well."},
+											{
+												"username":"770",
+												"profileTitle":"Not a Spy",
+												"location":"nowhere",
+												"description":"James Bonds rip off"}];
 	
-	constants.someValue = function(){
-		return "some value";
+	constants.jobCategories = function(){
+		var categories = ["escort","pimp","dominator","dealer"];
+		return categories;
 	};
 
 	constants.letterA = function() {

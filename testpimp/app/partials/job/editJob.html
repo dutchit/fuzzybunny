@@ -1,0 +1,98 @@
+<div ng-controller="editJobCtrl">
+<h2>Edit Posting</h2> {{posting | json}}
+<div ng-show="showEditPosting">
+<!-- <form name="postPostingForm"> -->
+<table>
+	<tr>
+		<th>Job Title</th>
+		<td><input type="text" ng-model="posting.title" ng-change="changePostingTitle()" required/></td>
+		<td><div ng-show="postingTitleError" style="color: red">{{postingTitleErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Job Category</th>
+		<td>
+			<select ng-model="posting.oldCat" ng-init="posting.oldCat=posting.category" ng-options="jobCategorie for jobCategorie in jobCategories"></select>
+			<input type = "text" ng-show ="posting.oldCat == 'Other'" ng-model = "posting.newCat"/>
+		</td>
+		<td><div ng-show="postingCategoryError" style="color: red">{{postingCategoryErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Job Description</th>
+		<td><input type="text" ng-model="posting.description" ng-change="changePostingDescription()" required/></td>
+		<td><div ng-show="postingDescriptionError" style="color: red">{{postingDescriptionErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Job Location</th>
+		<td><input type="text" ng-model="posting.location" ng-change="changePostingLocation()" required/></td>
+		<td><div ng-show="postingLocationError" style="color: red">{{postingLocationErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Time and Duration</th>
+		<td> {{date}}
+			<label>Date: &nbsp</label><input type="date" ng-model="date" placeholder="yyyy-MM-dd" ng-change="newDate()" required/><br>
+			<label>for &nbsp</label><input type="number" ng-model="posting.duration" required/>
+			<select ng-model="posting.timeUnit" ng-options="timeUnitOption for timeUnitOption in timeUnitOptions"></select>
+		</td>
+		<td><div ng-show="postingDateTimeError" style="color: red">{{postingDateTimeErrorMsg}}</div></td>
+	</tr>
+	<tr>
+		<th>Price Information</th>
+		<td>
+			<label>Price mode:&nbsp</label><select ng-model="posting.priceMode" ng-options="paymentOption.option for paymentOption in paymentOptions"></select>
+			<div ng-show="showRange=posting.priceMode.value == 'range'">
+				<label>Between: $</label>
+				<input type="number" min="0" ng-init="posting.lowerbound=posting.lowerBound" ng-model="posting.lowerbound" ng-change="changePriceInput()" />
+				<label>&nbsp and $</label>
+				<input type="number" min="0" ng-init="posting.upperbound =posting.upperBound" ng-model="posting.upperbound" ng-change="changePriceInput()"/>
+			</div>
+			<div ng-show="showSet=posting.priceMode.value == 'set'">
+				<label>$</label><input type="number" ng-init="posting.setPrice =posting.lowerBound" ng-model="posting.setPrice" ng-change="changePriceInput()"/>
+			</div>
+		</td>
+		<td><div ng-show="postingPriceError" style="color: red">{{postingPriceErrorMsg}}</div></td>
+	</tr>
+
+</table>
+
+	<button ng-click="postPostingPreview()">Preview</button><button ng-click="resetPostingForm()">Reset</button>
+
+<!-- </form> -->
+</div>
+
+<div ng-show="showPreviewPosting">
+<table>
+	<tr>
+		<th>Job Title</th>
+		<td>{{posting.title}}</td>
+	</tr>
+	<tr>
+		<th>Job Category</th>
+		<td>{{posting.category}}</td>
+	</tr>
+	<tr>
+		<th>Job Description</th>
+		<td>{{posting.description}}</td>
+	</tr>
+	<tr>
+		<th>Job Location</th>
+		<td>{{posting.location}}</td>
+	</tr>
+	<tr>
+		<th>Time and Duration</th>
+		<td>
+			{{posting.date}} for {{posting.duration}} {{posting.timeUnit}}
+		</td>
+	</tr>
+	<tr>
+		<th>Compensation</th>
+		<td>{{posting.priceMode.value}}
+			<div ng-show="posting.priceMode.value=='set'"> ${{posting.setPrice}}</div>
+            <div ng-show="posting.priceMode.value=='range'">From ${{posting.lowerbound}} to ${{posting.upperbound}}</div>
+		</td>
+	</tr>
+
+</table>
+<button ng-click="updatePostingEdit()">Edit</button>
+</div>
+<button ng-click="updatePosting()">Update</button><button ng-click="dashboard()">Cancel</button>
+</div>

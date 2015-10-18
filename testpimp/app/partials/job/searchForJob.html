@@ -1,0 +1,42 @@
+<div ng-controller="searchForJobCtr">
+Search for Job Page
+
+<table>
+    <tr ng-repeat="job in jobs">
+
+        <td><a href="#" ng-click="showJobDetails = ! showJobDetails">{{job.title}}  {{job.date}}</a>
+            <div class="col-sm-offset-1" ng-show="showJobDetails">
+		  		<table>
+                    <tr>
+                        <th>Job Description</th>
+                        <td>{{job.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Category</th>
+                        <td>{{job.category}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Location</th>
+                        <td>{{job.location}}</td>
+                    </tr>
+                    <tr>
+                        <th>Time and Duration</th>
+                        <td>
+                            Date: {{job.date}} for {{job.duration}} {{job.timeUnit}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Compensation</th>
+                        <td>
+                            <div ng-show="job.price=='set'"> ${{job.lowerBound}}</div>
+                            <div ng-show="job.price=='range'">From ${{job.lowerBound}} to ${{job.upperBound}}</div>
+                        </td>
+                    </tr>
+
+                </table>
+		  			<p><button> Apply </button></p>
+		  		</div>
+		  	</td>
+</table>
+</div>
+

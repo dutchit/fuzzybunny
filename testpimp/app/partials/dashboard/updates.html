@@ -1,0 +1,59 @@
+<div ng-controller="updatesCtrl">
+
+
+<h3>My Commitments</h3>
+<p> job </p>
+<p> job </p>
+<p> job </p>
+
+<h3>My Postings</h3>
+<table>
+    <tr ng-repeat="posting in myPostings">
+
+        <td><a href="#" ng-click="showPostingDetails = ! showPostingDetails">{{posting.title}}  {{posting.date}}</a>
+            <div class="col-sm-offset-1" ng-show="showPostingDetails">
+		  		<table>
+                    <tr>
+                        <th>Job Description</th>
+                        <td>{{posting.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Category</th>
+                        <td>{{posting.category}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Location</th>
+                        <td>{{posting.location}}</td>
+                    </tr>
+                    <tr>
+                        <th>Time and Duration</th>
+                        <td>
+                            Date: {{posting.date}} for {{posting.duration}} {{posting.timeUnit}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Compensation</th>
+                        <td>
+                            <div ng-show="posting.price=='set'"> ${{posting.lowerBound}}</div>
+                            <div ng-show="posting.price=='range'">From ${{posting.lowerBound}} to ${{posting.upperBound}}</div>
+                        </td>
+                    </tr>
+
+                </table>
+		  			<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>
+		  		</div>
+		  	</td>
+</table>
+<h3>My Application</h3>
+<p> blah2</p>
+<p> blah2</p>
+<p> blah2</p>
+
+<h3>Should I?</h3>
+<p>do this</p>
+<p>do this</p>
+<p>do this</p>
+
+
+</div>
+
