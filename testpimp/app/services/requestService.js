@@ -22,6 +22,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 					return data;
 				});
 				return response;
+<<<<<<< HEAD
 	};
 	
 	service.login = function(credential) {
@@ -45,6 +46,16 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	};
 		
 	service.getMyProviderProfiles = function(userId) {
+=======
+		};
+  
+	service.login = function (credential) {
+		return 'sure';
+	}
+
+	service.getMyProviderProfiles = function() {
+//		console.log("postPayload: " + JSON.stringify(postPayload));
+>>>>>>> origin/master
 		var response = $http({
 			url : restServer + 'api/providerprofiles/' + userId,
 			method : 'GET',
