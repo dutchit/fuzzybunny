@@ -22,8 +22,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 		var token = $scope.$storage.token;
 		if (token.length > 0) {
 			console.log("function: load app partials");
-			$scope.viewUrl = 'partials/userDashboard.html';
-			$scope.header = 'partials/loggedInHeader.html';
+			$scope.viewUrl = 'partials/dashboard/userDashboard.html';
+			$scope.header = 'partials/dashboard/loggedInHeader.html';
 			
 			Idle.watch();
 			console.log("idle watch start");
@@ -34,9 +34,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 		}
 
 
-		// other REST calls to logout?
+		// logout
 		$scope.logout = function() {
-			//$scope.$storage.token = "";
 			$localStorage.$reset({
 				token : "", 
 				user: {}
@@ -47,8 +46,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 		}
 
 		
-		// temporary login
-				
+		// login
+		
 		$scope.login = function(username, password) {
 			$scope.loginFailMsg = "";
 			console.log("username: " + username);
@@ -74,26 +73,24 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 				$scope.loginFailMsg = $scope.loginFailMsg + " Password is required. "
 			}
 			if (validCredential) {
-				
-		/*		requestService.login().then(
+				var credential = {};
+				credential ["username"] = username;
+				credential ["password"] = password;
+				requestService.login(credential).then(
 						function(success) {
-							var msg = success.data;
-		*/					$scope.$storage.user = getConstants.getRegistrationResponse();
+							$scope.$storage.user = success.data;
 							$scope.$storage.token = 'logged in';
 							shareDataService.setUser($scope.$storage.user);
-							shareDataService.setToken(getConstants.letterA());
-							
-							console.log("success: " + JSON.stringify(shareDataService.getUser()));
-							$scope.viewUrl = 'partials/userDashboard.html';
-							$scope.header = 'partials/loggedInHeader.html';
-		/*				}, 
+							shareDataService.setToken($scope.$storage.token);							
+							$scope.viewUrl = 'partials/dashboard/userDashboard.html';
+							$scope.header = 'partials/dashboard/loggedInHeader.html';
+						}, 
 					      function(error){
-					        console.log("fail: " + error.msg);
+					        console.log("Django: " + error.data);
+					        $scope.loginFail = true;
+							$scope.loginFailMsg = " Authentication failed. " + error.data;
 					    }
-				);
-		*/	
-		
-				
+				);				
 			}
 		}
 
@@ -139,8 +136,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 							shareDataService.setToken($scope.$storage.token);
 							
 							console.log("success: " + JSON.stringify(shareDataService.getUser()));
-							$scope.viewUrl = 'partials/userDashboard.html';
-							$scope.header = 'partials/loggedInHeader.html';
+							$scope.viewUrl = 'partials/dashboard/userDashboard.html';
+							$scope.header = 'partials/dashboard/loggedInHeader.html';
 						}, 
 					      function(error){
 					        console.log("fail: " + error.msg);

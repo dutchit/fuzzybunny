@@ -8,46 +8,26 @@
  */
 angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
 	
-	console.log("userDashboardCtrl: " + JSON.stringify(shareDataService.getUser()));
 	$scope.user = shareDataService.getUser();
-	console.log("after assignment " + JSON.stringify($scope.user));
 	
-	$scope.sidebarUrl = 'partials/sidebar.html';
-	$scope.contentUrl = 'partials/updates.html';
-	
+	$scope.sidebarUrl = 'partials/dashboard/sidebar.html';
+	$scope.contentUrl = 'partials/dashboard/updates.html';
 	
 
-	$scope.test2 = function () {
-	getConstants.getRegistrationResponse();
-	/*	requestService.test2().then(
-				function(success) {
-					var msg = success.data;
-					console.log("success: " + msg);
-					$scope.viewUrl = 'partials/userDashboard.html';
-				}, 
-			      function(error){
-			        console.log("fail: " + error.msg);
-			    }
-		);
-	*/	
-	
-	}
 	$scope.dashboard = function() {
-		$scope.contentUrl = 'partials/updates.html';
+		$scope.contentUrl = 'partials/dashboard/updates.html';
 	}
 	
 	$scope.postNewJob = function () {
-		$scope.contentUrl = 'partials/postNewJob.html';
+		$scope.contentUrl = 'partials/job/postNewJob.html';
 	}
 	
 	$scope.searchForJob = function () {
-		$scope.contentUrl = 'partials/searchForJob.html';
+		$scope.contentUrl = 'partials/job/searchForJob.html';
 	}
 	
 	$scope.myProfiles = function() {
-		$scope.contentUrl = 'partials/myProfiles.html';
-<<<<<<< HEAD
-=======
+		$scope.contentUrl = 'partials/userinfo/myProfiles.html';
 	/*	requestService.getMyProviderProfiles().then(
 				function(success) {
 					var myProviderProfiles = success.data;
@@ -59,11 +39,10 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 			    }
 		);
 */
->>>>>>> feature-elisa
 	}
 	
 	$scope.accountSettings = function() {
-		$scope.contentUrl = 'partials/accountSettings.html';
+		$scope.contentUrl = 'partials/userinfo/accountSettings.html';
 	}
 	
 });

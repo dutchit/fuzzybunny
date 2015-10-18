@@ -16,8 +16,6 @@
 	 
 	 var getToken = function () {
 	  return token;
-<<<<<<< HEAD
-=======
 	 };
 	 
 	 var providerProfiles;
@@ -28,7 +26,6 @@
 	 
 	 var getProviderProfiles = function () {
 	  return providerProfiles;
->>>>>>> feature-elisa
 	 };
 	 
 	 return {
@@ -36,11 +33,8 @@
 		 getUser: getUser,
 		 setToken: setToken,
 		 getToken: getToken,
-<<<<<<< HEAD
-=======
 		 setProviderProfiles: setProviderProfiles,
 		 getProviderProfiles: getProviderProfiles,
->>>>>>> feature-elisa
 	 }
 	 
 });
