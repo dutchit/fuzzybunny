@@ -22,16 +22,11 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 					return data;
 				});
 				return response;
-<<<<<<< HEAD
 	};
 	
 	service.login = function(credential) {
 		var response = $http({
-<<<<<<< HEAD
-			url : restServer + 'api/userprofiles/',
-=======
 			url : restServer + 'api/userprofiles',
->>>>>>> feature-elisa
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'
@@ -46,16 +41,6 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	};
 		
 	service.getMyProviderProfiles = function(userId) {
-=======
-		};
-  
-	service.login = function (credential) {
-		return 'sure';
-	}
-
-	service.getMyProviderProfiles = function() {
-//		console.log("postPayload: " + JSON.stringify(postPayload));
->>>>>>> origin/master
 		var response = $http({
 			url : restServer + 'api/providerprofiles/' + userId,
 			method : 'GET',
