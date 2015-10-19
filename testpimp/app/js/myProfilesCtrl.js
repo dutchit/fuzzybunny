@@ -1,4 +1,3 @@
-
 angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
 	
 	console.log("user: " + JSON.stringify($scope.user));
@@ -87,4 +86,3 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 		provider.showProviderProfileDetails = true;
 	}
 });
-

@@ -62,6 +62,5 @@ angular.module('testpimp').controller('providerProfileCtrl', function ($rootScop
 		}
 	}
 
-	<!-- -->
 
 });

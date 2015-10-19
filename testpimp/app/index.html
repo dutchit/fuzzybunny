@@ -33,7 +33,11 @@
 <script src="js/userDashboardCtrl.js"></script>
 <script src="js/myProfilesCtrl.js"></script>
 <script src="js/postJobCtrl.js"></script>
+<script src="js/updatesCtrl.js"></script>
+<script src="js/editJobCtrl.js"></script>
+<script src="js/searchForJobCtrl.js"></script>
 <script src="js/newProviderProfileCtrl.js"></script>
+
 
 
 <script src="services/dataSharingService.js"></script>
@@ -47,12 +51,12 @@
 
 <body ng-app="testpimp" ng-controller="mainCtrl">
 	<div ng-include='"partials/idleLogout.html"'></div>
-	<div ng-include src="header"></div>
+	<div ng-include src="header" ng-show="showHeader"></div>
 	<div >
 		<div ng-include src="viewUrl"></div>
 
 	</div>
-	<!-- <div ng-include='"templates/footer.html"'></div>   -->
+	<div ng-include='"templates/footer.html"' ng-show="showFooter"></div> 
 
 
 

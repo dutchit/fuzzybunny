@@ -28,6 +28,15 @@
 	  return providerProfiles;
 	 };
 	 
+	 var posting;
+	 var setJobToEdit = function (data) {
+		 posting = data;
+	 };
+	 
+	 var getJobToEdit = function () {
+	  return posting;
+	 };
+	 
 	 return {
 		 setUser: setUser,
 		 getUser: getUser,
@@ -35,6 +44,8 @@
 		 getToken: getToken,
 		 setProviderProfiles: setProviderProfiles,
 		 getProviderProfiles: getProviderProfiles,
+		 setJobToEdit: setJobToEdit,
+		 getJobToEdit: getJobToEdit,
 	 }
 	 
 });

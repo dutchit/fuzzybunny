@@ -9,6 +9,9 @@
 angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
 	
 	$scope.user = shareDataService.getUser();
+
+	$scope.paymentOptions = [{"option":"Amount", "value":"set"},{"option":"Range", "value":"Range"}];
+
 	
 	$scope.sidebarUrl = 'partials/dashboard/sidebar.html';
 	$scope.contentUrl = 'partials/dashboard/updates.html';
@@ -21,14 +24,20 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 	$scope.postNewJob = function () {
 		$scope.contentUrl = 'partials/job/postNewJob.html';
 	}
+	$scope.editPostingDetails = function (posting) {
+		shareDataService.setJobToEdit(posting);
+		$scope.contentUrl = 'partials/job/editJob.html';
+	}
 	
 	$scope.searchForJob = function () {
 		$scope.contentUrl = 'partials/job/searchForJob.html';
 	}
 	
+
 	$scope.createProviderProfile = function() {
 		$scope.contentUrl = 'partials/userinfo/newProviderProfile.html';
 	}
+
 
 	$scope.myProfiles = function() {
 		$scope.contentUrl = 'partials/userinfo/myProfiles.html';

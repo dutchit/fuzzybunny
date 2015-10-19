@@ -2,7 +2,8 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
   
 	var service = {};
 	
-	var restServer = 'http://localhost:8000/';
+//	var restServer = 'http://localhost:8000/';
+	var restServer = 'http://rhonrado.pythonanywhere.com/';
 	
 //	var somedata = {'username': 'rhonrado', 'password': 'aaaaaa', 'displayName': 'Ryan Honrado'};
 //	var mytestdata = {"username":"unique", "password": "password", "displayName":"You Nique"};
@@ -12,7 +13,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 			url : restServer + 'api/userprofiles',
 			method : 'POST',
 			headers: {
-		        'Content-type': 'application/json'
+		        'Content-type': 'application/json',
 		    },
 			data: postPayload,
 				}).success(function(data, status, headers, config) {
@@ -119,6 +120,80 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				return response;
 	};
 	
+	service.updateJob = function(putPayload) {
+		var response = $http({
+			url : restServer + 'api/jobs/' + putPayload.userID + "/" + putPayload.id,
+			method : 'PUT',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+			data: putPayload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+	};
+	service.deleteJob = function(userId, id) {
+		var response = $http({
+			url : restServer + 'api/jobs/' + userId + "/" + id,
+			method : 'DELETE',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+	};
+
+	service.getMyPostings = function(userId) {
+		var response = $http({
+			url : restServer + 'api/jobs/' + userId,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+	};
+	
+	service.getCategories = function() {
+		var response = $http({
+			url : restServer + 'api/jobs/categories',
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.getAllJobs = function() {
+		var response = $http({
+			url : restServer + 'api/jobs',
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
   return service;
 
 }]);
