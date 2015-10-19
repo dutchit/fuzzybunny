@@ -1,30 +1,23 @@
-angular.module('testpimp').controller('searchForJobCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
+/**
+ * Main AngularJS Web Application
+ */
+
+/**
+ * ng-include routing
+ */
+angular.module('testpimp').controller('searchForJobCtr', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
+
 	
-	// $scope.categoryOptions = ["Escorts", "Dealings", "blah"];
-
-	requestService.getJobs().then(
+	requestService.getAllJobs().then(
 			function(success) {
-				console.log(success.length);
-				$scope.jobFullList = success.data;
-			}, 
-			function(error){
-				console.log(error);
-			}
-		);
+				$scope.jobs = success.data;
+//				console.log("jobs: " + success.data);
+			},
+		     function(error){
 
-
-	// $scope.showJobs = function() {
-
-	// 	//TODO add category into param
-
-	// 	requestService.getJobs().then(
-	// 		function(success) {
-	// 			console.log(success);
-	// 			$scope.jobList = success;
-	// 		}, 
-	// 		function(error){
-	// 			console.log(error);
-	// 		}
-	// 	);
-	// } 
+		    }
+	);
+	
+	
+	
 });

@@ -1,5 +1,5 @@
-angular.module('testpimp').factory('requestService',['$http', function($http, RESTfulAPI, searchForJobCtrl){
-
+angular.module('testpimp').factory('requestService',['$http', function($http, RESTfulAPI){
+  
 	var service = {};
 	
 //	var restServer = 'http://localhost:8000/';
@@ -42,7 +42,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		
 	service.getMyProviderProfiles = function(userId) {
 		var response = $http({
-			url : restServer + 'api/providerprofiles' + userId,
+			url : restServer + 'api/providerprofiles/' + userId,
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'
@@ -55,6 +55,55 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				return response;
 	};
 
+	//updates provider profile
+	service.updateProviderProfile = function(updateProviderProfilePayload, userID, ID){
+		var response = $http({
+			url : restServer + 'api/providerprofiles/' + userID + '/' + ID,
+			method : 'PUT',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			data: updateProviderProfilePayload,
+		}).success(function(data, status, headers, config){
+			return data;
+		}).error(function(data, status, headers, config){
+			return data;
+		});
+		return response;
+	};
+	//adds newprovider profile
+	service.postNewProvider = function(postProviderPayload){
+		var response = $http({
+			url : restServer + 'api/providerprofiles',
+			method : 'POST',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			data: postProviderPayload,
+		}).success(function(data, status, headers, config){
+			return data;
+		}).error(function(data, status, headers, config){
+			return data;
+		});
+		return response;
+	};
+	//deletes provider profile
+	service.deleteProvider = function(ID, userID){
+		var response = $http({
+			url : restServer + 'api/providerprofiles/' + userID + '/' + ID,
+			method : 'DELETE',
+			headers : {
+				'Content-type' : 'application/json'
+			},
+		}).success(function(data, status, headers, config){
+			return data;
+		}).error(function(data, status, headers, config){
+			console.log(data)
+			return data;
+		});
+		return response;
+	}
+	
 	service.postNewJob = function(postPayload) {
 		var response = $http({
 			url : restServer + 'api/jobs',
@@ -73,7 +122,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	
 	service.updateJob = function(putPayload) {
 		var response = $http({
-			url : restServer + 'api/jobs/' + putPayload.userID + "/" + putPayload.id ,
+			url : restServer + 'api/jobs/' + putPayload.userID + "/" + putPayload.id,
 			method : 'PUT',
 			headers: {
 		        'Content-type': 'application/json'
@@ -86,10 +135,24 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 				return response;
 	};
+	service.deleteJob = function(userId, id) {
+		var response = $http({
+			url : restServer + 'api/jobs/' + userId + "/" + id,
+			method : 'DELETE',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+	};
 
 	service.getMyPostings = function(userId) {
 		var response = $http({
-			url : restServer + 'api/jobs/' + userId ,
+			url : restServer + 'api/jobs/' + userId,
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'
@@ -102,7 +165,22 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				return response;
 	};
 	
-	service.getJobs = function() {
+	service.getCategories = function() {
+		var response = $http({
+			url : restServer + 'api/jobs/categories',
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.getAllJobs = function() {
 		var response = $http({
 			url : restServer + 'api/jobs',
 			method : 'GET',
@@ -115,27 +193,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 					return data;
 				});
 		return response;
-	};
-
-// TODO add category into param
-
-// service.requestForJobs = function() {
-
-// 	console.log("I'm in requestForJobs");
-
-// 	var response = $http({
-// 		url : restServer + 'api/jobs/',
-// 		method : 'GET',
-// 		headers: {
-// 			'Content-type': 'application/json'
-// 		},
-// 	}).success(function(data){
-// 		return data;
-// 	}).error(function(data){
-// 		return data
-// 	})
-// };
-	
+	}
   return service;
 
 }]);

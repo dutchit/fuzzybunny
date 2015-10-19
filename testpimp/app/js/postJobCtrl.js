@@ -159,7 +159,6 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 		}
 	}
 	$scope.postNewJob = function() {
-		console.log()
 		$scope.validateNewJobForm();
 		console.log("postNewJob form validation: " + newJobFormValid);
 		if(newJobFormValid) {

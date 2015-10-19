@@ -1,47 +1,41 @@
-<div ng-controller="searchForJobCtrl">
-	<h2>Search for Jobs</h2>
-	<br>
-	<br>
-	Categories: 
-	<select ng-model="searchCategory" ng-options="nuggetJobs for nuggetJobs in mySearchForJobCats" ng-change="changeNuggetJobs()"></select>
-	<button ng-click="showJobs()">Show Jobs</button>
-	<!-- <button ng-click="test()"> test</button> -->
+<div ng-controller="searchForJobCtr">
+Search for Job Page
 
-	<br><br>
-	<!-- <div id="results"></div> -->
+<table>
+    <tr ng-repeat="job in jobs">
 
-	<script>
-	// console.log("From html: " + $scope.jobList);
-	</script>
+        <td><a href="#" ng-click="showJobDetails = ! showJobDetails">{{job.title}}  {{job.date}}</a>
+            <div class="col-sm-offset-1" ng-show="showJobDetails">
+		  		<table>
+                    <tr>
+                        <th>Job Description</th>
+                        <td>{{job.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Category</th>
+                        <td>{{job.category}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Location</th>
+                        <td>{{job.location}}</td>
+                    </tr>
+                    <tr>
+                        <th>Time and Duration</th>
+                        <td>
+                            Date: {{job.date}} for {{job.duration}} {{job.timeUnit}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Compensation</th>
+                        <td>
+                            <div ng-show="job.price=='set'"> ${{job.lowerBound}}</div>
+                            <div ng-show="job.price=='range'">From ${{job.lowerBound}} to ${{job.upperBound}}</div>
+                        </td>
+                    </tr>
 
-	<table>
-		<div>
-			<thead>
-				<tr>
-					<th>Title</th>
-					<th>Description</th>
-					<th>Location</th>
-					<th>Date and Duration</th>
-					<th>Price</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="job in jobFullList">
-					<td>{{job.title}}</td>
-					<td>{{job.description}}</td>
-					<td>{{job.location}}</td>
-					<td>
-						show only if it is duration rather than date
-						Date: {{job.date}} for {{job.duration}} {{job.timeUnit}}
-					</td>
-					<td>
-						<div ng-show="posting.price=='set'"> ${{job.lowerBound}}</div>
-						<div ng-show="posting.price=='range'">From ${{job.lowerBound}} to ${{job.upperBound}}</div>
-					</td>
-					<!-- <button ng-click="acceptJob()">Accept</button> -->
-				</tr>
-			</tbody>
-		</div>
-	</table>
+                </table>
+		  			<p><button> Apply </button></p>
+		  		</div>
+		  	</td>
+</table>
 </div>

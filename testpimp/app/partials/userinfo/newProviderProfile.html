@@ -1,0 +1,61 @@
+<div ng-controller="providerProfileCtrl">
+	<div ng-show="showEditProviderProfile">
+		<table>
+			<tr>
+				<th>Profile Title</th>
+				<td>
+					<input type="text" ng-model="newProvider.Title"/>
+				</td>
+				<td>
+					<div ng-show="newProviderTitleError" style="color: red">
+						{{newProviderTitleErrorMsg}}
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>Location</th>
+				<td>
+					<input type="text" ng-model="newProvider.Location"/>
+				</td>
+				<td>
+					<div ng-show="newProviderLocationError" style="color: red">
+						{{newProviderLocationErrorMsg}}
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>
+					<input type="text" ng-model="newProvider.Description"/>
+				</td>
+				<td>
+					<div ng-show="newProviderDescriptionError" style="color: red">
+						{{newProviderDescriptionErrorMsg}}
+					</div>
+				</td>
+			</tr>
+		</table>
+		<button ng-click="previewNewProviderProfile()">Preview</button>
+		<button ng-click="resetPreviewNewProviderProfile()">Reset</button>
+	</div>
+	<div ng-show="showPreviewNewProviderProfile">
+		<table>
+			<tr>
+				<th>Profile Title</th>
+				<td>{{newProvider.Title}}</td>
+			</tr>
+			<tr>
+				<th>Location</th>
+				<td>{{newProvider.Location}}</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>{{newProvider.Description}}</td>
+			</tr>
+		</table>
+		<button ng-click="editNewProviderProfile()">Edit</button>
+		
+	</div>
+	<button ng-click="postNewProviderProfile()">Confirm</button>
+	<button ng-click="myProfiles()">Cancel</button>
+</div>
