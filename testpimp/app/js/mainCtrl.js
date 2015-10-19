@@ -22,11 +22,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 		var token = $scope.$storage.token;
 		if (token.length > 0) {
 			console.log("function: load app partials");
-<<<<<<< HEAD
 			$scope.showHeader = true;
 			$scope.showFooter = true;
-=======
->>>>>>> SamBranch
 			$scope.viewUrl = 'partials/dashboard/userDashboard.html';
 			$scope.header = 'partials/dashboard/loggedInHeader.html';
 			
@@ -93,11 +90,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 							shareDataService.setToken($scope.$storage.token);							
 							$scope.viewUrl = 'partials/dashboard/userDashboard.html';
 							$scope.header = 'partials/dashboard/loggedInHeader.html';
-<<<<<<< HEAD
 							$scope.showHeader = true;
 							$scope.showFooter = true;
-=======
->>>>>>> SamBranch
 						}, 
 					      function(error){
 					        console.log("Django: " + error.data);

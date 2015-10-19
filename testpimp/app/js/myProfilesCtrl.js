@@ -1,4 +1,3 @@
-
 angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
 	
 	console.log("user: " + JSON.stringify($scope.user));
@@ -11,13 +10,8 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 		    }
 	);
 
-<<<<<<< HEAD
-	$scope.myProviderProfiles = getConstants.getUpdateProviderProfileResponse();
-//	$scope.myProviderProfiles = shareDataService.getProviderProfiles();
-=======
 	$scope.showEditProviderProfile = false;
 	$scope.showEditMainProfile = false;
->>>>>>> SamBranch
 	
 	$scope.deleteProviderProfile = function (providerProfile) {
 		if(confirm("Delete: " + providerProfile.profileTitle + "?")){
@@ -92,4 +86,3 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 		provider.showProviderProfileDetails = true;
 	}
 });
-
