@@ -3,7 +3,7 @@
 	<br>
 	<br>
 	Categories: 
-	<!-- <select ng-model="SELECTION_CATEGORY" ng-options="categoryOption for categoryOption in SELECTION_CATEGORY"></select> -->
+	<select ng-model="searchCategory" ng-options="nuggetJobs for nuggetJobs in mySearchForJobCats" ng-change="changeNuggetJobs()"></select>
 	<button ng-click="showJobs()">Show Jobs</button>
 	<!-- <button ng-click="test()"> test</button> -->
 
@@ -27,18 +27,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="job in jobFullList track by $index">
-					<td>{{job[$index]}}</td>
-					<!-- <td>{{job[$index].description}}</td>
-					<td>{{job[$index].location}}</td>
-					<td> -->
-						<!-- show only if it is duration rather than date -->
-						<!-- Date: {{job[$index].date}} for {{job[$index].duration}} {{job[$index].timeUnit}}
+				<tr ng-repeat="job in jobFullList">
+					<td>{{job.title}}</td>
+					<td>{{job.description}}</td>
+					<td>{{job.location}}</td>
+					<td>
+						show only if it is duration rather than date
+						Date: {{job.date}} for {{job.duration}} {{job.timeUnit}}
 					</td>
 					<td>
-						<div ng-show="posting.price=='set'"> ${{job[$index].lowerBound}}</div>
-						<div ng-show="posting.price=='range'">From ${{job[$index].lowerBound}} to ${{job[$index].upperBound}}</div>
-					</td> -->
+						<div ng-show="posting.price=='set'"> ${{job.lowerBound}}</div>
+						<div ng-show="posting.price=='range'">From ${{job.lowerBound}} to ${{job.upperBound}}</div>
+					</td>
 					<!-- <button ng-click="acceptJob()">Accept</button> -->
 				</tr>
 			</tbody>

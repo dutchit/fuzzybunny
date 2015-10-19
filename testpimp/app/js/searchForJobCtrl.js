@@ -5,7 +5,7 @@ angular.module('testpimp').controller('searchForJobCtrl', function ($rootScope, 
 	requestService.getJobs().then(
 			function(success) {
 				console.log(success.length);
-				$scope.jobFullList = success;
+				$scope.jobFullList = success.data;
 			}, 
 			function(error){
 				console.log(error);

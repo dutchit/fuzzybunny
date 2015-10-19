@@ -1,0 +1,79 @@
+<div ng-controller="getApplicantsCtrl">
+	<h2>Applicants</h2>
+	<br>
+	<h4>Job Title</h4>
+	<br>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Location</th>
+				<th>Accept?</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="applicant in applicants">
+				<td><a href="#" ng-click="showDescription = ! showDescription">{{applicant.name}}</a></td>
+				<td>{{applicant.location}}</td>
+				<td><button> Accept </button></td>
+				<div ng-show="!showDescription">
+					<table>
+						<th>Description</th>
+						<tr>
+							<td>{{applicant.description}}</td>
+						</tr>
+					</table>
+				</div>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<!-- ============================================== -->
+<!-- 
+<table>
+<tr ng-repeat="providerProfile in myProviderProfiles">
+	<td><a href="#" ng-click="showProviderProfileDetails = ! showProviderProfileDetails">{{providerProfile.profileTitle}}</a>
+		<div ng-show="showProviderProfileDetails">
+			<table style="border-collapse: separate; boarder-spacing: 5px;">
+				<tr>
+					<th valign="top">Location: </th>
+					<td>{{providerProfile.location}}</td>
+				</tr>
+				<tr>
+					<th valign="top">Description: </th>
+					<td>{{providerProfile.description}}</td>
+				</tr>
+			</table>
+			<p><button ng-click="editProviderProfile(this)">Edit</button></p>
+		</div>
+		<div ng-show="showEditProviderProfile">
+		<table>
+			<tr>
+				<th>Profile Title</th>
+				<td>
+					<input type="text" ng-model="editProfile.title" ng-init="editProfile.title = providerProfile.profileTitle">
+				</td>
+			</tr>
+			<tr>
+				<th>Location</th>
+				<td>
+					<input type="text" ng-model="editProfile.location" ng-init="editProfile.location = providerProfile.location">
+				</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>
+					<input type="text" ng-model="editProfile.description" ng-init="editProfile.description = providerProfile.description">
+				</td>
+			</tr>
+		</table>
+		<p><button ng-click="confirmEditProfile(editProfile, providerProfile.id)">Confirm</button></p>
+		<p><button ng-click="cancelEditProfile(this)">Cancel</button></p>
+		</div>
+	</td>
+	<td><button ng-click="deleteProviderProfile(providerProfile)">delete</button>
+	</td>
+</tr>
+</table> -->
