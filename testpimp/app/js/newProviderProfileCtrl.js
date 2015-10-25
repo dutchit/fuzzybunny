@@ -55,6 +55,7 @@ angular.module('testpimp').controller('providerProfileCtrl', function ($rootScop
 				function(success){
 					$scope.myProviderProfiles = success.data;
 					console.log(success.data);
+					$scope.myProfiles();
 				}, 
 				function(error){
 					

@@ -194,6 +194,24 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 		return response;
 	}
+	
+	
+	service.applyToAJob = function(applicationPayload) {
+		console.log("applicationPayload: " + JSON.stringify(applicationPayload));
+		var response = $http({
+			url : restServer + 'api/jobs/applications',
+			method : 'POST',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data : applicationPayload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
   return service;
 
 }]);
