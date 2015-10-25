@@ -39,7 +39,24 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 				return response;
 	};
-		
+	
+	service.forgotPassword = function(emailEntry){
+        var response = $http({
+            url:restServer + 'api/email',
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            data: emailEntry,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+
+    };
+	
 	service.getMyProviderProfiles = function(userId) {
 		var response = $http({
 			url : restServer + 'api/providerprofiles/' + userId,
@@ -182,11 +199,29 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	
 	service.getAllJobs = function() {
 		var response = $http({
-			url : restServer + 'api/jobs',
+			url : restServer + 'api/jobs/current',
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'
 		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	
+	service.applyToAJob = function(applicationPayload) {
+		console.log("applicationPayload: " + JSON.stringify(applicationPayload));
+		var response = $http({
+			url : restServer + 'api/jobs/applications',
+			method : 'POST',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data : applicationPayload,
 				}).success(function(data, status, headers, config) {
 					return data;
 				}).error(function(data, status, headers, config) {

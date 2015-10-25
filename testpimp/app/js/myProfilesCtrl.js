@@ -15,7 +15,19 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 	
 	$scope.deleteProviderProfile = function (providerProfile) {
 		if(confirm("Delete: " + providerProfile.profileTitle + "?")){
-			requestService.deleteProvider(providerProfile.id, $scope.user.id);
+			requestService.deleteProvider(providerProfile.id, $scope.user.id).then(
+					function(success) {
+						requestService.getMyProviderProfiles($scope.user.id).then(
+								function(success) {
+									$scope.myProviderProfiles = success.data;
+								}, 
+							     function(error){		        
+							    }
+						);
+					}, 
+				     function(error){		        
+				    }
+			);;
 		}
 	}
 	$scope.editMainProfile = function(){

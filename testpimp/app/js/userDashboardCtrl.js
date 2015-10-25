@@ -62,6 +62,9 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 		$scope.contentUrl = 'partials/job/displayApplicants.html';
 		$scope.jobID = id;
 	}
-
+	$scope.gotoApplyJob = function() {
+		$scope.contentUrl = 'partials/job/applyToJob.html';
+	}
+	
 });
 

@@ -1,6 +1,11 @@
 <div ng-controller="searchForJobCtr">
-Search for Job Page
 
+<div ng-show="showSearchView">
+<h2> Search for Jobs by Categories</h2>
+<br>
+<div> 
+<select ng-model="jobCats" ng-options="jobCategorie for jobCategorie in jobCategories"></select><button ng-click="changeNuggetJobs()">Search</button>
+</div>
 <table>
     <tr ng-repeat="job in jobs">
 
@@ -35,14 +40,16 @@ Search for Job Page
 
                 </table>
 		  			<p>
-		  				<button> Apply </button>
-		  				<div ng-show="job.userID==user.id" >
-		  					<button ng-click="applicantList(job.id)">Applicants</button>
-		  				</div>
-		  				<!-- <button ng-click="currentUser()">Me</button> -->
-		  			</p>
-		  			<!-- show button iff current user is job owner -->
+                        <button ng-click="chooseJob(job)"> Apply </button>
+                        <div ng-show="job.userID==user.id" >
+                            <button ng-click="applicantList(job.id)">Applicants</button>
+                        </div>
+                    </p>
 		  		</div>
 		  	</td>
 </table>
+
+</div>
+
+<div ng-show=" ! showSearchView" ng-include="'partials/job/applyToJob.html'"></div>
 </div>

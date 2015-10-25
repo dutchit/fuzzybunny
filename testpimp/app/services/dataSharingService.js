@@ -37,6 +37,15 @@
 	  return posting;
 	 };
 	 
+	 var job;
+	 var setJob = function (data) {
+		 job = data;
+	 };
+	 
+	 var getJob = function () {
+	  return job;
+	 };
+	 
 	 return {
 		 setUser: setUser,
 		 getUser: getUser,
@@ -46,6 +55,8 @@
 		 getProviderProfiles: getProviderProfiles,
 		 setJobToEdit: setJobToEdit,
 		 getJobToEdit: getJobToEdit,
+		 setJob: setJob,
+		 getJob: getJob,
 	 }
 	 
 });
