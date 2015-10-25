@@ -23,6 +23,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 				return response;
 	};
+    
 	
 	service.login = function(credential) {
 		var response = $http({
@@ -40,6 +41,17 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				return response;
 	};
 		
+    service.forgotPassword = function(emailEntry){
+        var response = $http({
+            url:restServer + 'api/email',
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            return response;
+        });
+    });
+    
 	service.getMyProviderProfiles = function(userId) {
 		var response = $http({
 			url : restServer + 'api/providerprofiles/' + userId,
@@ -55,6 +67,55 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				return response;
 	};
 
+	//updates provider profile
+	service.updateProviderProfile = function(updateProviderProfilePayload, userID, ID){
+		var response = $http({
+			url : restServer + 'api/providerprofiles/' + userID + '/' + ID,
+			method : 'PUT',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			data: updateProviderProfilePayload,
+		}).success(function(data, status, headers, config){
+			return data;
+		}).error(function(data, status, headers, config){
+			return data;
+		});
+		return response;
+	};
+	//adds newprovider profile
+	service.postNewProvider = function(postProviderPayload){
+		var response = $http({
+			url : restServer + 'api/providerprofiles',
+			method : 'POST',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			data: postProviderPayload,
+		}).success(function(data, status, headers, config){
+			return data;
+		}).error(function(data, status, headers, config){
+			return data;
+		});
+		return response;
+	};
+	//deletes provider profile
+	service.deleteProvider = function(ID, userID){
+		var response = $http({
+			url : restServer + 'api/providerprofiles/' + userID + '/' + ID,
+			method : 'DELETE',
+			headers : {
+				'Content-type' : 'application/json'
+			},
+		}).success(function(data, status, headers, config){
+			return data;
+		}).error(function(data, status, headers, config){
+			console.log(data)
+			return data;
+		});
+		return response;
+	}
+	
 	service.postNewJob = function(postPayload) {
 		var response = $http({
 			url : restServer + 'api/jobs',
