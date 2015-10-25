@@ -3,7 +3,7 @@
 	<br>
 	<h4>Job Title</h4>
 	<br>
-	<table>
+	<table style="padding:10px">
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -15,7 +15,7 @@
 			<tr ng-repeat="applicant in applicants">
 				<td><a href="#" ng-click="showDescription = ! showDescription">{{applicant.name}}</a></td>
 				<td>{{applicant.location}}</td>
-				<td><button> Accept </button></td>
+				<!-- <td><button> Accept </button></td> -->
 				<div ng-show="!showDescription">
 					<table>
 						<th>Description</th>
@@ -29,6 +29,9 @@
 	</table>
 </div>
 
+<!-- <button id="searchDListBtn" style="width: 160px" class="btn btn-primary btn-sm" ng-click="postNewJob()">
+				<font size="2">Post New Job</font>
+			</button> -->
 
 <!-- ============================================== -->
 <!-- 

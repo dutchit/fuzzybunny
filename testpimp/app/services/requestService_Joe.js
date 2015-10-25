@@ -1,4 +1,4 @@
-angular.module('testpimp').factory('requestService',['$http', function($http, RESTfulAPI, searchForJobCtrl){
+angular.module('testpimp').factory('requestService_Joe',['$http', function($http, RESTfulAPI, searchForJobCtrl){
 
 	var service = {};
 	
@@ -22,10 +22,10 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		return response;
 	};
 
-	service.getApplicants = function(){
+	service.getApplicants = function(id){
 		var response = $http({
 			// Add '/applicants' if possible to make job easier
-			url : restServer + 'api/jobs',
+			url : restServer + 'api/jobs/' + id + '/applicants',
 			method : 'GET',
 			headers: {
 		        'Content-type': 'application/json'

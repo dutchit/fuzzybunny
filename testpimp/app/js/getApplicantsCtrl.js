@@ -1,8 +1,8 @@
-angular.module('testpimp').controller('getApplicantsCtrl', function ($rootScope, $scope,shareDataService) {
+angular.module('testpimp').controller('getApplicantsCtrl', function ($rootScope, $scope,shareDataService, requestService, requestService_Joe) {
 
-	requestService.getApplicants().then(
+	requestService_Joe.getApplicants().then(
 			function(success) {
-				console.log(success.length);
+				console.log(success.data);
 				$scope.applicants = success.data;
 			}, 
 			function(error){

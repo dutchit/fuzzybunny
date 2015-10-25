@@ -58,5 +58,10 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 		$scope.contentUrl = 'partials/userinfo/accountSettings.html';
 	}
 	
+	$scope.applicantList = function(id){
+		$scope.contentUrl = 'partials/job/displayApplicants.html';
+		$scope.jobID = id;
+	}
+
 });
 

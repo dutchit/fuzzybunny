@@ -34,7 +34,14 @@ Search for Job Page
                     </tr>
 
                 </table>
-		  			<p><button> Apply </button></p>
+		  			<p>
+		  				<button> Apply </button>
+		  				<div ng-show="job.userID==user.id" >
+		  					<button ng-click="applicantList(job.id)">Applicants</button>
+		  				</div>
+		  				<!-- <button ng-click="currentUser()">Me</button> -->
+		  			</p>
+		  			<!-- show button iff current user is job owner -->
 		  		</div>
 		  	</td>
 </table>
