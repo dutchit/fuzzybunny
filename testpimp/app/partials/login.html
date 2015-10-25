@@ -16,7 +16,7 @@
     <!-- pop up form div starts here-->    
     <div id="container" ng-show="loginUser" >
     <div class="col-sm-8 col-sm-offset-2">
-      <div id="page-header"><h3>Login Page</h3></div>
+      <div id="page-header"><h>Login Page</h3></div>
         <form name="loginForm" novalidate >
     <!-- form fields -->
       <fieldset>
@@ -69,11 +69,33 @@
         <br>
           <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeRegInput()" required/>
         </p>
-      <button type="submit" id="loggingIn" class="btn btn-primary" ng-click="registerNewUser(newUsername, newPassword, repeatPassword, displayName, contactEmail)">Register</button>
+      <button type="submit" id="loggingIn" class="btn btn-success" ng-click="registerNewUser(newUsername, newPassword, repeatPassword, displayName, contactEmail)">Register</button>
       </form>
        <div ng-show="registrationFail" style="color: red">{{regitrationFailMsg}}</div>
     </div><!--end div for col of register-->
     </div> <!-- end div for register container--> 
+    
+    <!-- forget password -->
+        <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot" >Forgot Password?</button>
+    <!-- pop up form div starts here-->    
+    <div id="container" ng-show="userForgot" >
+    <div class="col-sm-8 col-sm-offset-2">
+        <div ><h3>Did you forget your password?</h3></div>
+        <form name="forgot_password" novalidate >
+    <!-- form fields -->
+      <fieldset>
+        <p>
+          <label>Contact Email</label>
+        <br>
+          <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeForgetInput()" required/>
+        </p>
+      <button id="loggingIn" type="submit" class="btn btn-success" ng-click="forgetClick(contactEmail)">Send Email</button>
+      </fieldset>
+   </form>
+       <div ng-show="emailFail" style="color: red">{{forgotPasswordMsg}}</div>
+        </div>
+        </div>
+    
     </div><!--end div of container--> 
     
 <figure class="homepageeffect">
