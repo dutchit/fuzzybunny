@@ -1,6 +1,11 @@
 <div ng-controller="searchForJobCtr">
-Search for Job Page
 
+<div ng-show="showSearchView">
+<h2> Search for Jobs by Categories</h2>
+<br>
+<div> 
+<select ng-model="jobCats" ng-options="jobCategorie for jobCategorie in jobCategories"></select><button ng-click="changeNuggetJobs()">Search</button>
+</div>
 <table>
     <tr ng-repeat="job in jobs">
 
@@ -34,9 +39,13 @@ Search for Job Page
                     </tr>
 
                 </table>
-		  			<p><button> Apply </button></p>
+		  			<p><button ng-click="chooseJob(job)"> Apply </button></p>
 		  		</div>
 		  	</td>
 </table>
+
+</div>
+
+<div ng-show=" ! showSearchView" ng-include="'partials/job/applyToJob.html'"></div>
 </div>
 

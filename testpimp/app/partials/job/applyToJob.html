@@ -1,0 +1,65 @@
+<!-- <div ng-controller="applyToJobCtrl"> -->
+<div>
+
+	<h2>Apply to Job</h2> 
+	<br><br>
+	<div>
+		<table>
+			<tr>
+				<th>Job Title</th>
+				<td>{{selectedJob.title}}</td>
+			</tr>
+			<tr>
+				<th>Job Category</th>
+				<td>{{selectedJob.category}}</td>
+			</tr>
+			<tr>
+				<th>Job Description</th>
+				<td>{{selectedJob.description}}</td>
+			</tr>
+			<tr>
+				<th>Job Location</th>
+				<td>{{selectedJob.location}}</td>
+			</tr>
+			<tr>
+				<th>Time and Duration</th>
+				<td>
+					{{selectedJob.date}} for {{selectedJob.duration}} {{selectedJob.timeUnit}}
+				</td>
+			</tr>
+			<tr>
+				<th>Compensation</th>
+				<td>
+					<div ng-show="selectedJob.price=='set'"> ${{selectedJob.lowerBound}}</div>
+		            <div ng-show="selectedJob.price=='range'">From ${{selectedJob.lowerBound}} to ${{selectedJob.upperBound}}</div>
+				</td>
+			</tr>
+		
+		</table>
+	</div>
+	<br><br>
+	<h3>My Application</h3>
+	<br>	
+	<div>
+		<table>
+			<tr>
+				<th>My Profile</th>
+				<td>
+					<select ng-model="application.providerProfile" ng-options="profile.profileTitle for profile in myProviderProfiles"></select>
+					<pre>{{application.providerProfile.description}}</pre>
+				</td>
+				<td><div ng-show="chooseProviderProfileError" style="color: red">{{chooseProviderProfileErrorMsg}}</div></td>
+			</tr>
+			<tr>
+				<th>Price  $</th>
+				<td>
+					<input type="number" ng-model="application.bidPrice" ng-disabled="selectedJob.price=='set'"/>
+				</td>
+				<td><div ng-show="applicationPriceError" style="color: red">{{applicationPriceErrorMsg}}</div></td>
+			</tr>
+		</table>
+		<button ng-click="submitApplication()">Submit Application</button><button ng-click="cancelApplying()">Cancel</button>
+	</div>
+
+
+</div>

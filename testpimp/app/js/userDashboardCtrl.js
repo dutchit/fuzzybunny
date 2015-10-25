@@ -58,5 +58,9 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 		$scope.contentUrl = 'partials/userinfo/accountSettings.html';
 	}
 	
+	$scope.gotoApplyJob = function() {
+		$scope.contentUrl = 'partials/job/applyToJob.html';
+	}
+	
 });
 
