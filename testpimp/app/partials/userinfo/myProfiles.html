@@ -1,10 +1,9 @@
-<div ng-controller="myProfilesCtrl">
+<div ng-controller="myProfilesCtrl" class="col-sm-12">
 
 
 <h4>My User Profile</h4>
-<div>
+<div class="col-sm-12">
 	<p>username: {{user.username}}</p>
-	<p>profileTitle {{user.profileTitle}}</p>
 	<p>description: {{user.description}}</p>
 	<p>displayName: {{user.displayName}}</p>
 	<p>location: {{user.location}}</p>
@@ -67,25 +66,29 @@
 
 <br><br>
 
-<h4>My Provider profiles</h4>
 
+<h4>My Provider profiles</h4>
+<div class="col-sm-12">
 <table>
-<tr ng-repeat="providerProfile in myProviderProfiles">
-	<td><a href="#" ng-click="showProviderProfileDetails = ! showProviderProfileDetails">{{providerProfile.profileTitle}}</a>
-		<div ng-show="showProviderProfileDetails">
+<tr ng-repeat="providerProfile in myProviderProfiles" >
+	<td class="col-sm-8"><a href="#" ng-click="showProviderProfileDetails = ! showProviderProfileDetails">{{providerProfile.profileTitle}}</a>
+		<div ng-show="showProviderProfileDetails"  class="col-sm-offset-1">
 			<table style="border-collapse: separate; boarder-spacing: 5px;">
 				<tr>
 					<th valign="top">Location: </th>
-					<td>{{providerProfile.location}}</td>
+					<td class="col-sm-8">{{providerProfile.location}}</td>
 				</tr>
 				<tr>
-					<th valign="top">Description: </th>
+					<th valign="top" class="col-sm-10">Description: </th>
 					<td>{{providerProfile.description}}</td>
 				</tr>
+				<tr>
+					<td></td>
+					<td> <button ng-click="editProviderProfile(this)">Edit</button> &nbsp <button ng-click="deleteProviderProfile(providerProfile)">delete</button></td>
+				</tr>
 			</table>
-			<p><button ng-click="editProviderProfile(this)">Edit</button></p>
 		</div>
-		<div ng-show="showEditProviderProfile">
+		<div ng-show="showEditProviderProfile"  class="col-sm-offset-1">
 		<table>
 			<tr>
 				<th>Profile Title</th>
@@ -110,10 +113,10 @@
 		<p><button ng-click="cancelEditProfile(this)">Cancel</button></p>
 		</div>
 	</td>
-	<td><button ng-click="deleteProviderProfile(providerProfile)">delete</button>
+	<td>
 	</td>
 </tr>
 </table>
 <button ng-click="createProviderProfile()">New Provider Profile</button>
-
+</div>
 </div>

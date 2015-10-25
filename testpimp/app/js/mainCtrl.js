@@ -156,6 +156,41 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 			}
 		}
 		
+        
+	    //forget password     
+	        $scope.forgetClick = function (contactEmail) {
+	           $scope.emailFailMsg = "";
+	           var validRegEmail = false;
+				if (contactEmail && contactEmail.length > 0) {
+	               validRegEmail = true;
+				} else {
+					$scope.emailFailMsg = $scope.emailFailMsg + "Valid contact email is required. \n";
+				}
+	            
+	            var validEmail = validRegEmail;
+	            console.log (validRegEmail);
+				console.log("validation: " + validEmail);
+				if (!validEmail) {
+					$scope.emailFail = true;
+				} else {
+					var emailEntry = {};
+					emailEntry ["email"] = contactEmail;
+					requestService.forgotPassword(emailEntry).then(
+							function(success) {
+								console.log("success: " + success.data);
+								alert("Please check your email for additional instructions.")
+							}, 
+						      function(error){
+						        console.log("fail: " + error.msg);
+						        $scope.emailFail = true;
+						        $scope.emailFailMsg = error.msg;
+						    }
+					);
+				}
+	        } 
+	        
+
+		
 		$scope.changeRegInput = function() {
 			$scope.registrationFail = false;
 			$scope.regitrationFailMsg = "";
@@ -163,9 +198,14 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 		
 		$scope.changeInput = function () {
 			$scope.loginFail = false;
-			$scope.loginFailMsg = "";
-			
+			$scope.loginFailMsg = "";		
 		}
+		
+	       
+        $scope.changeForgetInput = function(){
+            $scope.emailFail = false;
+            $scope.emailFailMsg ="";
+        }
 		
 		// idle logout functions
 		function closeModals() {
