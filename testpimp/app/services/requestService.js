@@ -48,9 +48,15 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
             headers: {
                 'Content-type': 'application/json'
             },
-            return response;
-        });
-    });
+            data: emailEntry,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+
+    };
     
 	service.getMyProviderProfiles = function(userId) {
 		var response = $http({
