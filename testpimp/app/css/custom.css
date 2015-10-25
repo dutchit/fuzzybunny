@@ -152,9 +152,7 @@ figure.homepageeffect:hover p {
     letter-spacing: 5px;
 }
 
-#contain{
-    padding-left: 100px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-<!--for login html; should override Bootstrap--> 
+
+
+<!--For login.html
+will override Bootstrap-->

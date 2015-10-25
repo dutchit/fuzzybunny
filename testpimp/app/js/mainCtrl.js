@@ -51,8 +51,9 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 			console.log('logout user: ' + shareDataService.getUser().name);
 		}
 
-
-    //LOGIN FUNCTION		
+		
+		// login
+		
 		$scope.login = function(username, password) {
 			$scope.loginFailMsg = "";
 			console.log("username: " + username);
@@ -101,7 +102,6 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 			}
 		}
 
-    //REGISTER FUNCTION
 		$scope.registerNewUser = function (newUsername, newPassword, repeatPassword, displayName, contactEmail) {
 			$scope.regitrationFailMsg = "";
 			var validRegName = false;
@@ -155,47 +155,6 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 				);
 			}
 		}
-        
-    //forget password     
-        /*$scope.forgetClick() = function (contactEmail) {
-           $scope.emailFailMsg = "";
-           var validRegEmail = false;
-			if (contactEmail && contactEmail.length > 0) {
-               validRegEmail = true;
-			} else {
-				$scope.emailFailMsg = $scope.emailFailMsg + "Valid contact email is required. \n";
-			}
-            
-            var validEmail = validRegEmail;
-            console.log (validRegEmail);
-			console.log("validation: " + validEmail);
-			if (!validEmail) {
-				$scope.emailFail = true;
-			} else {
-				var emailEntry = {};
-				emailEntry ["contactEmail"] = contactEmail;
-				requestService.forgotPassword(emailEntry).then(
-						function(success) {
-							console.log("success: " + success.data);
-							$scope.$storage.user = success.data;
-							$scope.$storage.token = 'email valid, password reset sent to email';
-							shareDataService.setUser($scope.$storage.user);
-							shareDataService.setToken($scope.$storage.token);
-							
-							console.log("success: " + JSON.stringify(shareDataService.getUser()));
-							$scope.viewUrl = 'partials/dashboard/userDashboard.html';
-							$scope.header = 'partials/dashboard/loggedInHeader.html';
-						}, 
-					      function(error){
-					        console.log("fail: " + error.msg);
-					        $scope.emailFail = true;
-					        $scope.emailFailMsg = error.msg;
-					    }
-				);
-			}
-        } */
-        
-
 		
 		$scope.changeRegInput = function() {
 			$scope.registrationFail = false;
@@ -205,12 +164,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 		$scope.changeInput = function () {
 			$scope.loginFail = false;
 			$scope.loginFailMsg = "";
+			
 		}
-        
-        $scope.changeForgetInput = function(){
-            $scope.emailFail = false;
-            $scope.emailFailMsg ="";
-        }
 		
 		// idle logout functions
 		function closeModals() {
