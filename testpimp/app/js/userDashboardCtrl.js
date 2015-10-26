@@ -66,7 +66,7 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 		$scope.contentUrl = 'partials/job/applyToJob.html';
 	}
 	
-	$scope.myPostings = function(){
+	$scope.myPostedJobs = function(){
 		$scope.contentUrl = 'partials/job/myPostedJobs.html';
 	}
 	
