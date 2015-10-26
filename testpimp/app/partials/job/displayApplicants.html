@@ -12,8 +12,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="applicant in applicants">
-				<td><a href="#" ng-click="showDescription = ! showDescription">{{applicant.name}}</a></td>
+			<tr ng-repeat="applicant in applicantProfiles">
+				<td><a href="#" ng-click="showDescription = ! showDescription">{{applicant.profileTitle}}</a></td>
 				<td>{{applicant.location}}</td>
 				<!-- <td><button> Accept </button></td> -->
 				<div ng-show="!showDescription">
