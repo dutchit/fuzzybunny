@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,26 +46,125 @@
 <script src="services/dataSharingService.js"></script>
 <script src="services/getConstants.js"></script>
 <script src="services/requestService.js"></script>
+=======
+<!DOCTYPE html> <!-- html documentation-->
+>>>>>>> master
 
+<head>
+    <meta charset="UTF-8" /> <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="css/custom.css" rel="stylesheet"> <!--customizes the Let's Be Buddies title-->
+    <link href="css/animate.css" rel="stylesheet"> <!-- animates the LyfeLifter title-->
+    <script type="text/javascript" src="resourceJS/form-switch.js"></script>
+    <!--script to switch forms-->
 
-<!--<script src="services/tokenService.js"></script>   -->
-
+</script>  
 </head>
 
-<body ng-app="testpimp" ng-controller="mainCtrl">
-	<div ng-include='"partials/idleLogout.html"'></div>
-	<div ng-include src="header" ng-show="showHeader"></div>
-	<div >
-		<div ng-include src="viewUrl"></div>
 
-	</div>
-	<div ng-include='"templates/footer.html"' ng-show="showFooter"></div> 
+<!-- BEGINNING OF THE ENTIRE LOGIN/HOME PAGE-->
+<div id="form_wrapper" class="form_wrapper">   
+<!--beginning of demo-->
+    
+<figure class="homepageeffect">
+    <!--figure start-->
+    <img src="images/4.jpg" alt="img3" height="100%" width="100%"/>
+    <figcaption>  
+        <!--figcaption start-->
+        <!--titles on top -->
+	   <h2 id="letsbebudhometitle" class="animated fadeInDown">Life <span>Lifter</span></h2>
+       <p >We will lift you above clouds. <br /><br />
+           <a href="partials/about.html">About Us</a>
+        </p>
+  
 
+<!--start div container for login, register, pw reset buttons-->
+<div id="buttons" style="text-align: center;">   
 
+    <!-- First button for login-->
+    <button id ="loginPush" class="btn btn-primary" ng-model="loginUser" ng-click="loginUser =! loginUser" >Login</button> 
+    <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser">Register</button>
+    <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot" >Password Reset</button>
+    <!-- pop up form div starts here-->    
+    <div id="container" ng-show="loginUser" >
+    <div class="col-sm-8 col-sm-offset-2">
+      <div id="page-header"><h3>Login Page</h3></div>
+        <form name="loginForm" novalidate >
+    <!-- form fields -->
+      <fieldset>
+        
+          <label style="font-size: 12px;"> Username </label>
+        <br>
+          <input id="loginname" type="text" style="height:30px; width:450px" ng-model="username" ng-change="changeInput()" required/>
+        <br>
+        
+          <label style="font-size: 12px;">Password</label>
+        <br>
+          <input id="loginpassword" type="password" style="height:30px; width:450px" ng-change="changeInput()" ng-model="password" required/>
+        <br><br>
+      <button id="loginClick" type="submit" class="btn btn-success" ng-click="login(username, password)">Login</button>
+      </fieldset>
+   </form>
+       <div ng-show="loginFail" style="color: red">{{loginFailMsg}}</div>
+        </div>
+        </div><!-- end of login div-->
+    
+<!-- Register button start-->
+  <!-- <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser">Register</button>-->
+   <div class="container" ng-show="newUser">
+    <div class="col-sm-8 col-sm-offset-2">	
+      <div ><h3>New User Registration</h3></div>
+     <!-- form fields -->
+      <form name="registrationForm" novalidate>
+        
+          <label style="font-size: 12px;"> Username </label> <label style="font-size: 12px; padding-left:170px;">Password</label>
+        <br>
+          <input type="text" style="height:30px; width:225px" ng-model="newUsername" ng-change="changeRegInput()" required/>
+          <input type="password" style="height:30px; width:225px" ng-model="newPassword" ng-change="changeRegInput()" required/>
+        <br>
+        
+          <label style="font-size: 12px;">Repeat Password</label>
+        <br>
+          <input type="password" style="height:30px; width:450px" ng-model="repeatPassword" ng-change="changeRegInput()" required/>
+        <br>
+        
+          <label style="font-size: 12px;"> Display Name </label>
+        <br>
+          <input type="text" style="height:30px; width:450px" ng-model="displayName" ng-change="changeRegInput()" required/>
+        <br>
+        
+          <label style="font-size: 12px;">Contact Email</label>
+        <br>
+          <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeRegInput()" required/>
+        <br><br>
+      <button type="submit" id="loggingIn" class="btn btn-success" ng-click="registerNewUser(newUsername, newPassword, repeatPassword, displayName, contactEmail)">Register</button>
+      </form>
+       <div ng-show="registrationFail" style="color: red">{{regitrationFailMsg}}</div>
+    </div><!--end div for col of register-->
+    </div> <!-- end div for register container--> 
+        
+        <!-- forget password 
+        <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot" >Password Reset</button>-->
+        <!-- pop up form div starts here-->    
+        <div id="container" ng-show="userForgot" >
+        <div class="col-sm-8 col-sm-offset-2">
+            <br>
+        <div>Did you forget your password?</div>
+        <form name="forgot_password" novalidate >
+    <!-- form fields -->
+      <fieldset>
+          <label style="font-size: 12px;">Enter Email</label>
+        <br>
+          <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeForgetInput()" required/>
+      <button id="loggingIn" type="submit" class="btn btn-success" ng-click="forgetClick(contactEmail)">Send Email</button>
+      </fieldset>
+   </form>
+       <div ng-show="emailFail" style="color: red">{{forgotPasswordMsg}}</div>
+        </div>
+        </div>
+      
+</div><!--end div of container of buttons-->
+        
+    </figcaption>
+</figure> <!--end of figure-->
+</div> <!-- div for whole page-->
 
-
-
-</body>
-
-
-</html>
