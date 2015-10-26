@@ -4,7 +4,6 @@
     <meta charset="UTF-8" /> <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="css/custom.css" rel="stylesheet"> <!--customizes the Let's Be Buddies title-->
     <link href="css/animate.css" rel="stylesheet"> <!-- animates the LyfeLifter title-->
-    <script type="text/javascript" src="resourceJS/form-switch.js"></script>
     <!--script to switch forms-->
 
 </script>  
@@ -31,7 +30,9 @@
 <div id="buttons" style="text-align: center;">   
 
     <!-- First button for login-->
-    <button id ="loginPush" class="btn btn-primary" ng-model="loginUser" ng-click="loginUser =! loginUser" >Login</button>
+    <button id ="loginPush" class="btn btn-primary" ng-model="loginUser" ng-click="loginUser =! loginUser" >Login</button> 
+    <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser">Register</button>
+    <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot" >Password Reset</button>
     <!-- pop up form div starts here-->    
     <div id="container" ng-show="loginUser" >
     <div class="col-sm-8 col-sm-offset-2">
@@ -42,12 +43,12 @@
         
           <label style="font-size: 12px;"> Username </label>
         <br>
-          <input id="loginname" type="text" style="height:30px; width:450px" ng-model="username" ng-change="changeInput()" required/>
+          <input id="loginname" type="text" style="height:30px; width:450px; color: black;" ng-model="username" ng-change="changeInput()" required/>
         <br>
         
           <label style="font-size: 12px;">Password</label>
         <br>
-          <input id="loginpassword" type="password" style="height:30px; width:450px" ng-change="changeInput()" ng-model="password" required/>
+          <input id="loginpassword" type="password" style="height:30px; width:450px; color: black;" ng-change="changeInput()" ng-model="password" required/>
         <br><br>
       <button id="loginClick" type="submit" class="btn btn-success" ng-click="login(username, password)">Login</button>
       </fieldset>
@@ -57,32 +58,32 @@
         </div><!-- end of login div-->
     
 <!-- Register button start-->
-   <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser">Register</button>
+  <!-- <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser">Register</button>-->
    <div class="container" ng-show="newUser">
     <div class="col-sm-8 col-sm-offset-2">	
       <div ><h3>New User Registration</h3></div>
      <!-- form fields -->
       <form name="registrationForm" novalidate>
         
-          <label style="font-size: 12px;"> Username </label> <label style="font-size: 12px; padding-left:190px;">Password</label>
+          <label style="font-size: 12px;"> Username </label> <label style="font-size: 12px; padding-left:170px;">Password</label>
         <br>
-          <input type="text" style="height:30px; width:250px" ng-model="newUsername" ng-change="changeRegInput()" required/>
-          <input type="password" style="height:30px; width:250px" ng-model="newPassword" ng-change="changeRegInput()" required/>
+          <input type="text" style="height:30px; width:225px; color: black;" ng-model="newUsername" ng-change="changeRegInput()" required/>
+          <input type="password" style="height:30px; width:225px; color: black;" ng-model="newPassword" ng-change="changeRegInput()" required/>
         <br>
         
           <label style="font-size: 12px;">Repeat Password</label>
         <br>
-          <input type="password" style="height:30px; width:450px" ng-model="repeatPassword" ng-change="changeRegInput()" required/>
+          <input type="password" style="height:30px; width:450px; color: black;" ng-model="repeatPassword" ng-change="changeRegInput()" required/>
         <br>
         
           <label style="font-size: 12px;"> Display Name </label>
         <br>
-          <input type="text" style="height:30px; width:450px" ng-model="displayName" ng-change="changeRegInput()" required/>
+          <input type="text" style="height:30px; width:450px; color: black;" ng-model="displayName" ng-change="changeRegInput()" required/>
         <br>
         
           <label style="font-size: 12px;">Contact Email</label>
         <br>
-          <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeRegInput()" required/>
+          <input type="email" style="height:30px; width:450px; color: black;" ng-model="contactEmail" ng-change="changeRegInput()" required/>
         <br><br>
       <button type="submit" id="loggingIn" class="btn btn-success" ng-click="registerNewUser(newUsername, newPassword, repeatPassword, displayName, contactEmail)">Register</button>
       </form>
@@ -90,8 +91,8 @@
     </div><!--end div for col of register-->
     </div> <!-- end div for register container--> 
         
-        <!-- forget password -->
-        <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot" >Password Reset</button>
+        <!-- forget password 
+        <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot" >Password Reset</button>-->
         <!-- pop up form div starts here-->    
         <div id="container" ng-show="userForgot" >
         <div class="col-sm-8 col-sm-offset-2">
@@ -102,7 +103,7 @@
       <fieldset>
           <label style="font-size: 12px;">Enter Email</label>
         <br>
-          <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeForgetInput()" required/>
+          <input type="email" style="height:30px; width:450px; color: black;" ng-model="contactEmail" ng-change="changeForgetInput()" required/>
       <button id="loggingIn" type="submit" class="btn btn-success" ng-click="forgetClick(contactEmail)">Send Email</button>
       </fieldset>
    </form>
