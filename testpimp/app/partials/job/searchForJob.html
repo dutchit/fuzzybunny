@@ -4,7 +4,8 @@
 <h2> Search for Jobs by Categories</h2>
 <br>
 <div> 
-<select ng-model="jobCats" ng-options="jobCategorie for jobCategorie in jobCategories"></select><button ng-click="changeNuggetJobs()">Search</button>
+<select ng-model="jobCats" ng-options="jobCategorie for jobCategorie in jobCategories"></select>
+    <button  class="btn btn-primary btn-sm" ng-click="changeNuggetJobs()">Search</button>
 </div>
 <table>
     <tr ng-repeat="job in jobs">
@@ -39,7 +40,7 @@
                     </tr>
 
                 </table>
-		  			<p><button ng-click="chooseJob(job)"> Apply </button></p>
+		  			<p style="padding-top: 5px;"><button ng-click="chooseJob(job)" class="btn btn-primary btn-sm"> Apply </button></p>
 		  		</div>
 		  	</td>
 </table>
