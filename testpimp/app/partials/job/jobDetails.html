@@ -1,0 +1,64 @@
+<div ng-controller="jobDetailsCtrl">
+
+<h3>Posting Details</h3>
+
+	<table>
+				<tr>
+                   <th>Job Title</th>
+                   <td>{{myPosting.title}} </td>
+               </tr>
+               <tr>
+                   <th>Job Description</th>
+                   <td>{{myPosting.description}}</td>
+               </tr>
+               <tr>
+                   <th>Job Category</th>
+                   <td>{{myPosting.category}}</td>
+               </tr>
+               <tr>
+                   <th>Job Location</th>
+                   <td>{{myPosting.location}}</td>
+               </tr>
+               <tr>
+                   <th>Time and Duration</th>
+                   <td>
+                       Date: {{myPosting.date}} for {{myPosting.duration}} {{myPosting.timeUnit}}
+                   </td>
+               </tr>
+               <tr>
+                   <th>Compensation</th>
+                   <td>
+                       <div ng-show="myPosting.price=='set'"> ${{myPosting.lowerBound}}</div>
+                       <div ng-show="myPosting.price=='range'">From ${{myPosting.lowerBound}} to ${{myPosting.upperBound}}</div>
+                   </td>
+               </tr>
+
+           </table>
+		<p><button ng-click="editPostingDetails()"> Edit </button>&nbsp<button ng-click="deletePosting(myPosting)">Delete</button>&nbsp<button ng-click="getApplicants()" ng-disabled="hasApplicants">View Applicants</button></p>
+		<div ng-show="showApplicants">  
+		<br>
+		<h4>Applicants</h4>
+				<table>
+				    <tr ng-repeat="applicant in applicants">
+				
+				        <td><a href="#" ng-click="showApplicantDetails = ! showApplicantDetails">{{applicant.applicantInfo.displayName}}</a>     Rating: {{applicant.applicantInfo.employee_rating}}
+				            <div class="col-sm-offset-1" ng-show="showApplicantDetails">
+						  		<table>
+				                    <tr>
+				                        <th>Provider Description</th>
+				                        <td>{{applicant.profileInfo.description}}</td>
+				                    </tr>
+				                    <tr>
+				                        <th>Provider Location</th>
+				                        <td>{{applicant.profileInfo.location}}</td>
+				                    </tr>
+				                    <tr>
+				                        <th>Bidding Price</th>
+				                        <td>${{applicant.price}}</td>
+				                    </tr>
+				                </table>
+							<button>Choose</button>
+						</div>
+
+</div>
+

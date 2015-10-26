@@ -1,16 +1,8 @@
-<div ng-controller="updatesCtrl">
+<div ng-controller="myPostedJobsCtr">
 
-
-
-<h3>My Commitments</h3>
-<p> job </p>
-<p> job </p>
-<p> job </p>
-
-<h3>My Active Postings</h3>
-
+<h4>Current Listing</h4>
 <table>
-    <tr ng-repeat="posting in myPostings">
+    <tr ng-repeat="posting in myPostings" ng-show="posting.status=="Active">
 
         <td><a href="#" ng-click="showPostingDetails = ! showPostingDetails">{{posting.title}}  {{posting.date}}</a>
             <div class="col-sm-offset-1" ng-show="showPostingDetails">
@@ -42,21 +34,10 @@
                     </tr>
 
                 </table>
-                	<p><button ng-click="jobDetails(posting)"> View Details </button></p>
-		  	<!--	<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>   -->	
+		  			<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>
 		  		</div>
 		  	</td>
 </table>
-
-<h3>My Application</h3>
-<p> blah2</p>
-<p> blah2</p>
-<p> blah2</p>
-
-<h3>Should I?</h3>
-<p>do this</p>
-<p>do this</p>
-<p>do this</p>
 
 
 </div>
