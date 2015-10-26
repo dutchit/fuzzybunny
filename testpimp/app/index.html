@@ -1,6 +1,10 @@
 <<<<<<< HEAD
 <!DOCTYPE html>
 <html>
+=======
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
@@ -50,121 +54,72 @@
 <!DOCTYPE html> <!-- html documentation-->
 >>>>>>> master
 
+>>>>>>> feature-elisa
 <head>
-    <meta charset="UTF-8" /> <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="css/custom.css" rel="stylesheet"> <!--customizes the Let's Be Buddies title-->
-    <link href="css/animate.css" rel="stylesheet"> <!-- animates the LyfeLifter title-->
-    <script type="text/javascript" src="resourceJS/form-switch.js"></script>
-    <!--script to switch forms-->
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>LifeLifter</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-</script>  
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="resourceJS/angular-resource.js"></script>
+<script type="text/javascript" src="resourceJS/ui-bootstrap-tpls-0.13.0.min.js"></script>
+<script type="text/javascript" src="resourceJS/angular-idle.js"></script>
+<script type="text/javascript" src="resourceJS/angular-confirm.js"></script>
+<script type="text/javascript" src="bower_components/angular-mocks/angular-mocks.js"></script>
+<script type="text/javascript" src="bower_components/checklist-model/checklist-model.js"></script>
+<script type="text/javascript" src="bower_components/ngstorage/ngStorage.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/example.css" />
+<link href="css/styles.css" rel="stylesheet">
+
+<!-- Vendor: Javascripts -->
+<script	type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Vendor: Angular, followed by our custom Javascripts -->
+<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+
+<!-- Our Website Javascripts -->
+<script src="js/app.js"></script>
+<script src="js/mainCtrl.js"></script>
+<script src="js/userDashboardCtrl.js"></script>
+<script src="js/myProfilesCtrl.js"></script>
+<script src="js/postJobCtrl.js"></script>
+<script src="js/updatesCtrl.js"></script>
+<script src="js/editJobCtrl.js"></script>
+<script src="js/searchForJobCtrl.js"></script>
+<script src="js/newProviderProfileCtrl.js"></script>
+<script src="js/applyToJobCtrl.js"></script>
+<script src="js/job/jobDetailsCtrl.js"></script>
+<script src="js/job/myPostedJobsCtrl.js"></script>
+
+
+<script src="services/dataSharingService.js"></script>
+<script src="services/getConstants.js"></script>
+<script src="services/requestService.js"></script>
+
+
+<!--<script src="services/tokenService.js"></script>   -->
+
 </head>
 
+<body ng-app="testpimp" ng-controller="mainCtrl">
+	<div ng-include='"partials/idleLogout.html"'></div>
+	<div ng-include src="header" ng-show="showHeader"></div>
+	<div >
+		<div ng-include src="viewUrl"></div>
 
-<!-- BEGINNING OF THE ENTIRE LOGIN/HOME PAGE-->
-<div id="form_wrapper" class="form_wrapper">   
-<!--beginning of demo-->
-    
-<figure class="homepageeffect">
-    <!--figure start-->
-    <img src="images/4.jpg" alt="img3" height="100%" width="100%"/>
-    <figcaption>  
-        <!--figcaption start-->
-        <!--titles on top -->
-	   <h2 id="letsbebudhometitle" class="animated fadeInDown">Life <span>Lifter</span></h2>
-       <p >We will lift you above clouds. <br /><br />
-           <a href="partials/about.html">About Us</a>
-        </p>
-  
+	</div>
+	<div ng-include='"templates/footer.html"' ng-show="showFooter"></div> 
 
-<!--start div container for login, register, pw reset buttons-->
-<div id="buttons" style="text-align: center;">   
 
-    <!-- First button for login-->
-    <button id ="loginPush" class="btn btn-primary" ng-model="loginUser" ng-click="loginUser =! loginUser" >Login</button> 
-    <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser">Register</button>
-    <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot" >Password Reset</button>
-    <!-- pop up form div starts here-->    
-    <div id="container" ng-show="loginUser" >
-    <div class="col-sm-8 col-sm-offset-2">
-      <div id="page-header"><h3>Login Page</h3></div>
-        <form name="loginForm" novalidate >
-    <!-- form fields -->
-      <fieldset>
-        
-          <label style="font-size: 12px;"> Username </label>
-        <br>
-          <input id="loginname" type="text" style="height:30px; width:450px" ng-model="username" ng-change="changeInput()" required/>
-        <br>
-        
-          <label style="font-size: 12px;">Password</label>
-        <br>
-          <input id="loginpassword" type="password" style="height:30px; width:450px" ng-change="changeInput()" ng-model="password" required/>
-        <br><br>
-      <button id="loginClick" type="submit" class="btn btn-success" ng-click="login(username, password)">Login</button>
-      </fieldset>
-   </form>
-       <div ng-show="loginFail" style="color: red">{{loginFailMsg}}</div>
-        </div>
-        </div><!-- end of login div-->
-    
-<!-- Register button start-->
-  <!-- <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser">Register</button>-->
-   <div class="container" ng-show="newUser">
-    <div class="col-sm-8 col-sm-offset-2">	
-      <div ><h3>New User Registration</h3></div>
-     <!-- form fields -->
-      <form name="registrationForm" novalidate>
-        
-          <label style="font-size: 12px;"> Username </label> <label style="font-size: 12px; padding-left:170px;">Password</label>
-        <br>
-          <input type="text" style="height:30px; width:225px" ng-model="newUsername" ng-change="changeRegInput()" required/>
-          <input type="password" style="height:30px; width:225px" ng-model="newPassword" ng-change="changeRegInput()" required/>
-        <br>
-        
-          <label style="font-size: 12px;">Repeat Password</label>
-        <br>
-          <input type="password" style="height:30px; width:450px" ng-model="repeatPassword" ng-change="changeRegInput()" required/>
-        <br>
-        
-          <label style="font-size: 12px;"> Display Name </label>
-        <br>
-          <input type="text" style="height:30px; width:450px" ng-model="displayName" ng-change="changeRegInput()" required/>
-        <br>
-        
-          <label style="font-size: 12px;">Contact Email</label>
-        <br>
-          <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeRegInput()" required/>
-        <br><br>
-      <button type="submit" id="loggingIn" class="btn btn-success" ng-click="registerNewUser(newUsername, newPassword, repeatPassword, displayName, contactEmail)">Register</button>
-      </form>
-       <div ng-show="registrationFail" style="color: red">{{regitrationFailMsg}}</div>
-    </div><!--end div for col of register-->
-    </div> <!-- end div for register container--> 
-        
-        <!-- forget password 
-        <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot" >Password Reset</button>-->
-        <!-- pop up form div starts here-->    
-        <div id="container" ng-show="userForgot" >
-        <div class="col-sm-8 col-sm-offset-2">
-            <br>
-        <div>Did you forget your password?</div>
-        <form name="forgot_password" novalidate >
-    <!-- form fields -->
-      <fieldset>
-          <label style="font-size: 12px;">Enter Email</label>
-        <br>
-          <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeForgetInput()" required/>
-      <button id="loggingIn" type="submit" class="btn btn-success" ng-click="forgetClick(contactEmail)">Send Email</button>
-      </fieldset>
-   </form>
-       <div ng-show="emailFail" style="color: red">{{forgotPasswordMsg}}</div>
-        </div>
-        </div>
-      
-</div><!--end div of container of buttons-->
-        
-    </figcaption>
-</figure> <!--end of figure-->
-</div> <!-- div for whole page-->
 
+
+
+</body>
+
+
+</html>
