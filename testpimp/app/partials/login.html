@@ -23,7 +23,7 @@
         <!--titles on top -->
 	   <h2 id="letsbebudhometitle" class="animated fadeInDown">Life <span>Lifter</span></h2>
        <p >We will lift you above clouds. <br /><br />
-           <a href="partials/about.html">About Us</a>
+           <a href="partials/about.html">About</a>
         </p>
   
 
@@ -39,16 +39,16 @@
         <form name="loginForm" novalidate >
     <!-- form fields -->
       <fieldset>
-        <p>
-          <label> Username </label>
+        
+          <label style="font-size: 12px;"> Username </label>
         <br>
           <input id="loginname" type="text" style="height:30px; width:450px" ng-model="username" ng-change="changeInput()" required/>
-        </p>
-        <p>
-          <label>Password</label>
+        <br>
+        
+          <label style="font-size: 12px;">Password</label>
         <br>
           <input id="loginpassword" type="password" style="height:30px; width:450px" ng-change="changeInput()" ng-model="password" required/>
-        </p>
+        <br>
       <button id="loginClick" type="submit" class="btn btn-success" ng-click="login(username, password)">Login</button>
       </fieldset>
    </form>
@@ -63,31 +63,31 @@
       <div ><h3>New User Registration</h3></div>
      <!-- form fields -->
       <form name="registrationForm" novalidate>
-        <p>
-          <label> Username </label>
+        
+          <label style="font-size: 12px;"> Username </label>
         <br>
           <input type="text" style="height:30px; width:450px" ng-model="newUsername" ng-change="changeRegInput()" required/>
-        </p>
-        <p>
-          <label>Password</label>
+        <br>
+        
+          <label style="font-size: 12px;">Password</label>
         <br>
           <input type="password" style="height:30px; width:450px" ng-model="newPassword" ng-change="changeRegInput()" required/>
-        </p>
-        <p>
-          <label>Repeat Password</label>
+        <br>
+        
+          <label style="font-size: 12px;">Repeat Password</label>
         <br>
           <input type="password" style="height:30px; width:450px" ng-model="repeatPassword" ng-change="changeRegInput()" required/>
-        </p>
-        <p>
-          <label> Display Name </label>
+        <br>
+        
+          <label style="font-size: 12px;"> Display Name </label>
         <br>
           <input type="text" style="height:30px; width:450px" ng-model="displayName" ng-change="changeRegInput()" required/>
-        </p>
-        <p>
-          <label>Contact Email</label>
+        <br>
+        
+          <label style="font-size: 12px;">Contact Email</label>
         <br>
           <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeRegInput()" required/>
-        </p>
+        <br
       <button type="submit" id="loggingIn" class="btn btn-success" ng-click="registerNewUser(newUsername, newPassword, repeatPassword, displayName, contactEmail)">Register</button>
       </form>
        <div ng-show="registrationFail" style="color: red">{{regitrationFailMsg}}</div>
@@ -103,7 +103,7 @@
         <form name="forgot_password" novalidate >
     <!-- form fields -->
       <fieldset>
-          <label>Contact Email</label>
+          <label style="font-size: 12px;">Enter Email</label>
         <br>
           <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeForgetInput()" required/>
       <button id="loggingIn" type="submit" class="btn btn-success" ng-click="forgetClick(contactEmail)">Send Email</button>
