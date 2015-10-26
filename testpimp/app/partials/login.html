@@ -48,7 +48,7 @@
           <label style="font-size: 12px;">Password</label>
         <br>
           <input id="loginpassword" type="password" style="height:30px; width:450px" ng-change="changeInput()" ng-model="password" required/>
-        <br>
+        <br><br>
       <button id="loginClick" type="submit" class="btn btn-success" ng-click="login(username, password)">Login</button>
       </fieldset>
    </form>
@@ -83,7 +83,7 @@
           <label style="font-size: 12px;">Contact Email</label>
         <br>
           <input type="email" style="height:30px; width:450px" ng-model="contactEmail" ng-change="changeRegInput()" required/>
-        <br>
+        <br><br>
       <button type="submit" id="loggingIn" class="btn btn-success" ng-click="registerNewUser(newUsername, newPassword, repeatPassword, displayName, contactEmail)">Register</button>
       </form>
        <div ng-show="registrationFail" style="color: red">{{regitrationFailMsg}}</div>
