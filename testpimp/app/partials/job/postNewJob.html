@@ -53,9 +53,14 @@
 	</tr>
 
 </table>
+<!--buttons-->    
+<div id="previewbutton" style="padding-left: 10px;">  
+	<button ng-click="postNewJobPreview()" class="btn btn-primary btn-sm">Preview</button>
+</div>
 
-	<button ng-click="postNewJobPreview()">Preview</button><button ng-click="resetNewJobForm()">Reset</button>
-
+<div id="resetbutton" style="padding-left: 10px;"> 
+    <button class="btn btn-primary btn-sm" ng-click="resetNewJobForm()">Reset</button>
+</div>
 <!-- </form> -->
 </div>
 
@@ -92,7 +97,11 @@
 	</tr>
 
 </table>
-<button ng-click="postNewJobEdit()">Edit</button>
+<div id="editbutton" style="padding-left: 10px;">    
+<button class="btn btn-primary btn-sm" ng-click="postNewJobEdit()" >Edit</button>
 </div>
-<button ng-click="postNewJob()">Post</button><button ng-click="dashboard()">Cancel</button>
+</div>
+<div id="postbutton" style="padding-left: 10px;">
+<button class="btn btn-primary btn-sm" ng-click="postNewJob()">Post</button><button class="btn btn-primary btn-sm" ng-click="dashboard()">Cancel</button>
+</div>
 </div>
