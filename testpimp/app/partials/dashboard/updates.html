@@ -7,7 +7,7 @@
 <p> job </p>
 <p> job </p>
 
-<h3>My Postings</h3>
+<h3>My Active Postings</h3>
 
 <table>
     <tr ng-repeat="posting in myPostings">
@@ -42,7 +42,8 @@
                     </tr>
 
                 </table>
-		  			<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>
+                	<p><button ng-click="jobDetails(posting)"> View Details </button></p>
+		  	<!--	<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>   -->	
 		  		</div>
 		  	</td>
 </table>

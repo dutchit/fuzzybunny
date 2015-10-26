@@ -152,6 +152,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 				return response;
 	};
+	
 	service.deleteJob = function(userId, id) {
 		var response = $http({
 			url : restServer + 'api/jobs/' + userId + "/" + id,
@@ -229,6 +230,54 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 		return response;
 	}
+	
+	service.getApplicants = function(jobId) {
+		var response = $http({
+			url : restServer + 'api/jobs/' + jobId + '/applicants',
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.getProviderProfile = function(applicantID, providerprofileID) {
+		var response = $http({
+			url : restServer + 'api/providerprofiles/' + applicantID + '/'+ providerprofileID,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.getApplicantInformation = function(applicantId) {
+		var response = $http({
+			url : restServer + 'api/userprofiles/' + applicantId,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	
+
   return service;
 
 }]);
