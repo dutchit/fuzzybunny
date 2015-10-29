@@ -144,6 +144,8 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 							shareDataService.setToken($scope.$storage.token);
 							
 							console.log("success: " + JSON.stringify(shareDataService.getUser()));
+							$scope.showHeader = true;
+							$scope.showFooter = true;
 							$scope.viewUrl = 'partials/dashboard/userDashboard.html';
 							$scope.header = 'partials/dashboard/loggedInHeader.html';
 						}, 
@@ -206,6 +208,25 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
             $scope.emailFail = false;
             $scope.emailFailMsg ="";
         }
+        
+        $scope.toggleLogin = function () {
+ //       	$scope.loginUser = ! $scope.loginUser;
+        	$scope.newUser = false;
+        	$scope.userForgot = false;
+        }
+        
+        $scope.toggleRegister = function () {
+        	$scope.loginUser = false;
+//        	$scope.newUser = ! $scope.newUser;
+        	$scope.userForgot = false;
+        }
+        
+        $scope.toggleForgot = function () {
+        	$scope.loginUser = false;
+        	$scope.newUser = false;
+//        	$scope.userForgot = ! $scope.userForgot;
+        }
+        
 		
 		// idle logout functions
 		function closeModals() {

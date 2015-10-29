@@ -30,9 +30,9 @@
 <div id="buttons" style="text-align: center;">   
 
     <!-- First button for login-->
-    <button id ="loginPush" class="btn btn-primary" ng-model="loginUser" ng-click="loginUser =! loginUser" >Login</button> 
-    <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser">Register</button>
-    <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot" >Password Reset</button>
+    <button id ="loginPush" class="btn btn-primary" ng-model="loginUser" ng-click="loginUser =! loginUser; toggleLogin()" >Login</button> 
+    <button ng-model="newUser" class="btn btn-primary" ng-click="newUser = !newUser; toggleRegister()">Register</button>
+    <button id ="forgotButton" class="btn btn-primary" ng-model="forgotPw" ng-click="userForgot =! userForgot; toggleForgot()" >Password Reset</button>
     <!-- pop up form div starts here-->    
     <div id="container" ng-show="loginUser" >
     <div class="col-sm-8 col-sm-offset-2">
