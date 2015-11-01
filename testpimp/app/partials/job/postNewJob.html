@@ -2,31 +2,31 @@
 <h2>Post new job</h2>
 <div ng-show="showEditNewJob">
 <!-- <form name="postNewJobForm"> -->
-<table>
-	<tr>
+<table style="width: 50%">
+	<tr style="height:50px;">
 		<th>Job Title</th>
 		<td><input type="text" ng-model="newjob.title" ng-change="changeNewJobTitle()" required/></td>
 		<td><div ng-show="newJobTitleError" style="color: red">{{newJobTitleErrorMsg}}</div></td>
 	</tr>
-	<tr>
+	<tr style="height:50px;">
 		<th>Job Category</th>
 		<td>
-			<select ng-init="newjob.oldCat = jobCategories[0]" ng-model="newjob.oldCat" ng-options="jobCategorie for jobCategorie in jobCategories"></select>
+			<select style="width:167px;" ng-init="newjob.oldCat = jobCategories[0]" ng-model="newjob.oldCat" ng-options="jobCategorie for jobCategorie in jobCategories" ></select>
 			<input type = "text" ng-show ="newjob.oldCat == 'Other'" ng-model = "newjob.newCat"/>
 		</td>
 		<td><div ng-show="newJobCategoryError" style="color: red">{{newJobCategoryErrorMsg}}</div></td>
 	</tr>
-	<tr>
+	<tr style="height:50px;">
 		<th>Job Description</th>
 		<td><input type="text" ng-model="newjob.description" ng-change="changeNewJobDescription()" required/></td>
 		<td><div ng-show="newJobDescriptionError" style="color: red">{{newJobDescriptionErrorMsg}}</div></td>
 	</tr>
-	<tr>
+	<tr style="height:50px;">
 		<th>Job Location</th>
 		<td><input type="text" ng-model="newjob.location" ng-change="changeNewJobLocation()" required/></td>
 		<td><div ng-show="newJobLocationError" style="color: red">{{newJobLocationErrorMsg}}</div></td>
 	</tr>
-	<tr>
+	<tr style="height:75px;">
 		<th>Time and Duration</th>
 		<td>
 			<label>Date: &nbsp</label><input type="date" ng-model="date" placeholder="yyyy-MM-dd" required/><br>
@@ -35,7 +35,7 @@
 		</td>
 		<td><div ng-show="newJobDateTimeError" style="color: red">{{newJobDateTimeErrorMsg}}</div></td>
 	</tr>
-	<tr>
+	<tr style="height:75px;">
 		<th>Price Information</th>
 		<td>
 			<label>Price mode:&nbsp</label><select ng-init="newjob.price = paymentOptions[0]" ng-model="newjob.price" ng-options="paymentOption.option for paymentOption in paymentOptions" ng-change="changePriceMode()"></select>
@@ -53,9 +53,14 @@
 	</tr>
 
 </table>
+<!--buttons-->    
+<div id="previewbutton" style="padding-left: 10px;float:left;">  
+	<button ng-click="postNewJobPreview()" class="btn btn-primary btn-sm">Preview</button>
+</div>
 
-	<button ng-click="postNewJobPreview()">Preview</button><button ng-click="resetNewJobForm()">Reset</button>
-
+<div id="resetbutton" style="padding-left: 10px;float:left;"> 
+    <button class="btn btn-primary btn-sm" ng-click="resetNewJobForm()">Reset</button>
+</div>
 <!-- </form> -->
 </div>
 
@@ -78,8 +83,8 @@
 		<td>{{newjob.location}}</td>
 	</tr>
 	<tr>
-		<th>Time and Duration</th>
-		<td>
+		<th style=>Time and Duration</th>
+		<td style=>
 			{{newjob.formattedDate}} for {{newjob.duration}} {{newjob.timeUnit}}
 		</td>
 	</tr>
@@ -91,8 +96,15 @@
 		</td>
 	</tr>
 
+    
 </table>
-<button ng-click="postNewJobEdit()">Edit</button>
+    
+<div id="editbutton" style="padding-left: 10px;">    
+<button class="btn btn-primary btn-sm" ng-click="postNewJobEdit()" >Edit</button>
 </div>
-<button ng-click="postNewJob()">Post</button><button ng-click="dashboard()">Cancel</button>
+</div>
+<br><br>
+<div id="postbutton" style="padding-left: 10px;">
+<button class="btn btn-primary btn-sm" ng-click="postNewJob()">Post</button>&nbsp&nbsp&nbsp<button class="btn btn-primary btn-sm" ng-click="dashboard()">Cancel</button>
+</div>
 </div>
