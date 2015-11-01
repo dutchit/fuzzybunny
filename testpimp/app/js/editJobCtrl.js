@@ -9,14 +9,25 @@ angular.module('testpimp').controller('editJobCtrl', function ($rootScope, $scop
 	$scope.showPreviewPosting = false;
 	var postingFormValid = false;
 	$scope.posting = shareDataService.getJobToEdit();
+
+
+	function pad(number, length){
+    var str = "" + number
+    while (str.length < length) {
+        str = '0'+str
+    }
+    return str
+	}
 	console.log("job from shareDataSerivce: " + JSON.stringify($scope.posting));
 	if ($scope.posting.price == $scope.paymentOptions[0].value) {
 		$scope.posting.priceMode = $scope.paymentOptions[0];
 	} else if ($scope.posting.price == $scope.paymentOptions[1].value) {
 		$scope.posting.priceMode = $scope.paymentOptions[1];
 	}
-	$scope.date = new Date($scope.posting.date);
-	console.log("posting date: " + $scope.date);
+	stringDate = $scope.posting.date+"T08:00";
+	date = new Date(stringDate);
+	$scope.date = date;
+	console.log("posting date: " + date);
 	requestService.getCategories().then(
 			function(success) {
 				var cat = success.data;
@@ -154,7 +165,7 @@ angular.module('testpimp').controller('editJobCtrl', function ($rootScope, $scop
 			postPostingPayload ["date"] = $scope.posting.date;
 			postPostingPayload ["duration"] = $scope.posting.duration;
 			postPostingPayload ["timeUnit"] = $scope.posting.timeUnit;
-			postPostingPayload ["location"] = $scope.user.location;
+			postPostingPayload ["location"] = $scope.posting.location;
 			if ($scope.posting.price == $scope.paymentOptions[0]) {
 				postPostingPayload ["lowerBound"] = $scope.posting.setPrice;
 				postPostingPayload ["upperBound"] = $scope.posting.setPrice;

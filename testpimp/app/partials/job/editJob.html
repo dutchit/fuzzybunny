@@ -22,6 +22,9 @@
 		<td><div ng-show="postingDescriptionError" style="color: red">{{postingDescriptionErrorMsg}}</div></td>
 	</tr>
 	<tr>
+
+<!-- location keeps disappearing when editing -->
+
 		<th>Job Location</th>
 		<td><input type="text" ng-model="posting.location" ng-change="changePostingLocation()" required/></td>
 		<td><div ng-show="postingLocationError" style="color: red">{{postingLocationErrorMsg}}</div></td>
