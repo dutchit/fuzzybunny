@@ -11,20 +11,20 @@
 	<button ng-click="editMainProfile()">Edit Profile</button>
 	<div ng-show="showEditMainProfile">
 		<table>
-			<tr>
+			<!-- <tr>
 				<td>
 					<th>Username</th>
 				</td>
 				<td>
 					<input type="text" ng-model="mainProfile.userName" value="mainProfile.userName">
 				</td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>
 					<th>Profile Title</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.profileTitle" ng-init="mainProfile.userName = user.profileTitle">
+					<input type="text" ng-model="mainProfile.profileTitle" ng-init="mainProfile.profileTitle = user.profileTitle">
 				</td>
 			</tr>
 			<tr>
@@ -32,7 +32,7 @@
 					<th>Description</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.description" ng-init="mainProfile.userName = user.description">
+					<input type="text" ng-model="mainProfile.description" ng-init="mainProfile.description = user.description">
 				</td>
 			</tr>
 			<tr>
@@ -40,7 +40,7 @@
 					<th>Display Name</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.displayName" ng-init="mainProfile.userName = user.displayName">
+					<input type="text" ng-model="mainProfile.displayName" ng-init="mainProfile.displayName = user.displayName">
 				</td>
 			</tr>
 			<tr>
@@ -48,7 +48,7 @@
 					<th>Location</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.location" ng-init="mainProfile.userName = user.location">
+					<input type="text" ng-model="mainProfile.location" ng-init="mainProfile.location = user.location">
 				</td>
 			</tr>
 			<tr>
@@ -56,7 +56,7 @@
 					<th>Contact Email</th>
 				</td>
 				<td>
-					<input type="email" ng-model="mainProfile.contactEmail" ng-init="mainProfile.userName = user.contactEmail">
+					<input type="email" ng-model="mainProfile.contactEmail" ng-init="mainProfile.contactEmail = user.contactEmail">
 				</td>
 			</tr>
 		</table>
