@@ -11,7 +11,7 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 		    }
 	);
 
-	requestService.getUserInformationForProfile($scope.user.id).then(
+/*	requestService.getUserInformationForProfile($scope.user.id).then(
 			function(success) {
 				$scope.mainUserProfileInformation = success.data;
 				//console.log("user: " + JSON.stringify($scope.mainUserProfileInformation));
@@ -20,13 +20,26 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 		     console.log(error);	        
 		    }
 	);
-
+*/
 	$scope.showEditProviderProfile = false;
 	$scope.showEditMainProfile = false;
 	
 	$scope.deleteProviderProfile = function (providerProfile) {
 		if(confirm("Delete: " + providerProfile.profileTitle + "?")){
-			requestService.deleteProvider(providerProfile.id, $scope.user.id);
+//			requestService.deleteProvider(providerProfile.id, $scope.user.id);
+			requestService.deleteProvider(providerProfile.id, $scope.user.id).then(
+					function(success) {
+						requestService.getMyProviderProfiles($scope.user.id).then(
+								function(success) {
+									$scope.myProviderProfiles = success.data;
+								}, 
+							     function(error){		        
+							    }
+						);
+					}, 
+				     function(error){		        
+				    }
+			);
 		}
 	}
 	$scope.editMainProfile = function(){
@@ -55,7 +68,8 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 			postEditMainProfilePayload ["location"] = $scope.mainProfile.location;
 			requestService.updateMainProfile(postEditMainProfilePayload, $scope.user.id).then(
 				function(success){
-					$scope.updatedMainProfile = success.data;
+					console.log("updated user main profile " + JSON.stringify(success.data));
+					$scope.user = success.data;
 				},
 				function(error){
 
@@ -69,7 +83,7 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 
 	$scope.editProviderProfile = function(provider){
 		provider.showEditProviderProfile = true;
-		provider.showProviderProfileDetails = false;
+		provider.showPreviewProviderProfile = false;
 	}
 
 	$scope.validProviderEdit = function(provider) {
@@ -115,12 +129,13 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 
 				 });
 			provider.showEditProviderProfile = false;
-			provider.showProviderProfileDetails = true;
+			provider.showPreviewProviderProfile = true;
 		}
 	}
 
-	$scope.cancelEditProfile = function(provider){
+/*	$scope.cancelEditProfile = function(provider){
 		provider.showEditProviderProfile = false;
-		provider.showProviderProfileDetails = true;
+		provider.showPreviewProviderProfile = true;
 	}
+	*/
 });

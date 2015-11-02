@@ -4,13 +4,13 @@
 <h4>My User Profile</h4>
 <div>
 	<!-- <p>Username: {{mainUserProfileInformation.username}}</p> -->
-	<p>Profile Title: {{mainUserProfileInformation.profileTitle}}</p>
-	<p>Description: {{mainUserProfileInformation.description}}</p>
-	<p>Displayname: {{mainUserProfileInformation.displayName}}</p>
+	<p>Profile Title: {{user.profileTitle}}</p>
+	<p>Description: {{user.description}}</p>
+	<p>Displayname: {{user.displayName}}</p>
 	<!-- <p>Location: {{mainUserProfileInformation.location}}</p>
 	<p>Contact Email: {{mainUserProfileInformation.contactEmail}}</p> -->
-	<p>Employer Rating: {{mainUserProfileInformation.employer_rating}}</p>
-	<p>Employee Rating: {{mainUserProfileInformation.employee_rating}}</p>
+	<p>Employer Rating: {{user.employer_rating}}</p>
+	<p>Employee Rating: {{user.employee_rating}}</p>
 	<button ng-click="editMainProfile()">Edit Profile</button>
 	<div ng-show="showEditMainProfile">
 		<table>
@@ -74,8 +74,9 @@
 
 <table>
 <tr ng-repeat="providerProfile in myProviderProfiles">
-	<td><a href="#" ng-click="showProviderProfileDetails = ! showProviderProfileDetails">{{providerProfile.profileTitle}}</a>
+	<td><a href="#" ng-click="showProviderProfileDetails = ! showProviderProfileDetails; cancelEditProfile()">{{providerProfile.profileTitle}}</a>
 		<div ng-show="showProviderProfileDetails">
+		<div ng-init="showPreviewProviderProfile='true'" ng-show="showPreviewProviderProfile">
 			<table style="border-collapse: separate; boarder-spacing: 5px;">
 				<tr>
 					<th valign="top">Location: </th>
@@ -86,9 +87,9 @@
 					<td>{{providerProfile.description}}</td>
 				</tr>
 			</table>
-			<p><button ng-click="editProviderProfile(this)">Edit</button></p>
+			<p><button ng-click="editProviderProfile(this)">Edit</button> <button ng-click="deleteProviderProfile(providerProfile)">delete</button></p>
 		</div>
-		<div ng-show="showEditProviderProfile">
+		<div ng-show="! showPreviewProviderProfile">
 		<table>
 			<tr>
 				<th>Profile Title</th>
@@ -110,10 +111,11 @@
 			</tr>
 		</table>
 		<p><button ng-click="confirmEditProfile(editProfile, providerProfile.id)">Confirm</button></p>
-		<p><button ng-click="cancelEditProfile(this)">Cancel</button></p>
+		<p><button ng-click="showPreviewProviderProfile =! showPreviewProviderProfile">Cancel</button></p>
+		</div>
 		</div>
 	</td>
-	<td><button ng-click="deleteProviderProfile(providerProfile)">delete</button>
+	<td>
 	</td>
 </tr>
 </table>
