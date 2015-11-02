@@ -4,7 +4,7 @@
 
 <h4>Current Listing</h4>
 <table>
-	<tr ng-repeat="posting in myPostedJobs" ng-show="posting.status==''">
+	<tr ng-repeat="posting in myPostedJobs" ng-show="posting.status=='Active'">
         <td><a href="#" ng-click="showPostingDetails = ! showPostingDetails">{{posting.title}}  {{posting.date}}</a>
             <div class="col-sm-offset-1" ng-show="showPostingDetails">
 		  		<table>

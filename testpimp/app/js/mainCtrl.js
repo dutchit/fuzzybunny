@@ -227,6 +227,12 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 //        	$scope.userForgot = ! $scope.userForgot;
         }
         
+        $scope.gotoAboutUs = function () {
+        	
+        	$scope.viewUrl = 'partials/about.html';
+			
+        }
+        
 		
 		// idle logout functions
 		function closeModals() {
