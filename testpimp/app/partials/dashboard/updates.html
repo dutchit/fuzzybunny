@@ -2,18 +2,12 @@
 
 
 
-<label style="font-weight: bold; font-size: 1.5em">My Commitments as an Employee</label>
-<p> Contract 1 </p>
-<p> Contract 2 </p>
+<h3>My Commitments</h3>
+<p> job </p>
+<p> job </p>
+<p> job </p>
 
-<br>
-
-<label style="font-weight: bold; font-size: 1.5em">My Commitments as an Employer</label>
-<p> Contract 1 </p>
-<p> Contract 2 </p>
-
-<br>
-<label style="font-weight: bold; font-size: 1.5em">My Active Postings</label>&nbsp&nbsp<a href="#" ng-click="myPostedJobs()" style="color:blue;""> See all postings </a>
+<h3>My Postings</h3>
 
 <table>
     <tr ng-repeat="posting in myPostings">
@@ -48,21 +42,45 @@
                     </tr>
 
                 </table>
-                	<p><button ng-click="jobDetails(posting)"> View Details </button></p>
-		  	<!--	<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>   -->	
+		  			<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>
 		  		</div>
 		  	</td>
 </table>
-<br>
-<label style="font-weight: bold; font-size: 1.5em">My Submitted Applications</label>
-<p> Job applied 1</p>
-<p> Job applied 2</p>
 
-<br>
-<label style="font-weight: bold; font-size: 1.5em">My Job Offers</label>
-<p>Proposed job 1</p>
-<p>Proposed job 2</p>
+<h3>My Application(s)</h3>
+<table>
+    <tr ng-repeat="applied in appliedTo">
+        <td>
+            <a href="#" ng-click="showApplicationDetails = ! showApplicationDetails">{{applied.jobsAppliedInfo.price}}</a>
+            <div class="col-sm-offset-1" ng-show="showApplicationDetails">
+                <table>
+                    <tr>
+                        <th>Application Status</th>
+                        <td>{{applied.jobsAppliedInfo.appInfo.status}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Description</th>
+                        <td>{{applied.jobsAppliedInfo.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Location</th>
+                        <td>{{applied.jobsAppliedInfo.location}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Date</th>
+                        <td>{{applied.jobsAppliedInfo.date}}</td>
+                    </tr>
+                </table>
+                <!-- <p><button ng-click="cancelApplication(jobApplication)">Cancel</button></p> -->
+            </div>
+        </td>
+    </tr>
+</table>
 
+<h3>Should I?</h3>
+<p>do this</p>
+<p>do this</p>
+<p>do this</p>
 
 
 </div>

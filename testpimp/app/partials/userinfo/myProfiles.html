@@ -1,30 +1,33 @@
-<div ng-controller="myProfilesCtrl" class="col-sm-12">
+<div ng-controller="myProfilesCtrl">
 
 
 <h4>My User Profile</h4>
-<div class="col-sm-12">
-	<p>username: {{user.username}}</p>
-	<p>description: {{user.description}}</p>
-	<p>displayName: {{user.displayName}}</p>
-	<p>location: {{user.location}}</p>
-	<p>contactEmail: {{user.contactEmail}}</p>
+<div>
+	<!-- <p>Username: {{mainUserProfileInformation.username}}</p> -->
+	<p>Profile Title: {{mainUserProfileInformation.profileTitle}}</p>
+	<p>Description: {{mainUserProfileInformation.description}}</p>
+	<p>Displayname: {{mainUserProfileInformation.displayName}}</p>
+	<!-- <p>Location: {{mainUserProfileInformation.location}}</p>
+	<p>Contact Email: {{mainUserProfileInformation.contactEmail}}</p> -->
+	<p>Employer Rating: {{mainUserProfileInformation.employer_rating}}</p>
+	<p>Employee Rating: {{mainUserProfileInformation.employee_rating}}</p>
 	<button ng-click="editMainProfile()">Edit Profile</button>
 	<div ng-show="showEditMainProfile">
 		<table>
-			<tr>
+			<!-- <tr>
 				<td>
 					<th>Username</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.userName" value="mainProfile.userName">
+					<input type="text" ng-model="mainProfile.userName" ng-init="mainProfile.userName = user.username">	
 				</td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>
 					<th>Profile Title</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.profileTitle" ng-init="mainProfile.userName = user.profileTitle">
+					<input type="text" ng-model="mainProfile.profileTitle" ng-init="mainProfile.profileTitle = user.profileTitle">	<!-- ng-init="mainProfile.userName = user.profileTitle" -->
 				</td>
 			</tr>
 			<tr>
@@ -32,7 +35,7 @@
 					<th>Description</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.description" ng-init="mainProfile.userName = user.description">
+					<input type="text" ng-model="mainProfile.description" ng-init="mainProfile.description = user.description">
 				</td>
 			</tr>
 			<tr>
@@ -40,15 +43,15 @@
 					<th>Display Name</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.displayName" ng-init="mainProfile.userName = user.displayName">
+					<input type="text" ng-model="mainProfile.displayName" ng-init="mainProfile.displayName = user.displayName">
 				</td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td>
 					<th>Location</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.location" ng-init="mainProfile.userName = user.location">
+					<input type="text" ng-model="mainProfile.location" ng-init="mainProfile.location = user.location">	
 				</td>
 			</tr>
 			<tr>
@@ -56,40 +59,36 @@
 					<th>Contact Email</th>
 				</td>
 				<td>
-					<input type="email" ng-model="mainProfile.contactEmail" ng-init="mainProfile.userName = user.contactEmail">
+					<input type="email" ng-model="mainProfile.contactEmail" ng-init="mainProfile.contactEmail = user.contactEmail">
 				</td>
-			</tr>
+			</tr> -->
 		</table>
 		<button ng-click="confirmEditMainProfile()">Confirm</button>
+		<button ng-click="cancelEditMainProfile()">Cancel</button>
 	</div>
-	<br><br><br>
 </div>
 
-<br><br><br>
-
+<br><br>
 
 <h4>My Provider profiles</h4>
-<div class="col-sm-12">
+
 <table>
-<tr ng-repeat="providerProfile in myProviderProfiles" >
-	<td class="col-sm-8"><a href="#" ng-click="showProviderProfileDetails = ! showProviderProfileDetails">{{providerProfile.profileTitle}}</a>
-		<div ng-show="showProviderProfileDetails"  class="col-sm-offset-1">
+<tr ng-repeat="providerProfile in myProviderProfiles">
+	<td><a href="#" ng-click="showProviderProfileDetails = ! showProviderProfileDetails">{{providerProfile.profileTitle}}</a>
+		<div ng-show="showProviderProfileDetails">
 			<table style="border-collapse: separate; boarder-spacing: 5px;">
 				<tr>
 					<th valign="top">Location: </th>
-					<td class="col-sm-8">{{providerProfile.location}}</td>
+					<td>{{providerProfile.location}}</td>
 				</tr>
 				<tr>
-					<th valign="top" class="col-sm-10">Description: </th>
+					<th valign="top">Description: </th>
 					<td>{{providerProfile.description}}</td>
 				</tr>
-				<tr>
-					<td></td>
-					<td> <button ng-click="editProviderProfile(this)">Edit</button> &nbsp <button ng-click="deleteProviderProfile(providerProfile)">delete</button></td>
-				</tr>
 			</table>
+			<p><button ng-click="editProviderProfile(this)">Edit</button></p>
 		</div>
-		<div ng-show="showEditProviderProfile"  class="col-sm-offset-1">
+		<div ng-show="showEditProviderProfile">
 		<table>
 			<tr>
 				<th>Profile Title</th>
@@ -114,10 +113,10 @@
 		<p><button ng-click="cancelEditProfile(this)">Cancel</button></p>
 		</div>
 	</td>
-	<td>
+	<td><button ng-click="deleteProviderProfile(providerProfile)">delete</button>
 	</td>
 </tr>
 </table>
 <button ng-click="createProviderProfile()">New Provider Profile</button>
-</div>
+
 </div>
