@@ -276,6 +276,20 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		return response;
 	}
 	
+	service.postChosenApplicant = function(applicationID) {
+		var response = $http({
+			url : restServer + 'api/jobs/applications/' +applicationID +"/chosen",
+			method : 'POST',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+				return response;
+	};
 	
 
   return service;
