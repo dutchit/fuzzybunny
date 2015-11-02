@@ -1,9 +1,18 @@
 <div ng-controller="myPostedJobsCtrl">
+<<<<<<< HEAD
 
 <h4>Current Listing</h4>
 <table>
     <tr ng-repeat="posting in myPostedJobs" ng-show="posting.status=='Active'">
 
+=======
+
+<h4>Contract </h4>
+
+<h4>Current Listing</h4>
+<table>
+	<tr ng-repeat="posting in myPostedJobs" ng-show="posting.status==''">
+>>>>>>> 1e77e6c279ca1ad41510f1cc176032c1f28dcf74
         <td><a href="#" ng-click="showPostingDetails = ! showPostingDetails">{{posting.title}}  {{posting.date}}</a>
             <div class="col-sm-offset-1" ng-show="showPostingDetails">
 		  		<table>
@@ -34,11 +43,57 @@
                     </tr>
 
                 </table>
-		  			<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>
-		  		</div>
-		  	</td>
+		  			<p><button ng-click="jobDetails(posting)"> View Details </button></p>
+<!--   			<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button>&nbsp<button ng-click="getApplicants(posting)" ng-disabled="hasApplicants">View Applicants</button></p>
+ -->				  		
+		  		
+		  		
+		  			
+		  	</div>
+		</td>
 </table>
 
+
+<h4>Past Postings </h4>
+<table>
+    <tr ng-repeat="posting in myPostedJobs" ng-show="posting.status=='Expired'">
+
+        <td><a href="#" ng-click="showPostingDetails = ! showPostingDetails">{{posting.title}}  {{posting.date}}</a>
+            <div class="col-sm-offset-1" ng-show="showPostingDetails">
+                <table>
+                    <tr>
+                        <th>Job Description</th>
+                        <td>{{posting.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Category</th>
+                        <td>{{posting.category}}</td>
+                    </tr>
+                    <tr>
+                        <th>Job Location</th>
+                        <td>{{posting.location}}</td>
+                    </tr>
+                    <tr>
+                        <th>Time and Duration</th>
+                        <td>
+                            Date: {{posting.date}} for {{posting.duration}} {{posting.timeUnit}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Compensation</th>
+                        <td>
+                            <div ng-show="posting.price=='set'"> ${{posting.lowerBound}}</div>
+                            <div ng-show="posting.price=='range'">From ${{posting.lowerBound}} to ${{posting.upperBound}}</div>
+                        </td>
+                    </tr>
+
+                </table>
+                    <p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>
+                </div>
+            </td>
+</table>
+
+<<<<<<< HEAD
 <h4>Contract </h4>
 
 <h4>Past Postings </h4>
@@ -79,6 +134,8 @@
                 </div>
             </td>
 </table>
+=======
+>>>>>>> 1e77e6c279ca1ad41510f1cc176032c1f28dcf74
 <h4>Deleted Postings </h4>
 <table>
     <tr ng-repeat="posting in myPostedJobs" ng-show="posting.status=='Deleted'">

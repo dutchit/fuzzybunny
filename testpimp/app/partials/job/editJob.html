@@ -28,7 +28,7 @@
 	</tr>
 	<tr>
 		<th>Time and Duration</th>
-		<td> {{date}}
+		<td>
 			<label>Date: &nbsp</label><input type="date" ng-model="date" placeholder="yyyy-MM-dd" ng-change="newDate()" required/><br>
 			<label>for &nbsp</label><input type="number" ng-model="posting.duration" required/>
 			<select ng-model="posting.timeUnit" ng-options="timeUnitOption for timeUnitOption in timeUnitOptions"></select>
@@ -54,7 +54,7 @@
 
 </table>
 
-	<button ng-click="postPostingPreview()">Preview</button><button ng-click="resetPostingForm()">Reset</button>
+	<button class="btn btn-primary btn-sm" ng-click="postPostingPreview()">Preview</button>&nbsp&nbsp&nbsp<button  class="btn btn-primary btn-sm" ng-click="resetPostingForm()">Reset</button>
 
 <!-- </form> -->
 </div>
@@ -92,7 +92,7 @@
 	</tr>
 
 </table>
-<button ng-click="updatePostingEdit()">Edit</button>
+<button class="btn btn-primary btn-sm" ng-click="updatePostingEdit()">Edit</button>
 </div>
-<button ng-click="updatePosting()">Update</button><button ng-click="dashboard()">Cancel</button>
+<button class="btn btn-primary btn-sm" ng-click="updatePosting()">Update</button>&nbsp&nbsp&nbsp<button class="btn btn-primary btn-sm" ng-click="dashboard()">Cancel</button>
 </div>

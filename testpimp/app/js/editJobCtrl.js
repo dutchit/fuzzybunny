@@ -9,6 +9,7 @@ angular.module('testpimp').controller('editJobCtrl', function ($rootScope, $scop
 	$scope.showPreviewPosting = false;
 	var postingFormValid = false;
 	$scope.posting = shareDataService.getJobToEdit();
+	console.log("job from shareDataSerivce: " + JSON.stringify($scope.posting));
 	if ($scope.posting.price == $scope.paymentOptions[0].value) {
 		$scope.posting.priceMode = $scope.paymentOptions[0];
 	} else if ($scope.posting.price == $scope.paymentOptions[1].value) {
@@ -166,7 +167,7 @@ angular.module('testpimp').controller('editJobCtrl', function ($rootScope, $scop
 					function(success) {
 						$scope.posting = success.data;
 						alert("Job updated");
-				        $scope.dashboard();							
+				        $scope.jobDetails($scope.posting);							
 					}, 
 				     function(error){		        
 				    }

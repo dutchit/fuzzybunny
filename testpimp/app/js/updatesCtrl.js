@@ -43,16 +43,9 @@ angular.module('testpimp').controller('updatesCtrl', function ($rootScope, $scop
 		);
 	}
 	
-	$scope.deletePosting = function(posting) {
-		requestService.deleteJob($scope.user.id, posting.id).then(
-				function(success) {
-					$scope.getMyPostedJobs();
-				},
-			     function(error){
+	
+	
 
-			    }
-		);
-	}
 	
 });
 

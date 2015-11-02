@@ -24,9 +24,13 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 	$scope.postNewJob = function () {
 		$scope.contentUrl = 'partials/job/postNewJob.html';
 	}
-	$scope.editPostingDetails = function (posting) {
-		shareDataService.setJobToEdit(posting);
+	$scope.gotoEditPosting = function () {
+//		shareDataService.setJobToEdit(posting);
 		$scope.contentUrl = 'partials/job/editJob.html';
+	}
+	$scope.jobDetails = function (posting) {
+		shareDataService.setJobToEdit(posting);
+		$scope.contentUrl = 'partials/job/jobDetails.html';
 	}
 	
 	$scope.searchForJob = function () {
@@ -60,6 +64,10 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 	
 	$scope.gotoApplyJob = function() {
 		$scope.contentUrl = 'partials/job/applyToJob.html';
+	}
+	
+	$scope.myPostedJobs = function(){
+		$scope.contentUrl = 'partials/job/myPostedJobs.html';
 	}
 	
 });
