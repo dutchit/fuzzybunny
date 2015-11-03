@@ -70,5 +70,9 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 		$scope.contentUrl = 'partials/job/myPostedJobs.html';
 	}
 	
+	$scope.myApplications = function(){
+		$scope.contentUrl = 'partials/application/myApplications.html';
+	}
+	
 });
 

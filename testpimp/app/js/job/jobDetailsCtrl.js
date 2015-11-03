@@ -42,7 +42,7 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 	$scope.deletePosting = function(posting) {
 		requestService.deleteJob($scope.user.id, posting.id).then(
 				function(success) {
-					$scope.getMyPostedJobs();
+					$scope.myPostedJobs();
 				},
 			     function(error){
 

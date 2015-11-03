@@ -4,7 +4,7 @@
 
 <h4>Current Listing</h4>
 <table>
-	<tr ng-repeat="posting in myPostedJobs" ng-show="posting.status==''">
+	<tr ng-repeat="posting in myPostedJobs" ng-show="posting.status=='Active'">
         <td><a href="#" ng-click="showPostingDetails = ! showPostingDetails">{{posting.title}}  {{posting.date}}</a>
             <div class="col-sm-offset-1" ng-show="showPostingDetails">
 		  		<table>
@@ -46,7 +46,7 @@
 </table>
 
 
-<h4>Past Postings </h4>
+<h4>Expired Postings </h4>
 <table>
     <tr ng-repeat="posting in myPostedJobs" ng-show="posting.status=='Expired'">
 
@@ -119,7 +119,7 @@
                     </tr>
 
                 </table>
-                    <!-- <p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p> -->
+                    <p><button ng-click="editPostingDetails(posting)"> Repost </button></p>
                 </div>
             </td>
 </table>
