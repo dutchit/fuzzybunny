@@ -87,8 +87,7 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
 							$scope.$storage.user = success.data;
 							$scope.$storage.token = 'logged in';
 							shareDataService.setUser($scope.$storage.user);
-							shareDataService.setToken($scope.$storage.token);		
-							console.log("logged in user: " + JSON.stringify($scope.$storage.user));
+							shareDataService.setToken($scope.$storage.token);							
 							$scope.viewUrl = 'partials/dashboard/userDashboard.html';
 							$scope.header = 'partials/dashboard/loggedInHeader.html';
 							$scope.showHeader = true;

@@ -43,46 +43,9 @@ angular.module('testpimp').controller('updatesCtrl', function ($rootScope, $scop
 		);
 	}
 	
-	$scope.deletePosting = function(posting) {
-		requestService.deleteJob($scope.user.id, posting.id).then(
-				function(success) {
-					$scope.getMyPostedJobs();
-				},
-			     function(error){
-
-			    }
-		);
-	}
 	
-	// put in separate file before push
-
-
-	$scope.appliedTo=[];
-	requestService.getJobsAppliedTo().then(
-		function(success){
-			var jobsApplied = success.data;
-			//console.log("jobsApplied: " + JSON.stringify(jobsApplied));
-			if(jobsApplied.length > 0){
-				angular.forEach(jobsApplied, function(jobsAppliedTo){
-					if(jobsAppliedTo.applicantID === $scope.user.id){
-					requestService.getJobDetailsForApplicant(jobsAppliedTo.applicantID, jobsAppliedTo.jobID).then(
-						function(success){
-							jobsApplied["jobsAppliedInfo"] = success.data[0];
-							jobsApplied["jobsAppliedInfo"]["appInfo"] = jobsAppliedTo;
-							//console.log("jobsAppliedInfo: " + JSON.stringify(success.data));
-							$scope.appliedTo.push(jobsApplied);
-						},
-						function(error){
-
-						})
-					}
-				});
-			}
-		},
-		function(error){
-
-		});
 	
 
+	
 });
 

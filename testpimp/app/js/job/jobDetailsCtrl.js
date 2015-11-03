@@ -59,18 +59,5 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 	$scope.getApplicants = function() {
 		$scope.showApplicants = ! $scope.showApplicants;
 	}
-	
-	$scope.chooseApplicant = function(applicant) {
-		requestService.postChosenApplicant(applicant["id"]).then(
-					function(success) {
-						console.log(applicant["id"]);
-					},
-				     function(error){
-	
-				    }
-				);
-			
-			
-		}
 });
 
