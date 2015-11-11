@@ -13,7 +13,7 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 	requestService.getCategories().then(
 			function(success) {
 				var cat = success.data;
-				cat.push("Other");
+//				cat.push("Other");
 				console.log("cat: " + cat);
 				$scope.jobCategories = cat;	
 

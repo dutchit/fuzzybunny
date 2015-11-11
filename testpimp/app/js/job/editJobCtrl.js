@@ -20,7 +20,7 @@ angular.module('testpimp').controller('editJobCtrl', function ($rootScope, $scop
 	requestService.getCategories().then(
 			function(success) {
 				var cat = success.data;
-				cat.push("Other");
+//				cat.push("Other");
 				console.log("cat: " + cat);
 				$scope.jobCategories = cat;	
 			}, 

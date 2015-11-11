@@ -1,8 +1,6 @@
-<div ng-controller="updatesCtrl">
+<div>
 
-
-
-<label style="font-weight: bold; font-size: 1.5em">My Commitments as an Employee</label>&nbsp&nbsp<a href="#" ng-click="myContracts()" style="color:blue;""> See all contracts </a>
+<label style="font-weight: bold; font-size: 1.5em">Active Commitments as an Employee</label>
 <table>
     <tr ng-repeat="employeeContract in employeeContracts">
         <td>
@@ -46,7 +44,7 @@
 
 <br>
 
-<label style="font-weight: bold; font-size: 1.5em">My Commitments as an Employer</label>&nbsp&nbsp<a href="#" ng-click="myContracts()" style="color:blue;""> See all contracts </a>
+<label style="font-weight: bold; font-size: 1.5em">Active Commitments as an Employer</label>
 <table>
     <tr ng-repeat="employerContract in employerContracts">
         <td>
@@ -88,130 +86,91 @@
 </table>
 
 
-<br>
-<label style="font-weight: bold; font-size: 1.5em">My Active Postings</label>&nbsp&nbsp<a href="#" ng-click="myPostedJobs()" style="color:blue;""> See all postings </a>
-
+<label style="font-weight: bold; font-size: 1.5em">Past Contracts as an Employee</label>
 <table>
-    <tr ng-repeat="posting in myPostings" ng-show="posting.status=='Active'">
-
-        <td><a href="#" ng-click="showPostingDetails = ! showPostingDetails">{{posting.title}}  {{posting.date}}</a>
-            <div class="col-sm-offset-1" ng-show="showPostingDetails">
-		  		<table>
-                    <tr>
-                        <th>Job Description</th>
-                        <td>{{posting.description}}</td>
-                    </tr>
-                    <tr>
-                        <th>Job Category</th>
-                        <td>{{posting.category}}</td>
-                    </tr>
-                    <tr>
-                        <th>Job Location</th>
-                        <td>{{posting.location}}</td>
-                    </tr>
-                    <tr>
-                        <th>Time and Duration</th>
-                        <td>
-                            Date: {{posting.date}} for {{posting.duration}} {{posting.timeUnit}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Compensation</th>
-                        <td>
-                            <div ng-show="posting.price=='set'"> ${{posting.lowerBound}}</div>
-                            <div ng-show="posting.price=='range'">From ${{posting.lowerBound}} to ${{posting.upperBound}}</div>
-                        </td>
-                    </tr>
-
-                </table>
-                	<p><button ng-click="jobDetails(posting)"> View Details </button></p>
-		  	<!--	<p><button ng-click="editPostingDetails(posting)"> Edit </button>&nbsp<button ng-click="deletePosting(posting)">Delete</button></p>   -->	
-		  		</div>
-		  	</td>
-</table>
-<br>
-
-<br>
-<label style="font-weight: bold; font-size: 1.5em">My Job Offers</label>
-<table>
-    <tr ng-repeat="offer in offers" ng-show="offer.jobsAppliedInfo.appInfo.status=='Chosen'">
+    <tr ng-repeat="pastEmployeeContract in pastEmployeeContracts">
         <td>
-            <a href="#" ng-click="showOfferDetails = ! showOfferDetails">{{offer.jobsAppliedInfo.title}}  {{offer.jobsAppliedInfo.appInfo.price}}</a>
-            <div class="col-sm-offset-1" ng-show="showOfferDetails">
+            <a href="#" ng-click="showPastEmployeeContractDetails = ! showPastEmployeeContractDetails">{{pastEmployeeContract.jobsAppliedInfo.title}}  {{pastEmployeeContract.jobsAppliedInfo.appInfo.price}}</a>
+            <div class="col-sm-offset-1" ng-show="showPastEmployeeContractDetails">
                 <table>
                     <tr>
                         <th>Application Status</th>
-                        <td>{{offer.jobsAppliedInfo.appInfo.status}}</td>
+                        <td>{{pastEmployeeContract.jobsAppliedInfo.appInfo.status}}</td>
                     </tr>
                     <tr>
                         <th>Job Description</th>
-                        <td>{{offer.jobsAppliedInfo.description}}</td>
+                        <td>{{pastEmployeeContract.jobsAppliedInfo.description}}</td>
                     </tr>
                     <tr>
                         <th>Job Location</th>
-                        <td>{{offer.jobsAppliedInfo.location}}</td>
+                        <td>{{pastEmployeeContract.jobsAppliedInfo.location}}</td>
                     </tr>
                     
                     <tr>
                         <th>Time and Duration</th>
                         <td>
-                            Date: {{offer.jobsAppliedInfo.date}} for {{offer.jobsAppliedInfo.duration}} {{offer.jobsAppliedInfo.timeUnit}}
+                            Date: {{pastEmployeeContract.jobsAppliedInfo.date}} for {{pastEmployeeContract.jobsAppliedInfo.duration}} {{pastEmployeeContract.jobsAppliedInfo.timeUnit}}
                         </td>
                     </tr>
                     <tr>
                         <th>Compensation</th>
                         <td>
-                            <div ng-show="offer.jobsAppliedInfo.price=='set'"> ${{offer.jobsAppliedInfo.lowerBound}}</div>
-                            <div ng-show="offer.jobsAppliedInfo.price=='range'">From ${{offer.jobsAppliedInfo.lowerBound}} to ${{offer.jobsAppliedInfo.upperBound}}</div>
+                            <div ng-show="pastEmployeeContract.jobsAppliedInfo.price=='set'"> ${{pastEmployeeContract.jobsAppliedInfo.lowerBound}}</div>
+                            <div ng-show="pastEmployeeContract.jobsAppliedInfo.price=='range'">From ${{pastEmployeeContract.jobsAppliedInfo.lowerBound}} to ${{pastEmployeeContract.jobsAppliedInfo.upperBound}}</div>
                         </td>
                     </tr>
                 </table>
-                <p><button ng-click="acceptJobOffer(offer.jobsAppliedInfo.appInfo)">Accept</button>&nbsp&nbsp<button ng-click="declineJobOffer(offer.jobsAppliedInfo.appInfo)">Decline</button></p>
+             <p><button >Rate Employer</button>&nbsp&nbsp<button >I Quit</button></p>
+  
             </div>
         </td>
     </tr>
 </table>
 
 
-<label style="font-weight: bold; font-size: 1.5em">My Submitted Applications</label>&nbsp&nbsp<a href="#" ng-click="myApplications()" style="color:blue;""> See all applications </a>
+<br>
+
+<label style="font-weight: bold; font-size: 1.5em">Past Contracts as an Employer</label>
 <table>
-    <tr ng-repeat="applied in appliedTo" ng-show="applied.jobsAppliedInfo.appInfo.status=='Submitted'">
+    <tr ng-repeat="pastEmployerContract in pastEmployerContracts">
         <td>
-            <a href="#" ng-click="showApplicationDetails = ! showApplicationDetails">{{applied.jobsAppliedInfo.title}}  {{applied.jobsAppliedInfo.appInfo.price}}</a>
-            <div class="col-sm-offset-1" ng-show="showApplicationDetails">
+            <a href="#" ng-click="showPastEmployerContractDetails = ! showPastEmployerContractDetails">{{pastEmployerContract.jobsAppliedInfo.title}}  {{pastEmployerContract.jobsAppliedInfo.appInfo.price}}</a>
+            <div class="col-sm-offset-1" ng-show="showPastEmployerContractDetails">
                 <table>
                     <tr>
                         <th>Application Status</th>
-                        <td>{{applied.jobsAppliedInfo.appInfo.status}}</td>
+                        <td>{{pastEmployerContract.jobsAppliedInfo.appInfo.status}}</td>
                     </tr>
                     <tr>
                         <th>Job Description</th>
-                        <td>{{applied.jobsAppliedInfo.description}}</td>
+                        <td>{{pastEmployerContract.jobsAppliedInfo.description}}</td>
                     </tr>
                     <tr>
                         <th>Job Location</th>
-                        <td>{{applied.jobsAppliedInfo.location}}</td>
+                        <td>{{pastEmployerContract.jobsAppliedInfo.location}}</td>
                     </tr>
+                    
                     <tr>
                         <th>Time and Duration</th>
                         <td>
-                            Date: {{applied.jobsAppliedInfo.date}} for {{applied.jobsAppliedInfo.duration}} {{applied.jobsAppliedInfo.timeUnit}}
+                            Date: {{pastEmployerContract.jobsAppliedInfo.date}} for {{pastEmployerContract.jobsAppliedInfo.duration}} {{pastEmployerContract.jobsAppliedInfo.timeUnit}}
                         </td>
                     </tr>
                     <tr>
                         <th>Compensation</th>
                         <td>
-                            <div ng-show="applied.jobsAppliedInfo.price=='set'"> ${{applied.jobsAppliedInfo.lowerBound}}</div>
-                            <div ng-show="applied.jobsAppliedInfo.price=='range'">From ${{applied.jobsAppliedInfo.lowerBound}} to ${{applied.jobsAppliedInfo.upperBound}}</div>
+                            <div ng-show="pastEmployerContract.jobsAppliedInfo.price=='set'"> ${{pastEmployerContract.jobsAppliedInfo.lowerBound}}</div>
+                            <div ng-show="pastEmployerContract.jobsAppliedInfo.price=='range'">From ${{pastEmployerContract.jobsAppliedInfo.lowerBound}} to ${{pastEmployerContract.jobsAppliedInfo.upperBound}}</div>
                         </td>
                     </tr>
                 </table>
-
+              <p><button >Rate Employee</button>&nbsp&nbsp<button >You're Fired</button></p>
+ 
             </div>
         </td>
     </tr>
 </table>
 
 
-</div>
 
+</div>

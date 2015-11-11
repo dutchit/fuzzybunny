@@ -276,6 +276,118 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		return response;
 	}
 	
+	service.getUserInformationForProfile = function(userID){
+		var response = $http({
+			url : restServer + 'api/userprofiles/' + userID,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.updateMainProfile = function(payload, userID){
+		var response = $http({
+			url : restServer + 'api/userprofiles/' + userID,
+			method : 'PUT',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data: payload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+
+	service.getJobsAppliedTo = function(){
+		var response = $http({
+			url : restServer + 'api/jobs/applications',
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+
+	service.getJobDetailsForApplicant = function(userID, jobID){
+		var response = $http({
+			url : restServer + 'api/jobs/' + userID + '/' + jobID,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.createContract = function(createContractPayload) {
+		console.log("createContractPayload: " + JSON.stringify(createContractPayload));
+		var response = $http({
+			url : restServer + '/api/jobs/applications/' + createContractPayload.id + '/accepted',			
+			method : 'POST',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data : applicationPayload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.declineJobOffer = function(applicationPayload) {
+		console.log("applicationPayload: " + JSON.stringify(applicationPayload));
+		var response = $http({
+			url : restServer + 'api/jobs/applications/' + applicationPayload.id,
+			method : 'PUT',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data: payload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.getContracts = function(role, id, contractStatus) {
+//		url(r'^api/jobs/contracts/poster/(?P<pk>[0-9]+)/previous$', job.poster_previous_contracts),
+//	    url(r'^api/jobs/contracts/applicant/(?P<pk>[0-9]+)/previous$', job.applicant_previous_contracts),
+	    var response = $http({
+			url : restServer + 'api/jobs/contracts/' + role + '/' + id + '/' + contractStatus,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data: payload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
 	
 
   return service;
