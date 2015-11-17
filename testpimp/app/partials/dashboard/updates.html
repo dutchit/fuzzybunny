@@ -6,33 +6,31 @@
 <table>
     <tr ng-repeat="employeeContract in employeeContracts">
         <td>
-            <a href="#" ng-click="showEmployeeContractDetails = ! showEmployeeContractDetails">{{employeeContract.jobsAppliedInfo.title}}  {{employeeContract.jobsAppliedInfo.appInfo.price}}</a>
+            <a href="#" ng-click="showEmployeeContractDetails = ! showEmployeeContractDetails">{{employeeContract.contractInfo.postingInfo.title}}  ${{employeeContract.contractInfo.applicationInfo.price}}</a>
             <div class="col-sm-offset-1" ng-show="showEmployeeContractDetails">
                 <table>
                     <tr>
                         <th>Application Status</th>
-                        <td>{{employeeContract.jobsAppliedInfo.appInfo.status}}</td>
+                        <td>{{employeeContract.contractInfo.status}}</td>
                     </tr>
                     <tr>
                         <th>Job Description</th>
-                        <td>{{employeeContract.jobsAppliedInfo.description}}</td>
+                        <td>{{employeeContract.contractInfo.postingInfo.description}}</td>
                     </tr>
                     <tr>
                         <th>Job Location</th>
-                        <td>{{employeeContract.jobsAppliedInfo.location}}</td>
+                        <td>{{employeeContract.contractInfo.postingInfo.location}}</td>
                     </tr>
                     
                     <tr>
                         <th>Time and Duration</th>
                         <td>
-                            Date: {{employeeContract.jobsAppliedInfo.date}} for {{employeeContract.jobsAppliedInfo.duration}} {{employeeContract.jobsAppliedInfo.timeUnit}}
+                            Date: {{employeeContract.contractInfo.postingInfo.date}} for {{employeeContract.contractInfo.postingInfo.duration}} {{employeeContract.contractInfo.postingInfo.timeUnit}}
                         </td>
                     </tr>
                     <tr>
                         <th>Compensation</th>
-                        <td>
-                            <div ng-show="employeeContract.jobsAppliedInfo.price=='set'"> ${{employeeContract.jobsAppliedInfo.lowerBound}}</div>
-                            <div ng-show="employeeContract.jobsAppliedInfo.price=='range'">From ${{employeeContract.jobsAppliedInfo.lowerBound}} to ${{employeeContract.jobsAppliedInfo.upperBound}}</div>
+                        <td>${{employeeContract.contractInfo.applicationInfo.price}}
                         </td>
                     </tr>
                 </table>
@@ -134,7 +132,7 @@
 <br>
 <label style="font-weight: bold; font-size: 1.5em">My Job Offers</label>
 <table>
-    <tr ng-repeat="offer in offers" ng-show="offer.jobsAppliedInfo.appInfo.status=='Chosen'">
+    <tr ng-repeat="offer in appliedTo" ng-show="offer.jobsAppliedInfo.appInfo.status=='Chosen'">
         <td>
             <a href="#" ng-click="showOfferDetails = ! showOfferDetails">{{offer.jobsAppliedInfo.title}}  {{offer.jobsAppliedInfo.appInfo.price}}</a>
             <div class="col-sm-offset-1" ng-show="showOfferDetails">
@@ -161,8 +159,7 @@
                     <tr>
                         <th>Compensation</th>
                         <td>
-                            <div ng-show="offer.jobsAppliedInfo.price=='set'"> ${{offer.jobsAppliedInfo.lowerBound}}</div>
-                            <div ng-show="offer.jobsAppliedInfo.price=='range'">From ${{offer.jobsAppliedInfo.lowerBound}} to ${{offer.jobsAppliedInfo.upperBound}}</div>
+                             ${{offer.jobsAppliedInfo.appInfo.price}}
                         </td>
                     </tr>
                 </table>
@@ -177,7 +174,7 @@
 <table>
     <tr ng-repeat="applied in appliedTo" ng-show="applied.jobsAppliedInfo.appInfo.status=='Submitted'">
         <td>
-            <a href="#" ng-click="showApplicationDetails = ! showApplicationDetails">{{applied.jobsAppliedInfo.title}}  {{applied.jobsAppliedInfo.appInfo.price}}</a>
+            <a href="#" ng-click="showApplicationDetails = ! showApplicationDetails">{{applied.jobsAppliedInfo.title}}  ${{applied.jobsAppliedInfo.appInfo.price}}</a>
             <div class="col-sm-offset-1" ng-show="showApplicationDetails">
                 <table>
                     <tr>
@@ -201,9 +198,10 @@
                     <tr>
                         <th>Compensation</th>
                         <td>
-                            <div ng-show="applied.jobsAppliedInfo.price=='set'"> ${{applied.jobsAppliedInfo.lowerBound}}</div>
+                           ${{applied.jobsAppliedInfo.appInfo.price}}
+          <!--                   <div ng-show="applied.jobsAppliedInfo.price=='set'"> ${{applied.jobsAppliedInfo.lowerBound}}</div>
                             <div ng-show="applied.jobsAppliedInfo.price=='range'">From ${{applied.jobsAppliedInfo.lowerBound}} to ${{applied.jobsAppliedInfo.upperBound}}</div>
-                        </td>
+           -->              </td>
                     </tr>
                 </table>
 

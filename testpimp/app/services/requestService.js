@@ -246,6 +246,22 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		return response;
 	}
 	
+	service.updateApplication = function(application) {
+		var response = $http({
+			url : restServer + 'api/jobs/applications/' + application.id,
+			method : 'PUT',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data : application,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
 	service.getProviderProfile = function(applicantID, providerprofileID) {
 		var response = $http({
 			url : restServer + 'api/providerprofiles/' + applicantID + '/'+ providerprofileID,
@@ -321,6 +337,21 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 		return response;
 	}
+	
+	service.getApplicationDetail = function(applicationId){
+		var response = $http({
+			url : restServer + 'api/jobs/applications/' + applicationId,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
 
 	service.getJobDetailsForApplicant = function(userID, jobID){
 		var response = $http({
@@ -345,7 +376,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 			headers: {
 		        'Content-type': 'application/json'
 		    },
-		    data : applicationPayload,
+		    data : createContractPayload,
 				}).success(function(data, status, headers, config) {
 					return data;
 				}).error(function(data, status, headers, config) {
@@ -380,7 +411,6 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 			headers: {
 		        'Content-type': 'application/json'
 		    },
-		    data: payload,
 				}).success(function(data, status, headers, config) {
 					return data;
 				}).error(function(data, status, headers, config) {
@@ -389,6 +419,21 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		return response;
 	}
 	
+	service.chooseAnApplicant = function(applicantId) {
+		console.log("createContractPayload: " + applicantId);
+		var response = $http({
+			url : restServer + '/api/jobs/applications/' + applicantId + '/chosen',			
+			method : 'POST',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
 
   return service;
 

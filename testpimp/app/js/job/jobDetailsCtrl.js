@@ -20,6 +20,8 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 											function(success) {
 												applicantsObj["applicantInfo"] = success.data;
 												$scope.applicants.push(applicantsObj);
+												$scope.showApplicants = $scope.applicants.length > 0;
+												console.log("showApplicants: " + $scope.showApplicants);
 												console.log("applicant id: " + JSON.stringify(applicantsObj));
 											},
 										     function(error){
@@ -58,6 +60,26 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 	
 	$scope.getApplicants = function() {
 		$scope.showApplicants = ! $scope.showApplicants;
+	}
+	
+	$scope.chooseApplicant = function(applicant) {
+		requestService.chooseAnApplicant(applicant.id).then(
+				function(success) {
+					alert("success, " + success.data);
+				},
+			     function(error){
+
+			    }
+		);
+		
+		/*"applicationID": "Application ID number",
+"jobID": "Job ID number",
+"status": "Incomplete or Completed",
+"job_posterID": "Job Poster ID number",
+"job_poster_rating": "Job Poster Rating",
+"job_applicantID": "Job Applicant ID number",
+"job_applicant_rating": "Job Applicant Rating",
+*/
 	}
 });
 

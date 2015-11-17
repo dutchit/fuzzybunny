@@ -184,6 +184,7 @@ angular.module('testpimp').controller('postNewJobCtrl', function ($rootScope, $s
 				postNewJobPayload ["upperBound"] = $scope.newjob.upperbound;
 			}
 			postNewJobPayload ["price"] = $scope.newjob.price.value;
+			postNewJobPayload ["status"] = 'Active';
 			requestService.postNewJob(postNewJobPayload).then(
 					function(success) {
 						$scope.newjob = success.data;

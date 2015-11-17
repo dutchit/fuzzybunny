@@ -75,7 +75,7 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 	}
 	
 	$scope.myContracts = function() {
-		$scope.contentUrl = 'partials/job/myContracts.html';
+		$scope.contentUrl = 'partials/contract/myContracts.html';
 	}
 	
 });
