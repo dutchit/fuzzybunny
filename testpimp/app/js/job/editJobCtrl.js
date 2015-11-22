@@ -20,7 +20,7 @@ angular.module('testpimp').controller('editJobCtrl', function ($rootScope, $scop
 	requestService.getCategories().then(
 			function(success) {
 				var cat = success.data;
-				cat.push("Other");
+//				cat.push("Other");
 				console.log("cat: " + cat);
 				$scope.jobCategories = cat;	
 			}, 
@@ -163,6 +163,7 @@ angular.module('testpimp').controller('editJobCtrl', function ($rootScope, $scop
 				postPostingPayload ["upperBound"] = $scope.posting.upperbound;
 			}
 			postPostingPayload ["price"] = $scope.posting.priceMode.value;
+			postPostingPayload ["status"] = 'Active';
 			requestService.updateJob(postPostingPayload).then(
 					function(success) {
 						$scope.posting = success.data;

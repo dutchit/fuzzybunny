@@ -246,6 +246,22 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		return response;
 	}
 	
+	service.updateApplication = function(application) {
+		var response = $http({
+			url : restServer + 'api/jobs/applications/' + application.id,
+			method : 'PUT',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data : application,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
 	service.getProviderProfile = function(applicantID, providerprofileID) {
 		var response = $http({
 			url : restServer + 'api/providerprofiles/' + applicantID + '/'+ providerprofileID,
@@ -276,7 +292,152 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		return response;
 	}
 	
+	service.getUserInformationForProfile = function(userID){
+		var response = $http({
+			url : restServer + 'api/userprofiles/' + userID,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
 	
+	service.updateMainProfile = function(payload, userID){
+		var response = $http({
+			url : restServer + 'api/userprofiles/' + userID,
+			method : 'PUT',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data: payload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+
+	service.getJobsAppliedTo = function(){
+		console.log("service.getJobsAppliedTo");
+		var response = $http({
+			url : restServer + 'api/jobs/applications',
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.getApplicationDetail = function(applicationId){
+		console.log("service.getApplicationDetail");
+		var response = $http({
+			url : restServer + 'api/jobs/applications/' + applicationId,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+
+	service.getJobDetailsForApplicant = function(userID, jobID){
+		console.log("service.getJobDetailsForApplicant jobId: " + jobID);
+		var response = $http({
+			url : restServer + 'api/jobs/' + userID + '/' + jobID,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.createContract = function(createContractPayload) {
+		console.log("createContractPayload: " + JSON.stringify(createContractPayload));
+		var response = $http({
+			url : restServer + '/api/jobs/applications/' + createContractPayload.id + '/accepted',			
+			method : 'POST',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data : createContractPayload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.declineJobOffer = function(applicationPayload) {
+		console.log("applicationPayload: " + JSON.stringify(applicationPayload));
+		var response = $http({
+			url : restServer + 'api/jobs/applications/' + applicationPayload.id,
+			method : 'PUT',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+		    data: payload,
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.getContracts = function(role, id, contractStatus) {
+		console.log("requestService.getContracts " + role + " " + contractStatus);
+//		url(r'^api/jobs/contracts/poster/(?P<pk>[0-9]+)/previous$', job.poster_previous_contracts),
+//	    url(r'^api/jobs/contracts/applicant/(?P<pk>[0-9]+)/previous$', job.applicant_previous_contracts),
+	    var response = $http({
+			url : restServer + 'api/jobs/contracts/' + role + '/' + id + '/' + contractStatus,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
+	
+	service.chooseAnApplicant = function(applicantId) {
+		console.log("createContractPayload: " + applicantId);
+		var response = $http({
+			url : restServer + '/api/jobs/applications/' + applicantId + '/chosen',			
+			method : 'POST',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
 
   return service;
 

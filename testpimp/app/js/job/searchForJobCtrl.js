@@ -70,6 +70,7 @@ angular.module('testpimp').controller('searchForJobCtr', function ($rootScope, $
 	}
 	
 	$scope.submitApplication = function () {
+
 		var validApplication = false;
 		var validProfile = false;
 		var validBidPrice = false;
@@ -79,7 +80,8 @@ angular.module('testpimp').controller('searchForJobCtr', function ($rootScope, $
 			$scope.chooseProviderProfileError = true;
 			$scope.chooseProviderProfileErrorMsg = "A valid provider profile is required."
 		}
-		if ($scope.application.bidPrice && $scope.application.bidPrice >= 0) {
+		if ($scope.application.bidPrice >= 0) {
+			console.log("$scope.application.bidPrice >= 0 " + $scope.application.bidPrice >= 0);
 			validBidPrice = true;
 		} else {
 			$scope.applicationPriceError = true;

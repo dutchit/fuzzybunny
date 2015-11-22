@@ -34,7 +34,7 @@
                </tr>
 
            </table>
-		<p><button ng-click="editPostingDetails()"> Edit </button>&nbsp<button ng-click="deletePosting(myPosting)">Delete</button>&nbsp<button ng-click="getApplicants()" ng-disabled="hasApplicants">View Applicants</button></p>
+		<p><button ng-click="editPostingDetails()"> Edit </button>&nbsp<button ng-click="deletePosting(myPosting)">Delete</button><!--  &nbsp<button ng-click="getApplicants()" ng-disabled="hasApplicants">View Applicants</button>--></p>
 		<p><a href="#" ng-click="myPostedJobs()"> My Postings </a></p>
 
 		<div ng-show="showApplicants">  
@@ -43,7 +43,7 @@
 				<table>
 				    <tr ng-repeat="applicant in applicants">
 				
-				        <td><a href="#" ng-click="showApplicantDetails = ! showApplicantDetails">{{applicant.applicantInfo.displayName}}</a>     Rating: {{applicant.applicantInfo.employee_rating}}
+				        <td><a href="#" ng-click="showApplicantDetails = ! showApplicantDetails; open()">{{applicant.applicantInfo.displayName}}</a>     Rating: {{applicant.applicantInfo.employee_rating}}
 				            <div class="col-sm-offset-1" ng-show="showApplicantDetails">
 						  		<table>
 				                    <tr>
@@ -59,7 +59,7 @@
 				                        <td>${{applicant.price}}</td>
 				                    </tr>
 				                </table>
-							<button>Choose</button>
+							<button ng-click="chooseApplicant(applicant)">Choose</button>
 						</div>
 
 </div>

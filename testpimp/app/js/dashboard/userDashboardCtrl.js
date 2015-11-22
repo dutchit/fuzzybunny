@@ -7,7 +7,8 @@
  * ng-include routing
  */
 angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
-	
+	console.log("load userDashboardCtrl");
+
 	$scope.user = shareDataService.getUser();
 
 	$scope.paymentOptions = [{"option":"Amount", "value":"set"},{"option":"Range", "value":"Range"}];
@@ -72,6 +73,10 @@ angular.module('testpimp').controller('userDashboardCtrl', function ($rootScope,
 	
 	$scope.myApplications = function(){
 		$scope.contentUrl = 'partials/application/myApplications.html';
+	}
+	
+	$scope.myContracts = function() {
+		$scope.contentUrl = 'partials/contract/myContracts.html';
 	}
 	
 });
