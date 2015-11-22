@@ -52,22 +52,38 @@
 
 <!--<script src="services/tokenService.js"></script>   -->
 
+<style>
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #f5f5f5;
+}
+
+.overflow{
+    overflow: scroll;
+}    
+    
+</style>
+    
 </head>
 
 <body ng-app="testpimp" ng-controller="mainCtrl">
 	<div ng-include='"partials/idleLogout.html"'></div>
 	<div ng-include src="header" ng-show="showHeader"></div>
-	<div >
-		<div ng-include src="viewUrl"></div>
-
+	<div>
+		<div id="overflow" ng-include src="viewUrl"></div>
 	</div>
 	<div ng-include='"templates/footer.html"' ng-show="showFooter"></div> 
 
-
-
-
-
 </body>
-
-
 </html>
