@@ -1,0 +1,14 @@
+
+#section {
+    width: 170px;
+    height: 100%;
+    position: fixed;
+    background: #ffffff;
+}
+/*#1f212f*/
+
+#section h5 {
+	color: #1f212f;
+	font-weight: 700;
+}
+
