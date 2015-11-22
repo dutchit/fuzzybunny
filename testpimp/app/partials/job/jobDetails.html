@@ -43,7 +43,7 @@
 				<table>
 				    <tr ng-repeat="applicant in applicants">
 				
-				        <td><a href="#" ng-click="showApplicantDetails = ! showApplicantDetails">{{applicant.applicantInfo.displayName}}</a>     Rating: {{applicant.applicantInfo.employee_rating}}
+				        <td><a href="#" ng-click="showApplicantDetails = ! showApplicantDetails; open()">{{applicant.applicantInfo.displayName}}</a>     Rating: {{applicant.applicantInfo.employee_rating}}
 				            <div class="col-sm-offset-1" ng-show="showApplicantDetails">
 						  		<table>
 				                    <tr>

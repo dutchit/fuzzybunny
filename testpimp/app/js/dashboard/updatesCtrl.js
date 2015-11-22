@@ -7,13 +7,14 @@
  * ng-include routing
  */
 angular.module('testpimp').controller('updatesCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
+	console.log("load updatesCtrl");
 	$scope.myApplications = [];
 	$scope.appliedTo = [];
 	
 	requestService.getContracts("applicant", $scope.user.id, "previous").then(
 			function(success) {
 				employeeContractList = success.data;
-				console.log("employee jobs: " + JSON.stringify(success.data));
+				console.log(employeeContractList.length + " employee jobs: " + JSON.stringify(success.data));
 				if(employeeContractList.length > 0){
 					$scope.employeeContracts = [];
 					angular.forEach(employeeContractList, function(contractInfo){
@@ -42,10 +43,32 @@ angular.module('testpimp').controller('updatesCtrl', function ($rootScope, $scop
 		    }
 	);
 	
-	requestService.getContracts("poster", $scope.user.id, "current").then(
+	requestService.getContracts("poster", $scope.user.id, "previous").then(
 			function(success) {
-				$scope.employerContracts = success.data;
-				console.log("employer jobs: " + success.data);
+				employerContractList = success.data;
+				console.log("employer jobs: " + JSON.stringify(success.data));
+				if(employerContractList.length > 0){
+					$scope.employerContracts = [];
+					angular.forEach(employerContractList, function(contractInfo){
+						requestService.getJobDetailsForApplicant(contractInfo.job_posterID, contractInfo.jobID).then(
+							function(success){
+								var contract = {};
+								contract["contractInfo"] = contractInfo;
+								contract["contractInfo"]["postingInfo"] = success.data[0];
+								requestService.getApplicationDetail(contractInfo.applicationID).then(
+										function(success) {
+											contract["contractInfo"]["applicationInfo"] = success.data[0];
+										},
+									     function(error){
+									    }
+								);
+								console.log("contractInfo: " + JSON.stringify(contract));
+								$scope.employerContracts.push(contract);
+							},
+							function(error){
+							})
+					});
+				}
 			},
 		     function(error){
 		    }

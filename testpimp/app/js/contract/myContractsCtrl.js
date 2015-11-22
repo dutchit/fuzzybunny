@@ -1,6 +1,12 @@
 
 angular.module('testpimp').controller('myContractsCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
+	console.log("load myContractsCtrl");
+
+	
 	$scope.pastEmployeeContracts = [];
+	$scope.pastEmployerContracts = [];
+	$scope.employeeContracts = [];
+	$scope.employerContracts = [];
 	
 	requestService.getContracts("applicant", $scope.user.id, "previous").then(
 			function(success) {
@@ -60,6 +66,37 @@ angular.module('testpimp').controller('myContractsCtrl', function ($rootScope, $
 									    }
 								);
 								console.log("var applicationInfo: " + JSON.stringify(applicationInfo));
+							},
+							function(error){
+							})
+					});
+				}
+			},
+		     function(error){
+		    }
+	);
+	
+	requestService.getContracts("poster", $scope.user.id, "previous").then(
+			function(success) {
+				employerContractList = success.data;
+				console.log("employer jobs: " + JSON.stringify(success.data));
+				if(employerContractList.length > 0){
+					$scope.employerContracts = [];
+					angular.forEach(employerContractList, function(contractInfo){
+						requestService.getJobDetailsForApplicant(contractInfo.job_posterID, contractInfo.jobID).then(
+							function(success){
+								var contract = {};
+								contract["contractInfo"] = contractInfo;
+								contract["contractInfo"]["postingInfo"] = success.data[0];
+								requestService.getApplicationDetail(contractInfo.applicationID).then(
+										function(success) {
+											contract["contractInfo"]["applicationInfo"] = success.data[0];
+										},
+									     function(error){
+									    }
+								);
+								console.log("contractInfo: " + JSON.stringify(contract));
+								$scope.employerContracts.push(contract);
 							},
 							function(error){
 							})

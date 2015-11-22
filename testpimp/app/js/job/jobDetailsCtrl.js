@@ -1,5 +1,6 @@
-angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService, $modal, $confirm, $filter) {
-	
+angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService, $modal, $confirm, $filter, $log) {
+	console.log("load jobDetailsCtrl");
+
 	$scope.myPosting = shareDataService.getJobToEdit();
 	console.log("job id: " + $scope.myPosting.id);
 	$scope.showApplicants = false;
@@ -71,15 +72,28 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 
 			    }
 		);
-		
-		/*"applicationID": "Application ID number",
-"jobID": "Job ID number",
-"status": "Incomplete or Completed",
-"job_posterID": "Job Poster ID number",
-"job_poster_rating": "Job Poster Rating",
-"job_applicantID": "Job Applicant ID number",
-"job_applicant_rating": "Job Applicant Rating",
-*/
+
 	}
+	
+	$scope.items = ['item1', 'item2', 'item3'];
+	$scope.open = function () {
+		 var modalInstance = $modal.open({
+		  animation: true,
+	      templateUrl: 'partials/userinfo/viewProviderProfile.html',
+	      controller: 'ModalInstanceCtrl',
+	      size: 'lg',
+	      resolve: {
+	        items: function () {
+	          return $scope.items;
+	        }
+	      }
+	    });
+
+	    modalInstance.result.then(function (selectedItem) {
+	        $scope.selected = selectedItem;
+	      }, function () {
+	        $log.info('Modal dismissed at: ' + new Date());
+	      });
+	};
 });
 

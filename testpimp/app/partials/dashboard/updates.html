@@ -134,7 +134,7 @@
 <table>
     <tr ng-repeat="offer in appliedTo" ng-show="offer.jobsAppliedInfo.appInfo.status=='Chosen'">
         <td>
-            <a href="#" ng-click="showOfferDetails = ! showOfferDetails">{{offer.jobsAppliedInfo.title}}  {{offer.jobsAppliedInfo.appInfo.price}}</a>
+            <a href="#" ng-click="showOfferDetails = ! showOfferDetails">{{offer.jobsAppliedInfo.title}}  ${{offer.jobsAppliedInfo.appInfo.price}}</a>
             <div class="col-sm-offset-1" ng-show="showOfferDetails">
                 <table>
                     <tr>

@@ -324,6 +324,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	}
 
 	service.getJobsAppliedTo = function(){
+		console.log("service.getJobsAppliedTo");
 		var response = $http({
 			url : restServer + 'api/jobs/applications',
 			method : 'GET',
@@ -339,6 +340,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	}
 	
 	service.getApplicationDetail = function(applicationId){
+		console.log("service.getApplicationDetail");
 		var response = $http({
 			url : restServer + 'api/jobs/applications/' + applicationId,
 			method : 'GET',
@@ -354,6 +356,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	}
 
 	service.getJobDetailsForApplicant = function(userID, jobID){
+		console.log("service.getJobDetailsForApplicant jobId: " + jobID);
 		var response = $http({
 			url : restServer + 'api/jobs/' + userID + '/' + jobID,
 			method : 'GET',
@@ -403,6 +406,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	}
 	
 	service.getContracts = function(role, id, contractStatus) {
+		console.log("requestService.getContracts " + role + " " + contractStatus);
 //		url(r'^api/jobs/contracts/poster/(?P<pk>[0-9]+)/previous$', job.poster_previous_contracts),
 //	    url(r'^api/jobs/contracts/applicant/(?P<pk>[0-9]+)/previous$', job.applicant_previous_contracts),
 	    var response = $http({

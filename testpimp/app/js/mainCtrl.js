@@ -7,6 +7,7 @@
  * ng-include routing
  */
 angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,shareDataService,requestService, $log, $window, $location, $localStorage, $compile, Idle, Keepalive, $modal/*, $http */) {
+	console.log("load mainCtrl");
 
 	  	$scope.loginFail = false;
 	  	
