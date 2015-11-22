@@ -1,3 +1,94 @@
+# 2.4.0
+
+_This release contains only a version update to `selenium-webdriver`, webdriver javascript bindings, and associated bug fixes._
+
+## Dependency Version Upgrades
+- ([9a202ab](https://github.com/angular/protractor/commit/9a202ab5573f24c9919639f1b75fd9cd2b383383)) 
+  chore(dependencies): update selenium-webdriver to 2.47.0
+
+  Along with it, update `jasminewd2` to avoid situations where the control flow gets locked up and
+  hangs.
+
+  *Potential Breaking Change*:
+
+  This is passing all existing Protractor tests, but there is a possibility that the changes to the
+  control flow will cause some test flows to hang. If this causes issues, such as tests hanging or commands executing out of order, please revisit your use of functions affecting the control flow, such as `flow.execute`.
+
+  See the selenium-webdriver changelog at https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md
+
+
+## Bug Fixes
+- ([f034e01](https://github.com/angular/protractor/commit/f034e010156a85cf1826b95eb7f41f50ef5a1791)) 
+  fix(synchronizing): use the same control flow when ignoring sync
+
+  Previously, the order of frames and tasks on the control flow was different depending on
+  `browser.ignoreSynchronization`. This fixes the inconsistency by creating an empty task when
+  ignoreSynchronization is true.
+
+  Practically, this fixes the polling spec failing after the update to selenium-webdriver@2.47.0.
+
+
+# 2.3.0
+
+_This release contains updates which fix some issues with dependencies that had gotten stale. However, it does not yet contain an update to the selenium-webdriver dependency, because of potential breaking changes. That update will be done in a separate Protractor@2.4.0 release. See [issue 2245](https://github.com/angular/protractor/issues/2245)._
+
+## Dependency Version Upgrades
+
+- ([cfd8d00](https://github.com/angular/protractor/commit/cfd8d000c2aa1686c4a90164baf4e04976ee0587)) 
+  feat(webdriver): update webdriver and chromedriver to latest version
+
+  Updating Selenium standalone from 2.45.0 to 2.47.0 Updating ChromeDriver from 2.15 to 2.19 
+  Selenium Changelog:
+  https://github.com/SeleniumHQ/selenium/blob/master/javascript/node/selenium-webdriver/CHANGES.md 
+  ChromeDriver Changelog: http://chromedriver.storage.googleapis.com/2.19/notes.txt
+
+- ([802b20f](https://github.com/angular/protractor/commit/802b20f153f2c201d8b37378bf8feb93f649a95f)) 
+  chore(selenium): update selenium from 2.47.0 to 2.47.1
+
+- ([7a7aca8](https://github.com/angular/protractor/commit/7a7aca8a264ae07cbbb90e7e7469533a52276488)) 
+  chore(jasmine): bump jasmine version from 2.3.1 to 2.3.2
+
+- ([eab828e](https://github.com/angular/protractor/commit/eab828e12c671cbf5cdf9b09df050cc59f0dd862)) 
+  chore(travis): test against node 4
+
+  Test against node 4 on Travis, and remove support for node 0.10.
+
+- ([96def81](https://github.com/angular/protractor/commit/96def81dc7d364e789fc290e97aee0f898648a10)) 
+  chore(saucelabs): updated saucelabs dependency to 1.0.1 to support proxy
+
+## Features
+
+- ([c989a7e](https://github.com/angular/protractor/commit/c989a7eeed5a0a55d2fbd37dc7278a7967889852)) 
+  feat(webdriver-manager): add --ie32 commandline option
+
+  The new option allows to download the 32-bit version of the IE driver on a 64-bit system, as the
+  64-bit version has been broken for over a year now (the sendKeys() function works very slowly on
+  it).
+
+- ([ff88e96](https://github.com/angular/protractor/commit/ff88e969d55585cc4267d75c12c0cafc78a01895)) 
+  feat(cucumber): Allow cucumber tests containing line numbers
+
+  example:
+  ```js
+  specs: [
+     'cucumber/lib.feature:7'
+   ]
+  ```
+
+## Bug Fixes
+
+- ([1487e5a](https://github.com/angular/protractor/commit/1487e5abf69bc1540226502aacadc8b3b42b0092)) 
+  fix(protractor.wrapDriver): allow browser instances to work even if they were not set up through
+  the runner
+
+  Fixes #2456
+
+- ([2ff7a07](https://github.com/angular/protractor/commit/2ff7a0771b6695dc49566ed81548b3fe2cebf11c)) 
+  fix(Chrome Accessibility Plugin): resolving the location of AUDIT_FILE
+
+- ([f9b0a92](https://github.com/angular/protractor/commit/f9b0a92079b55384d4560fef9400bb473672ce9c)) 
+  fix(debugger): Fix potential debugger lockups
+
 # 2.2.0
 
 ## Breaking Changes

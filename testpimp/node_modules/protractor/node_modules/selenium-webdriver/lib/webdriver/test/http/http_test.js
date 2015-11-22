@@ -1,22 +1,25 @@
-// Copyright 2014 Software Freedom Conservancy. All Rights Reserved.
+// Licensed to the Software Freedom Conservancy (SFC) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The SFC licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+//   http://www.apache.org/licenses/LICENSE-2.0
 //
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
 
 goog.require('bot.ErrorCode');
 goog.require('goog.Uri');
-goog.require('goog.json');
 goog.require('goog.testing.MockControl');
 goog.require('goog.testing.jsunit');
+goog.require('goog.userAgent');
 goog.require('webdriver.Command');
 goog.require('webdriver.http.Client');
 goog.require('webdriver.http.Executor');
@@ -28,6 +31,10 @@ var callbackHelper = webdriver.test.testutil.callbackHelper;
 
 var control = new goog.testing.MockControl();
 var mockClient, executor, onCallback, onErrback;
+
+function shouldRunTests() {
+  return !goog.userAgent.IE || goog.userAgent.isVersionOrHigher(10);
+}
 
 function setUp() {
   mockClient = control.createStrictMock(webdriver.http.Client);
@@ -59,7 +66,7 @@ function headersToString(headers) {
 
 function expectRequest(method, path, data, headers) {
   var description = method + ' ' + path + '\n' + headersToString(headers) +
-                    '\n' + goog.json.serialize(data);
+                    '\n' + JSON.stringify(data);
 
   return mockClient.send(new goog.testing.mockmatchers.ArgumentMatcher(
       function(request) {
@@ -227,7 +234,7 @@ function testExecute_returnsParsedJsonResponse() {
     'Accept': 'application/json; charset=utf-8'
   }).$does(respondsWith(null,
       response(200, {'Content-Type': 'application/json'},
-          goog.json.serialize(responseObj))));
+          JSON.stringify(responseObj))));
   control.$replayAll();
 
   assertSendsSuccessfully(command, function(response) {
@@ -320,7 +327,7 @@ function testExecute_attemptsToParseBodyWhenNoContentTypeSpecified() {
   expectRequest('GET', '/session/s123/url', {}, {
     'Accept': 'application/json; charset=utf-8'
   }).$does(respondsWith(null,
-      response(200, {}, goog.json.serialize(responseObj))));
+      response(200, {}, JSON.stringify(responseObj))));
   control.$replayAll();
 
   assertSendsSuccessfully(command, function(response) {
