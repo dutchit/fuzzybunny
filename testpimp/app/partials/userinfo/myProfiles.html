@@ -1,3 +1,6 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="css/profile.css" />
+</head>
 <div ng-controller="myProfilesCtrl" class="col-sm-12">
 <div style="padding-left:120px;">
 
@@ -11,7 +14,7 @@
 	<p>Contact Email: {{mainUserProfileInformation.contactEmail}}</p> -->
 	<p>Employer Rating: {{mainUserProfileInformation.employer_rating}}</p>
 	<p>Employee Rating: {{mainUserProfileInformation.employee_rating}}</p>
-	<button ng-click="editMainProfile()">Edit Profile</button>
+	<button class="btn btn-primary" ng-click="editMainProfile()">Edit Profile</button>
 	<div ng-show="showEditMainProfile">
 		<table>
 			<!-- <tr>
@@ -24,26 +27,26 @@
 			</tr> -->
 			<tr>
 				<td>
-					<th>Profile Title</th>
+					<th class="tbl-hd">Profile Title</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.profileTitle" ng-init="mainProfile.profileTitle = user.profileTitle">	<!-- ng-init="mainProfile.userName = user.profileTitle" -->
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<th>Description</th>
-				</td>
-				<td>
-					<input type="text" ng-model="mainProfile.description" ng-init="mainProfile.description = user.description">
+					<input class="tbl-inpt" type="text" ng-model="mainProfile.profileTitle" ng-init="mainProfile.profileTitle = user.profileTitle">	<!-- ng-init="mainProfile.userName = user.profileTitle" -->
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<th>Display Name</th>
+					<th class="tbl-hd">Description</th>
 				</td>
 				<td>
-					<input type="text" ng-model="mainProfile.displayName" ng-init="mainProfile.displayName = user.displayName">
+					<input class="tbl-inpt" type="text" ng-model="mainProfile.description" ng-init="mainProfile.description = user.description">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<th class="tbl-hd">Display Name</th>
+				</td>
+				<td>
+					<input class="tbl-inpt" type="text" ng-model="mainProfile.displayName" ng-init="mainProfile.displayName = user.displayName">
 				</td>
 			</tr>
 			<!-- <tr>
@@ -63,8 +66,8 @@
 				</td>
 			</tr> -->
 		</table>
-		<button ng-click="confirmEditMainProfile()">Confirm</button>
-		<button ng-click="cancelEditMainProfile()">Cancel</button>
+		<button class="btn btn-primary" ng-click="confirmEditMainProfile()">Confirm</button>
+		<button class="btn btn-primary" ng-click="cancelEditMainProfile()">Cancel</button>
 	</div>
 </div>
 
@@ -72,7 +75,7 @@
 
 <h4>My Provider profiles</h4>
 <div class="col-sm-12">
-<table>
+<table class="col-sm-4">
 <tr ng-repeat="providerProfile in myProviderProfiles">
 	<td><a href="#" ng-click="showProviderProfileDetails = ! showProviderProfileDetails">{{providerProfile.profileTitle}}</a>
 		<div ng-show="showProviderProfileDetails">
@@ -86,38 +89,46 @@
 					<td>{{providerProfile.description}}</td>
 				</tr>
 			</table>
-			<p><button ng-click="editProviderProfile(this)">Edit</button></p>
+			<p><button class="btn btn-primary" ng-click="editProviderProfile(this)">Edit</button></p>
 		</div>
 		<div ng-show="showEditProviderProfile">
 		<table>
 			<tr>
 				<th>Profile Title</th>
 				<td>
-					<input type="text" ng-model="editProfile.title" ng-init="editProfile.title = providerProfile.profileTitle">
+					<input class="tbl-inpt" type="text" ng-model="editProfile.title" ng-init="editProfile.title = providerProfile.profileTitle">
 				</td>
 			</tr>
 			<tr>
 				<th>Location</th>
 				<td>
-					<input type="text" ng-model="editProfile.location" ng-init="editProfile.location = providerProfile.location">
+					<input class="tbl-inpt" type="text" ng-model="editProfile.location" ng-init="editProfile.location = providerProfile.location">
 				</td>
 			</tr>
 			<tr>
 				<th>Description</th>
 				<td>
-					<input type="text" ng-model="editProfile.description" ng-init="editProfile.description = providerProfile.description">
+					<input class="tbl-inpt" type="text" ng-model="editProfile.description" ng-init="editProfile.description = providerProfile.description">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><button class="btn btn-primary" ng-click="confirmEditProfile(editProfile, providerProfile.id, this)">Confirm</button></p>
+				</td>
+				<td>
+					<p><button class="btn btn-primary" ng-click="cancelEditProfile(this)">Cancel</button></p>
 				</td>
 			</tr>
 		</table>
-		<p><button ng-click="confirmEditProfile(editProfile, providerProfile.id)">Confirm</button></p>
-		<p><button ng-click="cancelEditProfile(this)">Cancel</button></p>
+		
+		
 		</div>
 	</td>
-	<td><button ng-click="deleteProviderProfile(providerProfile)">delete</button>
+	<td><button class="btn btn-primary" ng-click="deleteProviderProfile(providerProfile)">delete</button>
 	</td>
 </tr>
 </table>
-<button ng-click="createProviderProfile()">New Provider Profile</button>
+<button class="col-sm-4 btn btn-primary" ng-click="createProviderProfile()">New Provider Profile</button>
 </div>
 </div>
 </div>

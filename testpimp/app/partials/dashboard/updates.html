@@ -2,7 +2,7 @@
 <div style = "padding-left:120px;">
 
 
-<label style="font-weight: bold; font-size: 1.5em">My Commitments as an Employee</label>&nbsp&nbsp<a href="#" ng-click="myContracts()" style="color:blue;""> See all contracts </a>
+<label style="font-weight: bold; font-size: 1.5em">My Commitments as an Employee</label>&nbsp&nbsp<a href="#" ng-click="myContracts()" style="color:blue;"> See all contracts </a>
 <table>
     <tr ng-repeat="employeeContract in employeeContracts">
         <td>
@@ -44,7 +44,7 @@
 
 <br>
 
-<label style="font-weight: bold; font-size: 1.5em">My Commitments as an Employer</label>&nbsp&nbsp<a href="#" ng-click="myContracts()" style="color:blue;""> See all contracts </a>
+<label style="font-weight: bold; font-size: 1.5em">My Commitments as an Employer</label>&nbsp&nbsp<a href="#" ng-click="myContracts()" style="color:blue;"> See all contracts </a>
 <table>
     <tr ng-repeat="employerContract in employerContracts">
         <td>
@@ -87,7 +87,7 @@
 
 
 <br>
-<label style="font-weight: bold; font-size: 1.5em">My Active Postings</label>&nbsp&nbsp<a href="#" ng-click="myPostedJobs()" style="color:blue;""> See all postings </a>
+<label style="font-weight: bold; font-size: 1.5em">My Active Postings</label>&nbsp&nbsp<a href="#" ng-click="myPostedJobs()" style="color:blue;"> See all postings </a>
 
 <table>
     <tr ng-repeat="posting in myPostings" ng-show="posting.status=='Active'">
@@ -170,7 +170,7 @@
 </table>
 
 
-<label style="font-weight: bold; font-size: 1.5em">My Submitted Applications</label>&nbsp&nbsp<a href="#" ng-click="myApplications()" style="color:blue;""> See all applications </a>
+<label style="font-weight: bold; font-size: 1.5em">My Submitted Applications</label>&nbsp&nbsp<a href="#" ng-click="myApplications()" style="color:blue;"> See all applications </a>
 <table>
     <tr ng-repeat="applied in appliedTo" ng-show="applied.jobsAppliedInfo.appInfo.status=='Submitted'">
         <td>

@@ -98,7 +98,7 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 		return editProfileFormValid = validTitle && validLocation && validDescription;
 	}
 
-	$scope.confirmEditProfile = function(provider, pID){
+	$scope.confirmEditProfile = function(provider, pID, s){
 		if($scope.validProviderEdit(provider)){
 			var postEditProviderPayload = {};
 			postEditProviderPayload ["profileTitle"] = provider.title;
@@ -110,12 +110,13 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 				function(success){
 					$scope.updatedProviderProfile = success.data;
 
+					
 				}, 
 				function(error){
 
 				 });
-			provider.showEditProviderProfile = false;
-			provider.showProviderProfileDetails = true;
+					s.showEditProviderProfile = false;
+					//$scope.showProviderProfileDetails = true;
 		}
 	}
 
