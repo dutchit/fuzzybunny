@@ -340,7 +340,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 	}
 	
 	service.getApplicationDetail = function(applicationId){
-		console.log("service.getApplicationDetail");
+		console.log("service.getApplicationDetail " + applicationId);
 		var response = $http({
 			url : restServer + 'api/jobs/applications/' + applicationId,
 			method : 'GET',
@@ -348,6 +348,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		        'Content-type': 'application/json'
 		    },
 				}).success(function(data, status, headers, config) {
+					console.log("service.getApplicationDetail: " + JSON.stringify(data));
 					return data;
 				}).error(function(data, status, headers, config) {
 					return data;
@@ -388,15 +389,14 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		return response;
 	}
 	
-	service.declineJobOffer = function(applicationPayload) {
-		console.log("applicationPayload: " + JSON.stringify(applicationPayload));
+	service.declineJobOffer = function(applicantInfo) {
+		console.log("decline applicantId: " + JSON.stringify(applicantInfo));
 		var response = $http({
-			url : restServer + 'api/jobs/applications/' + applicationPayload.id,
-			method : 'PUT',
+			url : restServer + '/api/jobs/applications/' + applicantInfo.id + '/declined',			
+			method : 'POST',
 			headers: {
 		        'Content-type': 'application/json'
 		    },
-		    data: payload,
 				}).success(function(data, status, headers, config) {
 					return data;
 				}).error(function(data, status, headers, config) {
@@ -438,6 +438,8 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 				});
 		return response;
 	}
+	
+	
 
   return service;
 

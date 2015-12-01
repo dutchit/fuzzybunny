@@ -1,5 +1,5 @@
 
-angular.module('testpimp').controller('myContractsCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
+angular.module('testpimp').controller('myContractsCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService, $modal, $log) {
 	console.log("load myContractsCtrl");
 
 	
@@ -22,9 +22,12 @@ angular.module('testpimp').controller('myContractsCtrl', function ($rootScope, $
 								contract["contractInfo"]["postingInfo"] = success.data[0];
 								requestService.getApplicationDetail(contractInfo.applicationID).then(
 										function(success) {
-											contract["contractInfo"]["applicationInfo"] = success.data[0];
+											console.log("contract[contractInfo][applicationInfo]=" + success.data);
+											contract["contractInfo"]["applicationInfo"] = success.data;
+											console.log("contract[contractInfo][applicationInfo]=" + success.data);
 										},
 									     function(error){
+											console.log("contract[contractInfo][applicationInfo] error");
 									    }
 								);
 								
@@ -90,7 +93,7 @@ angular.module('testpimp').controller('myContractsCtrl', function ($rootScope, $
 								contract["contractInfo"]["postingInfo"] = success.data[0];
 								requestService.getApplicationDetail(contractInfo.applicationID).then(
 										function(success) {
-											contract["contractInfo"]["applicationInfo"] = success.data[0];
+											contract["contractInfo"]["applicationInfo"] = success.data;
 										},
 									     function(error){
 									    }
@@ -106,6 +109,28 @@ angular.module('testpimp').controller('myContractsCtrl', function ($rootScope, $
 		     function(error){
 		    }
 	);
+	
+	
+	$scope.open = function (employerContract) {
+//		shareDataService.setJobToEdit(employerContract);
+		 var modalInstance = $modal.open({
+//		  animation: true,
+	      templateUrl: 'paymentpage.html',
+	      controller: 'paymentpageCtrl',
+	      size: 'lg',
+	      resolve: {
+	    	  myContract: function () {
+	          return employerContract;
+	        }
+	      }
+	    });
+
+	    modalInstance.result.then(function (selectedItem) {
+	        $scope.selected = selectedItem;
+	      }, function () {
+	        $log.info('Modal dismissed at: ' + new Date());
+	      });
+	};
 	
 });
 
