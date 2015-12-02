@@ -26,6 +26,7 @@ angular.module('testpimp').controller('updatesCtrl', function ($rootScope, $scop
 								requestService.getApplicationDetail(contractInfo.applicationID).then(
 										function(success) {
 											contract["contractInfo"]["applicationInfo"] = success.data[0];
+
 										},
 									     function(error){
 									    }

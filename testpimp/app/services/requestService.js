@@ -409,6 +409,7 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		console.log("requestService.getContracts " + role + " " + contractStatus);
 //		url(r'^api/jobs/contracts/poster/(?P<pk>[0-9]+)/previous$', job.poster_previous_contracts),
 //	    url(r'^api/jobs/contracts/applicant/(?P<pk>[0-9]+)/previous$', job.applicant_previous_contracts),
+		// role == poster or applicant
 	    var response = $http({
 			url : restServer + 'api/jobs/contracts/' + role + '/' + id + '/' + contractStatus,
 			method : 'GET',
@@ -439,7 +440,24 @@ angular.module('testpimp').factory('requestService',['$http', function($http, RE
 		return response;
 	}
 	
-	
+	service.getContractsById = function(role, id, contractStatus) {
+		console.log("requestService.getContracts " + role + " " + contractStatus);
+//		url(r'^api/jobs/contracts/poster/(?P<pk>[0-9]+)/previous$', job.poster_previous_contracts),
+//	    url(r'^api/jobs/contracts/applicant/(?P<pk>[0-9]+)/previous$', job.applicant_previous_contracts),
+		// role == poster or applicant
+	    var response = $http({
+			url : restServer + 'api/jobs/contracts/' + role + '/' + id,
+			method : 'GET',
+			headers: {
+		        'Content-type': 'application/json'
+		    },
+				}).success(function(data, status, headers, config) {
+					return data;
+				}).error(function(data, status, headers, config) {
+					return data;
+				});
+		return response;
+	}
 
   return service;
 

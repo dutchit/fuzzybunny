@@ -132,5 +132,17 @@ angular.module('testpimp').controller('myContractsCtrl', function ($rootScope, $
 	      });
 	};
 	
+	$scope.fire = function (employerContract) {
+		var modalInstance = $modal.open({
+			templateUrl: 'firepage.html',
+			controller: firepageCtrl,
+			size: 'lg',
+			resolve: {
+				myContract: function(){
+					return employerContract;
+				}
+			}
+		});
+	}
 });
 

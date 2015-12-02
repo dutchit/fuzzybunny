@@ -27,7 +27,7 @@ angular.module('testpimp').controller('ModalInstanceCtrl', function ($scope, sha
 					    	      textAlert : "Provider selected",
 					    	     mode : 'success'
 					    }  
-					    $scope.open('sucess');
+					    $scope.open('success');
 					},
 				     function(error){
 						$scope.data = {
@@ -35,7 +35,7 @@ angular.module('testpimp').controller('ModalInstanceCtrl', function ($scope, sha
 					    	      textAlert : "Provider is not selected",
 					    	     mode : 'danger'
 					    }  
-					    $scope.open('sucess');
+					    $scope.open('success');
 				    }
 			);
 
