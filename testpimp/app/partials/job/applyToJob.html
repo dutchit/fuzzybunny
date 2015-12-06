@@ -1,5 +1,5 @@
 <!-- <div ng-controller="applyToJobCtrl"> -->
-<div>
+<div style="padding-left:120px;">
 
 	<h2>Apply to Job</h2> 
 	<br><br>
@@ -53,7 +53,7 @@
 			<tr>
 				<th>Price  $</th>
 				<td>
-					<input type="number" ng-model="application.bidPrice" ng-disabled="selectedJob.price=='set'"/>
+					<input type="number" ng-model="application.bidPrice" ng-disabled="selectedJob.price=='set'"/> 
 				</td>
 				<td><div ng-show="applicationPriceError" style="color: red">{{applicationPriceErrorMsg}}</div></td>
 			</tr>

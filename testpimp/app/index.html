@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/example.css" />
-<link href="css/styles.css" rel="stylesheet">
+<!--<link href="css/styles.css" rel="stylesheet">-->
 
 <!-- Vendor: Javascripts -->
 <script	type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -30,17 +30,19 @@
 <!-- Our Website Javascripts -->
 <script src="js/app.js"></script>
 <script src="js/mainCtrl.js"></script>
-<script src="js/userDashboardCtrl.js"></script>
-<script src="js/myProfilesCtrl.js"></script>
-<script src="js/postJobCtrl.js"></script>
-<script src="js/updatesCtrl.js"></script>
-<script src="js/editJobCtrl.js"></script>
-<script src="js/searchForJobCtrl.js"></script>
-<script src="js/newProviderProfileCtrl.js"></script>
-<script src="js/getApplicantsCtrl.js"></script>
-<script src="js/applyToJobCtrl.js"></script>
+<script src="js/dashboard/userDashboardCtrl.js"></script>
+<script src="js/userinfo/myProfilesCtrl.js"></script>
+<script src="js/job/postJobCtrl.js"></script>
+<script src="js/dashboard/updatesCtrl.js"></script>
+<script src="js/job/editJobCtrl.js"></script>
+<script src="js/job/searchForJobCtrl.js"></script>
+<script src="js/userinfo/newProviderProfileCtrl.js"></script>
+<script src="js/job/applyToJobCtrl.js"></script>
 <script src="js/job/jobDetailsCtrl.js"></script>
 <script src="js/job/myPostedJobsCtrl.js"></script>
+<script src="js/application/myApplicationsCtrl.js"></script>
+<script src="js/contract/myContractsCtrl.js"></script>
+<script src="js/userinfo/viewProviderProfileCtrl.js"></script>
 
 
 <script src="services/dataSharingService.js"></script>
@@ -50,22 +52,38 @@
 
 <!--<script src="services/tokenService.js"></script>   -->
 
+<style>
+html {
+  position: relative;
+  min-height: 100%;
+}
+    
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+    
+.footer {
+    position: absolute;
+    bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #f5f5f5;
+}
+
+.overflow{
+    overflow: scroll;
+}    
+    
+</style>
+    
 </head>
 
 <body ng-app="testpimp" ng-controller="mainCtrl">
 	<div ng-include='"partials/idleLogout.html"'></div>
 	<div ng-include src="header" ng-show="showHeader"></div>
-	<div >
-		<div ng-include src="viewUrl"></div>
-
-	</div>
+		<div id="overflow" ng-include src="viewUrl"></div>
 	<div ng-include='"templates/footer.html"' ng-show="showFooter"></div> 
-
-
-
-
-
 </body>
-
-
 </html>

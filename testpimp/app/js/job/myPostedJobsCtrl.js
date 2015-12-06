@@ -10,6 +10,9 @@ angular.module('testpimp').controller('myPostedJobsCtrl', function ($rootScope, 
 		    }
 	);
 	
-	
+	$scope.editPostingDetails = function (posting) {
+		shareDataService.setJobToEdit(posting);
+		$scope.gotoEditPosting();
+	}
 });
 

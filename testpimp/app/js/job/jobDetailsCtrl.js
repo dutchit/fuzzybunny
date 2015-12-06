@@ -1,5 +1,6 @@
-angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService, $modal, $confirm, $filter) {
-	
+angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService, $modal, $confirm, $filter, $log) {
+	console.log("load jobDetailsCtrl");
+
 	$scope.myPosting = shareDataService.getJobToEdit();
 	console.log("job id: " + $scope.myPosting.id);
 	$scope.showApplicants = false;
@@ -20,6 +21,8 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 											function(success) {
 												applicantsObj["applicantInfo"] = success.data;
 												$scope.applicants.push(applicantsObj);
+												$scope.showApplicants = $scope.applicants.length > 0;
+												console.log("showApplicants: " + $scope.showApplicants);
 												console.log("applicant id: " + JSON.stringify(applicantsObj));
 											},
 										     function(error){
@@ -42,7 +45,7 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 	$scope.deletePosting = function(posting) {
 		requestService.deleteJob($scope.user.id, posting.id).then(
 				function(success) {
-					$scope.getMyPostedJobs();
+					$scope.myPostedJobs();
 				},
 			     function(error){
 
@@ -59,5 +62,38 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 	$scope.getApplicants = function() {
 		$scope.showApplicants = ! $scope.showApplicants;
 	}
+	
+	$scope.chooseApplicant = function(applicant) {
+		requestService.chooseAnApplicant(applicant.id).then(
+				function(success) {
+					alert("success, " + success.data);
+				},
+			     function(error){
+
+			    }
+		);
+
+	}
+	
+	$scope.items = ['item1', 'item2', 'item3'];
+	$scope.open = function () {
+		 var modalInstance = $modal.open({
+		  animation: true,
+	      templateUrl: 'partials/userinfo/viewProviderProfile.html',
+	      controller: 'ModalInstanceCtrl',
+	      size: 'lg',
+	      resolve: {
+	        items: function () {
+	          return $scope.items;
+	        }
+	      }
+	    });
+
+	    modalInstance.result.then(function (selectedItem) {
+	        $scope.selected = selectedItem;
+	      }, function () {
+	        $log.info('Modal dismissed at: ' + new Date());
+	      });
+	};
 });
 

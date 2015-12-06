@@ -7,6 +7,7 @@
  * ng-include routing
  */
 angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,shareDataService,requestService, $log, $window, $location, $localStorage, $compile, Idle, Keepalive, $modal/*, $http */) {
+	console.log("load mainCtrl");
 
 	  	$scope.loginFail = false;
 	  	
@@ -225,6 +226,12 @@ angular.module('testpimp').controller('mainCtrl', function ($scope,getConstants,
         	$scope.loginUser = false;
         	$scope.newUser = false;
 //        	$scope.userForgot = ! $scope.userForgot;
+        }
+        
+        $scope.gotoAboutUs = function () {
+        	
+        	$scope.viewUrl = 'partials/about.html';
+			
         }
         
 		
