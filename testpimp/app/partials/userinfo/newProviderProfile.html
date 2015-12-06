@@ -1,11 +1,15 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="css/profile.css" />
+</head>
+
 <div ng-controller="providerProfileCtrl">
-<div style="padding-left:120px;">
+    <div style ="padding-left: 150px;">
 	<div ng-show="showEditProviderProfile">
 		<table>
 			<tr>
 				<th>Profile Title</th>
 				<td>
-					<input type="text" ng-model="newProvider.Title"/>
+					<input class="tbl-inpt" type="text" ng-model="newProvider.Title"/>
 				</td>
 				<td>
 					<div ng-show="newProviderTitleError" style="color: red">
@@ -16,7 +20,7 @@
 			<tr>
 				<th>Location</th>
 				<td>
-					<input type="text" ng-model="newProvider.Location"/>
+					<input class="tbl-inpt" type="text" ng-model="newProvider.Location"/>
 				</td>
 				<td>
 					<div ng-show="newProviderLocationError" style="color: red">
@@ -27,7 +31,7 @@
 			<tr>
 				<th>Description</th>
 				<td>
-					<input type="text" ng-model="newProvider.Description"/>
+					<input class="tbl-inpt" type="text" ng-model="newProvider.Description"/>
 				</td>
 				<td>
 					<div ng-show="newProviderDescriptionError" style="color: red">
@@ -36,28 +40,28 @@
 				</td>
 			</tr>
 		</table>
-		<button ng-click="previewNewProviderProfile()">Preview</button>
-		<button ng-click="resetPreviewNewProviderProfile()">Reset</button>
+		<button class="btn btn-primary" ng-click="previewNewProviderProfile()">Preview</button>
+		<button class="btn btn-primary" ng-click="resetPreviewNewProviderProfile()">Reset</button>
 	</div>
 	<div ng-show="showPreviewNewProviderProfile">
 		<table>
 			<tr>
-				<th>Profile Title</th>
+				<th>Profile Title:&nbsp</th>
 				<td>{{newProvider.Title}}</td>
 			</tr>
 			<tr>
-				<th>Location</th>
+				<th>Location:&nbsp</th>
 				<td>{{newProvider.Location}}</td>
 			</tr>
 			<tr>
-				<th>Description</th>
+				<th>Description:&nbsp</th>
 				<td>{{newProvider.Description}}</td>
 			</tr>
 		</table>
-		<button ng-click="editNewProviderProfile()">Edit</button>
-		
+		<button class="btn btn-primary" ng-click="editNewProviderProfile()">Edit</button>
+	<br />	
 	</div>
-	<button ng-click="postNewProviderProfile()">Create Profile</button>
-	<button ng-click="myProfiles()">Cancel</button>
-</div>
+	<button class="btn btn-primary" ng-click="postNewProviderProfile()">Create Profile</button>
+	<button class="btn btn-primary" ng-click="myProfiles()">Cancel</button>
+    </div>
 </div>

@@ -1,5 +1,7 @@
 angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService, $modal, $confirm, $filter, $log) {
 	console.log("load jobDetailsCtrl");
+	$scope.jobSelectStatus = "Submitted";
+	$scope.test = "test";
 
 	$scope.myPosting = shareDataService.getJobToEdit();
 	console.log("job id: " + $scope.myPosting.id);
@@ -14,6 +16,13 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 					var values = {name: 'misko', gender: 'male'};
 					var log = [];
 					angular.forEach(applicantsObjs, function(applicantsObj) {
+						if(applicantsObj.status == 'Chosen') {
+							$scope.jobSelectStatus = applicantsObj.status;
+							$scope.myPosting.jobSelectStatus = applicantsObj.status;
+						}
+						console.log("$scope.jobSelectStatus: " + $scope.jobSelectStatus);
+						console.log("applicantsObj.status: " + applicantsObj.status);
+						
 						requestService.getProviderProfile(applicantsObj.applicantID, applicantsObj.providerprofileID).then(
 								function(success) {
 									applicantsObj["profileInfo"] = success.data[0];
@@ -37,6 +46,7 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 					$scope.hasApplicants = true;
 				}
 				console.log("applicants: " + JSON.stringify($scope.applicants));
+
 			},
 		     function(error){
 		    }
@@ -62,6 +72,7 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 	$scope.getApplicants = function() {
 		$scope.showApplicants = ! $scope.showApplicants;
 	}
+
 	
 	$scope.chooseApplicant = function(applicant) {
 		requestService.chooseAnApplicant(applicant.id).then(
@@ -75,16 +86,17 @@ angular.module('testpimp').controller('jobDetailsCtrl', function ($rootScope, $s
 
 	}
 	
-	$scope.items = ['item1', 'item2', 'item3'];
-	$scope.open = function () {
+
+	$scope.open = function (applicant) {
+		shareDataService.setJobToEdit($scope.myPosting);
 		 var modalInstance = $modal.open({
-		  animation: true,
-	      templateUrl: 'partials/userinfo/viewProviderProfile.html',
+//		  animation: true,
+	      templateUrl: 'viewApplicantProfile.html',
 	      controller: 'ModalInstanceCtrl',
 	      size: 'lg',
 	      resolve: {
-	        items: function () {
-	          return $scope.items;
+	        provider: function () {
+	          return applicant;
 	        }
 	      }
 	    });

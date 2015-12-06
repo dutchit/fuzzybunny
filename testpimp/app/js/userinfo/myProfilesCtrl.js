@@ -1,12 +1,23 @@
 angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $scope,getConstants,shareDataService,requestService) {
 	
-	console.log("user: " + JSON.stringify($scope.user));
+	// console.log("user: " + JSON.stringify($scope.mainUserProfileInformation));
 	
 	requestService.getMyProviderProfiles($scope.user.id).then(
 			function(success) {
 				$scope.myProviderProfiles = success.data;
 			}, 
-		     function(error){		        
+		     function(error){	
+		     console.log(error);	        
+		    }
+	);
+
+	requestService.getUserInformationForProfile($scope.user.id).then(
+			function(success) {
+				$scope.mainUserProfileInformation = success.data;
+				console.log(success.data);
+			}, 
+		     function(error){	
+		     console.log(error);	        
 		    }
 	);
 
@@ -15,19 +26,7 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 	
 	$scope.deleteProviderProfile = function (providerProfile) {
 		if(confirm("Delete: " + providerProfile.profileTitle + "?")){
-			requestService.deleteProvider(providerProfile.id, $scope.user.id).then(
-					function(success) {
-						requestService.getMyProviderProfiles($scope.user.id).then(
-								function(success) {
-									$scope.myProviderProfiles = success.data;
-								}, 
-							     function(error){		        
-							    }
-						);
-					}, 
-				     function(error){		        
-				    }
-			);;
+			requestService.deleteProvider(providerProfile.id, $scope.user.id);
 		}
 	}
 	$scope.editMainProfile = function(){
@@ -37,6 +36,40 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 			$scope.showEditMainProfile = true;
 		};
 	}
+
+	$scope.validMainProfileEdit = function(){
+		return true;
+	}
+
+	$scope.confirmEditMainProfile = function(mp){
+		console.log("Gets 1");
+		if($scope.validMainProfileEdit()){
+			console.log("Gets 2");
+			var postEditMainProfilePayload = {};
+			postEditMainProfilePayload ["id"] = $scope.user.id;
+			postEditMainProfilePayload ["username"] = $scope.mainProfile.userName;
+			postEditMainProfilePayload ["profileTitle"] = $scope.mainProfile.profileTitle;
+			postEditMainProfilePayload ["description"] = $scope.mainProfile.description;
+			postEditMainProfilePayload ["contactEmail"] = $scope.mainProfile.contactEmail;
+			postEditMainProfilePayload ["displayName"] = $scope.mainProfile.displayName;
+			postEditMainProfilePayload ["location"] = $scope.mainProfile.location;
+			requestService.updateMainProfile(postEditMainProfilePayload, $scope.user.id).then(
+				function(success){
+					console.log("here: " + success.data.profileTitle);
+					mp.profileTitle = success.data.profileTitle;
+					mp.description = success.data.description;
+					mp.displayName = success.data.displayName;
+				},
+				function(error){
+
+				});
+			$scope.showEditMainProfile = false;
+		}
+	}
+	$scope.cancelEditMainProfile = function(){
+		$scope.showEditMainProfile = false;
+	}
+
 	$scope.editProviderProfile = function(provider){
 		provider.showEditProviderProfile = true;
 		provider.showProviderProfileDetails = false;
@@ -68,28 +101,28 @@ angular.module('testpimp').controller('myProfilesCtrl', function ($rootScope, $s
 		return editProfileFormValid = validTitle && validLocation && validDescription;
 	}
 
-	$scope.confirmEditProfile = function(provider, pID){//needs fixing
-		//console.log("Confirm Clicked 1.")
-		//console.log(provider);
+	$scope.confirmEditProfile = function(provider, pID, d, s){
 		if($scope.validProviderEdit(provider)){
-			//console.log("Confirm Clicked 2.")
 			var postEditProviderPayload = {};
 			postEditProviderPayload ["profileTitle"] = provider.title;
 			postEditProviderPayload ["userID"] = $scope.user.id;
 			postEditProviderPayload ["description"] = provider.description;
 			postEditProviderPayload ["id"] = pID;
 			postEditProviderPayload ["location"] = provider.location;
-			//console.log(postEditProviderPayload);
 			requestService.updateProviderProfile(postEditProviderPayload, $scope.user.id, pID).then(
 				function(success){
-					$scope.updatedProviderProfile = success.data;
-
+					console.log(success.data);
+					//$scope.updatedProviderProfile = success.data;
+					s.profileTitle = success.data.profileTitle;
+					s.location = success.data.location;
+					s.description = success.data.description;
+					
 				}, 
 				function(error){
 
 				 });
-			provider.showEditProviderProfile = false;
-			provider.showProviderProfileDetails = true;
+					d.showEditProviderProfile = false;
+					//$scope.showProviderProfileDetails = true;
 		}
 	}
 

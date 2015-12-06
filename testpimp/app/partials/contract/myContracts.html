@@ -1,5 +1,5 @@
 <div ng-controller="myContractsCtrl">
-<div style="padding-left:120px;">
+<div style ="padding-left: 150px;">
 <label style="font-weight: bold; font-size: 1.5em">Active Commitments as an Employee</label>
 <table>
     <tr ng-repeat="employeeContract in employeeContracts">
@@ -32,8 +32,8 @@
                         </td>
                     </tr>
                 </table>
-  <!--             <p><button ng-click="acceptJobOffer(offer.jobsAppliedInfo.appInfo)">Accept</button>&nbsp&nbsp<button ng-click="declineJobOffer(offer.jobsAppliedInfo.appInfo)">Decline</button></p>
-   -->  
+ <p><button ng-click="quit(employeeContract)">I quit</button></p>
+   
             </div>
         </td>
     </tr>
@@ -74,8 +74,7 @@
                         </td>
                     </tr>
                 </table>
-  <!--             <p><button ng-click="acceptJobOffer(offer.jobsAppliedInfo.appInfo)">Accept</button>&nbsp&nbsp<button ng-click="declineJobOffer(offer.jobsAppliedInfo.appInfo)">Decline</button></p>
-   -->  
+              	<p><button ng-click="open(employerContract)">Pay My Provider</button>&nbsp&nbsp<button ng-click="open(employerContract)">Fire Provider</button></p>
             </div>
         </td>
     </tr>
@@ -164,5 +163,23 @@
         </td>
     </tr>
 </table>
-</div>
+
+
+<script type="text/ng-template" id="paymentpage.html">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Payment Service</h3>
+        </div>
+        <div class="modal-body">
+				<div ng-include='"partials/job/paymentpage.html"'></div>
+             
+        </div>
+        <div class="modal-footer">
+			
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+        </div>
+</script>
+    </div>
+
 </div>

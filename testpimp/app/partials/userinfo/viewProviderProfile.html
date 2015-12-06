@@ -1,21 +1,28 @@
-<div ng-controller="ModalDemoCtrl">
-    <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title">I'm a modal!</h3>
-        </div>
-        <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
+<div style ="padding-left: 150px;">
+   <div>
+  		<table>
+  			<tr>
+  				<th>Provider Name</th>
+  				<td>{{applicant.applicantInfo.displayName}}</td>
+  			</tr>
+  			<tr>
+  				<th>Provider Rating</th>
+  				<td>{{applicant.applicantInfo.employee_rating}}</td>
+            <tr>
+                <th>Provider Description</th>
+                <td>{{applicant.profileInfo.description}}</td>
+            </tr>
+            <tr>
+                <th>Provider Location</th>
+                <td>{{applicant.profileInfo.location}}</td>
+            </tr>
+            <tr>
+                <th>Bidding Price</th>
+                <td>${{applicant.price}}</td>
+            </tr>
+        </table>
+	<!-- <button ng-click="chooseApplicant(applicant)">Choose</button>	 -->
+</div>
+</div>
 
     
-</div>

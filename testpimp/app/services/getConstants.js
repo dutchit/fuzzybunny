@@ -74,16 +74,7 @@ angular.module('testpimp').factory('getConstants',[function($http){
 												"username":"770",
 												"profileTitle":"Not a Spy",
 												"location":"nowhere",
-												"description":"James Bonds rip off"
-											}                                            ];
-	var provideJobs = {
-			"provider":"007",
-			"title":"Martini Buddy",
-			"description":"Remember, shaken, not stirred",
-			"location":"SJ",
-			"price":"$1"
-	}
-
+												"description":"James Bonds rip off"}];
 	
 	constants.jobCategories = function(){
 		var categories = ["escort","pimp","dominator","dealer"];

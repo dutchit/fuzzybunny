@@ -25,7 +25,8 @@ angular.module('testpimp').controller('updatesCtrl', function ($rootScope, $scop
 								contract["contractInfo"]["postingInfo"] = success.data[0];
 								requestService.getApplicationDetail(contractInfo.applicationID).then(
 										function(success) {
-											contract["contractInfo"]["applicationInfo"] = success.data[0];
+											contract["contractInfo"]["applicationInfo"] = success.data;
+
 										},
 									     function(error){
 									    }
@@ -57,7 +58,7 @@ angular.module('testpimp').controller('updatesCtrl', function ($rootScope, $scop
 								contract["contractInfo"]["postingInfo"] = success.data[0];
 								requestService.getApplicationDetail(contractInfo.applicationID).then(
 										function(success) {
-											contract["contractInfo"]["applicationInfo"] = success.data[0];
+											contract["contractInfo"]["applicationInfo"] = success.data;
 										},
 									     function(error){
 									    }
@@ -224,10 +225,10 @@ angular.module('testpimp').controller('updatesCtrl', function ($rootScope, $scop
 				newContractPayload["providerprofileID"] = jobOffer.jobsAppliedInfo.appInfo.id;
 				newContractPayload["price"] = jobOffer.jobsAppliedInfo.appInfo.id;
 		*/		
-		jobOffer.jobsAppliedInfo.appInfo.status = "Declined";
-			requestService.createContract(jobOffer.jobsAppliedInfo.appInfo).then(
+			requestService.declineJobOffer(jobOffer).then(
 				function(success){
-					alert("Contract created \n" + success.data);
+					alert("Offer declined \n" + success.data);
+					$scope.appliedTo = [];
 					requestService.getJobsAppliedTo().then(
 							function(success){
 								var jobsApplied = success.data;

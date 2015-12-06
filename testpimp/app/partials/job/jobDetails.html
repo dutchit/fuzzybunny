@@ -1,5 +1,5 @@
 <div ng-controller="jobDetailsCtrl">
-<div style="padding-left:120px;">
+<div style ="padding-left: 150px;">
 <h3>Posting Details</h3>
 
 	<table>
@@ -35,32 +35,38 @@
 
            </table>
 		<p><button ng-click="editPostingDetails()"> Edit </button>&nbsp<button ng-click="deletePosting(myPosting)">Delete</button><!--  &nbsp<button ng-click="getApplicants()" ng-disabled="hasApplicants">View Applicants</button>--></p>
-		<p><a href="#" ng-click="myPostedJobs()"> My Postings </a></p>
+		<p><a href="#" ng-click="myPostedJobs()"> My Postings </a> myPosting.jobSelectStatus {{myPosting.jobSelectStatus}}</p>
 
 		<div ng-show="showApplicants">  
 		<br>
 		<h4>Applicants</h4>
 				<table>
-				    <tr ng-repeat="applicant in applicants">
+				    <tr ng-repeat="applicant in applicants" ng-show="applicant.status=='Chosen'||applicant.status=='Submitted'">
 				
-				        <td><a href="#" ng-click="showApplicantDetails = ! showApplicantDetails; open()">{{applicant.applicantInfo.displayName}}</a>     Rating: {{applicant.applicantInfo.employee_rating}}
-				            <div class="col-sm-offset-1" ng-show="showApplicantDetails">
-						  		<table>
-				                    <tr>
-				                        <th>Provider Description</th>
-				                        <td>{{applicant.profileInfo.description}}</td>
-				                    </tr>
-				                    <tr>
-				                        <th>Provider Location</th>
-				                        <td>{{applicant.profileInfo.location}}</td>
-				                    </tr>
-				                    <tr>
-				                        <th>Bidding Price</th>
-				                        <td>${{applicant.price}}</td>
-				                    </tr>
-				                </table>
-							<button ng-click="chooseApplicant(applicant)">Choose</button>
+				        <td><a href="#" ng-click="open(applicant)">{{applicant.applicantInfo.displayName}}</a> </td>
+				        <td>    Rating: {{applicant.applicantInfo.employee_rating}} </td>
+				        <td><div ng-show="applicant.status==myPosting.jobSelectStatus">Contract Pending</div> </td>
+
+							</td>
+						</tr>
+					</table>
 						</div>
+						
+ <script type="text/ng-template" id="viewApplicantProfile.html">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Applicant Profile</h3>
+        </div>
+        <div class="modal-body">
+				<div ng-include='"partials/userinfo/viewProviderProfile.html"'></div>
+             
+        </div>
+        <div class="modal-footer">
+			<button class="btn btn-primary" type="button" ng-click="chooseApplicant(applicant)" ng-enabled="applicant.status!=myPosting.jobSelectStatus">Choose</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+        </div>
+    </script>
 </div>
 </div>
 
